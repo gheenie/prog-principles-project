@@ -33,6 +33,7 @@ def test_location2index_out_of_bounds():
 def test_index2location1():
     assert index2location(5,2) == "e2"
 
+
 wn1 = Knight(1,2,True)
 wn2 = Knight(5,2,True)
 wn3 = Knight(5,4, True)
@@ -51,17 +52,22 @@ B1 = (5, [wn1, bn1, wn2, bn2, wn3, wk1, bk1])
 ♞    
 '''
 
+
 def test_is_piece_at1():
     assert is_piece_at(2,2, B1) == False
+
 
 def test_piece_at1():
     assert piece_at(1,1, B1) == bn1
 
+
 def test_can_reach1():
     assert bn1.can_reach(2,2, B1) == False
 
+
 def test_can_move_to1():
     assert wk1.can_move_to(4,5, B1) == False
+
 
 def test_move_to1():
     Actual_B = wn1.move_to(2,4, B1)
@@ -107,6 +113,7 @@ def test_is_check1():
     
     assert is_check(True, B2) == True
 
+
 def test_is_checkmate1():
     wk1a = King(1,5,True)
     bn2a = Knight(3,4, False)
@@ -121,6 +128,7 @@ def test_is_checkmate1():
     ♞    
     '''
     assert is_checkmate(True, B2) == True
+
 
 def test_read_board1():
     B = read_board("board_examp.txt")
