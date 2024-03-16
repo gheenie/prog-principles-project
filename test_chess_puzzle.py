@@ -17,6 +17,19 @@ def test_location2index_input_is_not_string():
     assert str(e.value) == 'Location is not a string.'
 
 
+def test_location2index_location_is_invalid():
+    with pytest.raises(ValueError) as e:
+        location2index('ee')
+    assert str(e.value) == 'Location is incorrectly formatted.'
+    with pytest.raises(ValueError) as e:
+        location2index('55')
+    assert str(e.value) == 'Location is incorrectly formatted.'
+
+
+def test_location2index_out_of_bounds():
+    pass
+
+
 def test_index2location1():
     assert index2location(5,2) == "e2"
 
