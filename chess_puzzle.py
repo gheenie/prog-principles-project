@@ -14,6 +14,8 @@ def location2index(loc: str) -> tuple[int, int]:
     except ValueError:
         raise ValueError('Row is incorrectly formatted.')
     
+    
+    
 	
 def index2location(x: int, y: int) -> str:
     '''converts  pair of coordinates to corresponding location'''

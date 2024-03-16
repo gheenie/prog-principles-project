@@ -21,11 +21,17 @@ def test_location2index_column_is_invalid():
     with pytest.raises(ValueError) as e:
         location2index('55')
     assert str(e.value) == 'Column is incorrectly formatted.'
+    with pytest.raises(ValueError) as e:
+        location2index('526')
+    assert str(e.value) == 'Column is incorrectly formatted.'
 
 
 def test_location2index_row_is_invalid():
     with pytest.raises(ValueError) as e:
         location2index('ee')
+    assert str(e.value) == 'Row is incorrectly formatted.'
+    with pytest.raises(ValueError) as e:
+        location2index('zz')
     assert str(e.value) == 'Row is incorrectly formatted.'
 
 
