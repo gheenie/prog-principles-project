@@ -4,6 +4,16 @@ def location2index(loc: str) -> tuple[int, int]:
     if type(loc) != str:
         raise TypeError('Location is not a string.')
     
+    column = loc[0]
+    row = loc[1:]
+
+    if column.isnumeric():
+        raise ValueError('Location is incorrectly formatted.')
+    try:
+        row = int(row)
+    except ValueError:
+        raise ValueError('Location is incorrectly formatted.')
+    
 	
 def index2location(x: int, y: int) -> str:
     '''converts  pair of coordinates to corresponding location'''
