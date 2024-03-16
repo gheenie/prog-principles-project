@@ -3,6 +3,8 @@ def location2index(loc: str) -> tuple[int, int]:
 
     if type(loc) != str:
         raise TypeError('Location is not a string.')
+    if loc == '':
+        raise ValueError('Location is empty.')
     
     column = loc[0]
     row = loc[1:]

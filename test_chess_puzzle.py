@@ -17,6 +17,12 @@ def test_location2index_input_is_not_string():
     assert str(e.value) == 'Location is not a string.'
 
 
+def test_location2index_input_is_empty_string():
+    with pytest.raises(ValueError) as e:
+        location2index('')
+    assert str(e.value) == 'Location is empty.'
+
+
 def test_location2index_column_is_invalid():
     with pytest.raises(ValueError) as e:
         location2index('55')
