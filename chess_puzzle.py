@@ -1,5 +1,8 @@
 def location2index(loc: str) -> tuple[int, int]:
     '''converts chess location to corresponding x and y coordinates'''
+
+    if type(loc) != str:
+        raise TypeError('Location is not a string.')
     
 	
 def index2location(x: int, y: int) -> str:

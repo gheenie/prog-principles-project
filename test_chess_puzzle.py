@@ -5,6 +5,11 @@ from chess_puzzle import *
 def test_locatio2index1():
     assert location2index("e2") == (5,2)
 
+def test_location2index_input_is_not_string():
+    with pytest.raises(TypeError) as e:
+        location2index(52)
+    assert str(e.value) == 'Location is not a string.'
+
 def test_index2location1():
     assert index2location(5,2) == "e2"
 
