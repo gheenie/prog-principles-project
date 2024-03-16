@@ -8,11 +8,11 @@ def location2index(loc: str) -> tuple[int, int]:
     row = loc[1:]
 
     if column.isnumeric():
-        raise ValueError('Location is incorrectly formatted.')
+        raise ValueError('Column is incorrectly formatted.')
     try:
         row = int(row)
     except ValueError:
-        raise ValueError('Location is incorrectly formatted.')
+        raise ValueError('Row is incorrectly formatted.')
     
 	
 def index2location(x: int, y: int) -> str:
