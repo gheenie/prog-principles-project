@@ -15,6 +15,9 @@ def test_location2index_input_is_not_string():
     with pytest.raises(TypeError) as e:
         location2index(52)
     assert str(e.value) == 'Location is not a string.'
+    with pytest.raises(TypeError) as e:
+        location2index(['e2'])
+    assert str(e.value) == 'Location is not a string.'
 
 
 def test_location2index_input_is_empty_string():
@@ -47,6 +50,10 @@ def test_location2index_out_of_bounds():
 
 def test_index2location1():
     assert index2location(5,2) == "e2"
+
+
+def test_index2location_is_not_string():
+    pass
 
 
 wn1 = Knight(1,2,True)
