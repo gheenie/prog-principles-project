@@ -52,8 +52,13 @@ def test_index2location1():
     assert index2location(5,2) == "e2"
 
 
-def test_index2location_is_not_string():
-    pass
+def test_index2location_input_is_not_ints():
+    with pytest.raises(TypeError) as e:
+        index2location(5, [2])
+    assert str(e.value) == 'Indices are not ints.'
+    with pytest.raises(TypeError) as e:
+        index2location('5', 2)
+    assert str(e.value) == 'Indices are not ints.'
 
 
 wn1 = Knight(1,2,True)
