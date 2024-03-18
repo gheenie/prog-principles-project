@@ -1,6 +1,7 @@
 def location2index(loc: str) -> tuple[int, int]:
     '''converts chess location to corresponding x and y coordinates'''
 
+    # Check edge cases.
     if not isinstance(loc, str):
         raise TypeError('Location is not a string.')
     if loc == '':
@@ -9,6 +10,7 @@ def location2index(loc: str) -> tuple[int, int]:
     column = loc[0]
     row = loc[1:]
 
+    # Check edge cases.
     if column.isnumeric():
         raise ValueError('Column is incorrectly formatted.')
     try:
@@ -24,6 +26,7 @@ def location2index(loc: str) -> tuple[int, int]:
 def index2location(x: int, y: int) -> str:
     '''converts  pair of coordinates to corresponding location'''
 
+    # Check edge cases.
     if not isinstance(x, int) or not isinstance(y, int):
         raise TypeError('One of the indices is not an integer.')
     if x<1 or x>26:
@@ -52,6 +55,7 @@ Board = tuple[int, list[Piece]]
 def is_piece_at(pos_X : int, pos_Y : int, B: Board) -> bool:
     '''checks if there is piece at coordinates pox_X, pos_Y of board B''' 
     
+    # Check edge cases.
     if pos_X<1 or pos_X>B[0] or pos_Y<1 or pos_Y>B[0]:
         raise ValueError('One of the coordinate is out of bounds.')
 
