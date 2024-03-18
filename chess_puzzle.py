@@ -52,6 +52,13 @@ Board = tuple[int, list[Piece]]
 def is_piece_at(pos_X : int, pos_Y : int, B: Board) -> bool:
     '''checks if there is piece at coordinates pox_X, pos_Y of board B''' 
 
+    piece_coordinates = ((piece.pos_x, piece.pos_y) for piece in B[1])
+    for (x, y) in piece_coordinates:
+        if x==pos_X and y==pos_Y:
+            return True
+        
+    return False
+
 
 def piece_at(pos_X : int, pos_Y : int, B: Board) -> Piece:
     '''
@@ -93,7 +100,7 @@ class Knight(Piece):
 class King(Piece):
     def __init__(self, pos_X : int, pos_Y : int, side_ : bool):
         '''sets initial values by calling the constructor of Piece'''
-
+        
         super().__init__(pos_X, pos_Y, side_)
 
     def can_reach(self, pos_X : int, pos_Y : int, B: Board) -> bool:
