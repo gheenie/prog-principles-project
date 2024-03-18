@@ -41,13 +41,18 @@ class Piece:
     def __init__(self, pos_X : int, pos_Y : int, side_ : bool):
         '''sets initial values'''
 
+        self.pos_x = pos_X
+        self.pos_y = pos_Y
+        self.side = side_
+
 
 Board = tuple[int, list[Piece]]
 
 
 def is_piece_at(pos_X : int, pos_Y : int, B: Board) -> bool:
     '''checks if there is piece at coordinates pox_X, pos_Y of board B''' 
-	
+
+
 def piece_at(pos_X : int, pos_Y : int, B: Board) -> Piece:
     '''
     returns the piece at coordinates pox_X, pos_Y of board B 
@@ -57,6 +62,8 @@ def piece_at(pos_X : int, pos_Y : int, B: Board) -> Piece:
 class Knight(Piece):
     def __init__(self, pos_X : int, pos_Y : int, side_ : bool):
         '''sets initial values by calling the constructor of Piece'''
+
+        super().__init__(pos_X, pos_Y, side_)
 	
     def can_reach(self, pos_X : int, pos_Y : int, B: Board) -> bool:
         '''
@@ -86,6 +93,9 @@ class Knight(Piece):
 class King(Piece):
     def __init__(self, pos_X : int, pos_Y : int, side_ : bool):
         '''sets initial values by calling the constructor of Piece'''
+
+        super().__init__(pos_X, pos_Y, side_)
+
     def can_reach(self, pos_X : int, pos_Y : int, B: Board) -> bool:
         '''checks if this king can move to coordinates pos_X, pos_Y on board B according to rule [Rule2] and [Rule3]'''
     def can_move_to(self, pos_X : int, pos_Y : int, B: Board) -> bool:
