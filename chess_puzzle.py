@@ -23,9 +23,14 @@ def index2location(x: int, y: int) -> str:
     '''converts  pair of coordinates to corresponding location'''
 
     if not isinstance(x, int) or not isinstance(y, int):
-        raise TypeError('One of the indices is not an integer')
+        raise TypeError('One of the indices is not an integer.')
+    if x<1 or x>26:
+        raise ValueError('The column is out of bounds.')
+    if y<1 or y>26:
+        raise ValueError('The row is out of bounds.')
 
     return f'{chr(x + 96)}{y}'
+
 
 class Piece:
     pos_x : int	
