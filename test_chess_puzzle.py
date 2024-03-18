@@ -66,6 +66,22 @@ def test_index2location_input_is_not_ints():
     assert str(e.value) == 'One of the indices is not an integer.'
 
 
+def test_index2location_column_out_of_bounds():
+    with pytest.raises(ValueError) as e:
+        index2location(27, 26)
+    assert str(e.value) == 'The column is out of bounds.'
+    with pytest.raises(ValueError) as e:
+        index2location(0, 1)
+    assert str(e.value) == 'The column is out of bounds.'
+    with pytest.raises(ValueError) as e:
+        index2location(-1, 2)
+    assert str(e.value) == 'The column is out of bounds.'
+
+
+def test_index2location_row_out_of_bounds():
+    pass
+
+
 wn1 = Knight(1,2,True)
 wn2 = Knight(5,2,True)
 wn3 = Knight(5,4, True)
