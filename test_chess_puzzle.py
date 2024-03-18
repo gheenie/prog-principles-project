@@ -79,7 +79,15 @@ def test_index2location_column_out_of_bounds():
 
 
 def test_index2location_row_out_of_bounds():
-    pass
+    with pytest.raises(ValueError) as e:
+        index2location(26, 27)
+    assert str(e.value) == 'The row is out of bounds.'
+    with pytest.raises(ValueError) as e:
+        index2location(1, 0)
+    assert str(e.value) == 'The row is out of bounds.'
+    with pytest.raises(ValueError) as e:
+        index2location(2, -1)
+    assert str(e.value) == 'The row is out of bounds.'
 
 
 wn1 = Knight(1,2,True)
