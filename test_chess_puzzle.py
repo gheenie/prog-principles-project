@@ -60,10 +60,10 @@ def test_index2location_row_is_double_digit():
 def test_index2location_input_is_not_ints():
     with pytest.raises(TypeError) as e:
         index2location(5, [2])
-    assert str(e.value) == 'Indices are not ints.'
+    assert str(e.value) == 'One of the indices is not an integer.'
     with pytest.raises(TypeError) as e:
         index2location('5', 2)
-    assert str(e.value) == 'Indices are not ints.'
+    assert str(e.value) == 'One of the indices is not an integer.'
 
 
 wn1 = Knight(1,2,True)

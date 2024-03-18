@@ -22,6 +22,9 @@ def location2index(loc: str) -> tuple[int, int]:
 def index2location(x: int, y: int) -> str:
     '''converts  pair of coordinates to corresponding location'''
 
+    if not isinstance(x, int) or not isinstance(y, int):
+        raise TypeError('One of the indices is not an integer')
+
     return f'{chr(x + 96)}{y}'
 
 class Piece:
