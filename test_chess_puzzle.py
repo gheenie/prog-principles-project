@@ -131,6 +131,21 @@ def test_is_piece_at_is_true_for_any_colour_pieces():
     assert is_piece_at(2, 4, B1) == True
 
 
+def test_is_piece_at_one_coordinate_is_out_of_bounds():
+    with pytest.raises(ValueError) as e:
+        is_piece_at(1, 6, B1)
+    assert str(e.value) == 'One of the coordinate is out of bounds.'
+    with pytest.raises(ValueError) as e:
+        is_piece_at(7, 1, B1)
+    assert str(e.value) == 'One of the coordinate is out of bounds.'
+    with pytest.raises(ValueError) as e:
+        is_piece_at(0, 5, B1)
+    assert str(e.value) == 'One of the coordinate is out of bounds.'
+    with pytest.raises(ValueError) as e:
+        is_piece_at(5, -1, B1)
+    assert str(e.value) == 'One of the coordinate is out of bounds.'
+
+
 def test_piece_at1():
     assert piece_at(1,1, B1) == bn1
 
