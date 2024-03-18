@@ -44,8 +44,16 @@ def test_location2index_row_is_invalid():
     assert str(e.value) == 'Row is incorrectly formatted.'
 
 
-def test_location2index_out_of_bounds():
-    pass
+def test_location2index_row_out_of_bounds():
+    with pytest.raises(ValueError) as e:
+        location2index('z27')
+    assert str(e.value) == 'The row is out of bounds.'
+    with pytest.raises(ValueError) as e:
+        location2index('a0')
+    assert str(e.value) == 'The row is out of bounds.'
+    with pytest.raises(ValueError) as e:
+        location2index('m-1')
+    assert str(e.value) == 'The row is out of bounds.'
 
 
 def test_index2location1():

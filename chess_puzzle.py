@@ -15,6 +15,8 @@ def location2index(loc: str) -> tuple[int, int]:
         row = int(row)
     except ValueError:
         raise ValueError('Row is incorrectly formatted.')
+    if row<1 or row>26:
+        raise ValueError('The row is out of bounds.')
     
     return (ord(column)-96, row)
 
