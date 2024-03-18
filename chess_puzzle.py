@@ -52,9 +52,9 @@ Board = tuple[int, list[Piece]]
 def is_piece_at(pos_X : int, pos_Y : int, B: Board) -> bool:
     '''checks if there is piece at coordinates pox_X, pos_Y of board B''' 
 
-    piece_coordinates = ((piece.pos_x, piece.pos_y) for piece in B[1])
-    for (x, y) in piece_coordinates:
-        if x==pos_X and y==pos_Y:
+    pieces = (piece for piece in B[1])
+    for piece in pieces:
+        if piece.pos_x==pos_X and piece.pos_y==pos_Y:
             return True
         
     return False
