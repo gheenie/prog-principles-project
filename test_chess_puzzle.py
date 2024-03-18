@@ -52,6 +52,11 @@ def test_index2location1():
     assert index2location(5,2) == "e2"
 
 
+def test_index2location_row_is_double_digit():
+    assert index2location(5, 20) == "e20"
+    assert index2location(26, 26) == "z26"
+
+
 def test_index2location_input_is_not_ints():
     with pytest.raises(TypeError) as e:
         index2location(5, [2])
