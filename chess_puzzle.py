@@ -51,6 +51,9 @@ Board = tuple[int, list[Piece]]
 
 def is_piece_at(pos_X : int, pos_Y : int, B: Board) -> bool:
     '''checks if there is piece at coordinates pox_X, pos_Y of board B''' 
+    
+    if pos_X<1 or pos_X>B[0] or pos_Y<1 or pos_Y>B[0]:
+        raise ValueError('One of the coordinate is out of bounds.')
 
     pieces = (piece for piece in B[1])
     for piece in pieces:
