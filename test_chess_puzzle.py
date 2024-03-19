@@ -293,7 +293,16 @@ def test_can_move_to1():
 
 
 def test_can_move_to_knight_cannot_reach_but_not_checked():
-    assert False
+    assert wn3.can_reach(3, 5, B1) is False
+    assert bn1.can_reach(2, 3, B1) is False
+    assert wn1.can_reach(2, 3, B1) is False
+    assert bn2.can_reach(1, 1, B1) is False
+    assert wn1.can_reach(1, 2, B1) is False
+    assert bn1.can_reach(1, 1, B1) is False
+    assert wn2.can_reach(2, 2, B1) is False
+    assert bn1.can_reach(1, 4, B1) is False
+    assert wn2.can_reach(7, 3, B1) is False
+    assert bn1.can_reach(3, 0, B1) is False
 
 
 def test_can_move_to_knight_can_reach_but_checked():
