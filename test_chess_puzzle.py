@@ -452,6 +452,13 @@ def test_can_move_to_king_can_move_by_capturing(board1, board2):
     wk35.pos_y = 1
     bk23.pos_x = 5
     bk23.pos_y = 1
+    '''
+         
+     ♞  ♘
+         
+    ♘   ♘
+    ♞  ♔♚
+    '''
     
     # Capturing king.
     assert wk35.can_move_to(5, 1, board2) is True
