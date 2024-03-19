@@ -337,8 +337,13 @@ def test_can_move_to_knight_can_reach_but_checked(board2):
     assert bn32.can_move_to(5, 1, board2) is False
 
 
-def test_can_move_to_knight_can_move_by_removing_check():
-    assert False
+def test_can_move_to_knight_can_move_by_removing_check(board2):
+    wn31 = Knight(3, 1, True)
+    bn32 = Knight(3, 2, False)
+    board2[1].append(wn31)
+
+    assert wn31.can_move_to(4, 3, board2) is True
+    assert bn32.can_move_to(4, 4, board2) is True
 
 
 def test_can_move_to_knight_can_move_with_capturing():
