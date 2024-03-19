@@ -150,6 +150,21 @@ def test_piece_at1():
     assert piece_at(1,1, B1) == bn1
 
 
+@pytest.fixture(scope="function")
+def board1():
+    '''
+      ♔  
+     ♞  ♘
+     ♚   
+    ♘   ♘
+    ♞    
+    '''
+    wn1 = Knight(1, 2, True)
+    wn2 = Knight(5, 2, True)
+    wn3 = Knight(5, 4, True)
+    wk1 = King(3, 5, True)
+
+
 def test_can_reach1():
     '''Knight not moving 3 spaces total.'''
     assert bn1.can_reach(2,2, B1) == False
