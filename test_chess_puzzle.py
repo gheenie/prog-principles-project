@@ -292,6 +292,26 @@ def test_can_move_to1():
     assert wk1.can_move_to(4,5, B1) == False
 
 
+def test_can_move_to_knight_cannot_reach_but_not_checked():
+    assert False
+
+
+def test_can_move_to_knight_can_reach_but_checked():
+    assert False
+
+
+def test_can_move_to_knight_can_move_by_removing_check():
+    assert False
+
+
+def test_can_move_to_knight_can_move_with_capturing():
+    assert False
+
+
+def test_can_move_to_knight_can_move_to_empty_space():
+    assert False
+
+
 def test_move_to1():
     Actual_B = wn1.move_to(2,4, B1)
     wn1a = Knight(2,4,True)
