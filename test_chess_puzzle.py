@@ -151,6 +151,8 @@ def test_piece_at1():
 
 
 def test_can_reach1():
+    '''Knight not moving 3 spaces total.'''
+
     assert bn1.can_reach(2,2, B1) == False
     assert bn1.can_reach(1, 2, B1) == False
     assert bn1.can_reach(5, 1, B1) == False
@@ -160,10 +162,13 @@ def test_can_reach1():
     assert wn1.can_reach(2, 3, B1) == False
     assert wn2.can_reach(5, 1, B1) == False
     assert wn3.can_reach(2, 3, B1) == False
+    # Remaining on the same spot.
+    assert wn1.can_reach(1, 2, B1) == False
+    assert bn1.can_reach(1, 1, B1) == False
 
 
 def test_can_reach_knight_moving_3_spaces_in_only_one_dimension():
-    '''A knight moves 3 total spaces, but not all in a straight line.'''
+    '''A knight moves 3 total spaces, but all in a straight line.'''
 
     assert bn1.can_reach(1, 4, B1) == False
     assert bn2.can_reach(5, 4, B1) == False
@@ -178,6 +183,11 @@ def test_can_reach_king_moving_more_than_1_space():
     assert bk1.can_reach(3, 4, B1) == False
     assert bk1.can_reach(1, 3, B1) == False
     assert bk1.can_reach(2, 4, B1) == False
+
+
+def test_can_reach_king_remaining_on_the_same_spot():
+    assert wk1.can_reach(3, 5, B1) == False
+    assert bk1.can_reach(2, 3, B1) == False
 
 
 def test_can_reach_out_of_bounds_with_valid_movement():
