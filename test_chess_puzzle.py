@@ -311,17 +311,17 @@ def test_can_reach_king_valid_movement_and_no_same_side_piece(board1):
     assert bk23.can_reach(1, 2, board1) is True
 
 
-def test_can_move_to_knight_cannot_reach_but_not_checked():
-    assert wn54.can_move_to(3, 5, B1) is False
-    assert bn11.can_move_to(2, 3, B1) is False
-    assert wn12.can_move_to(2, 3, B1) is False
-    assert bn24.can_move_to(1, 1, B1) is False
-    assert wn12.can_move_to(1, 2, B1) is False
-    assert bn11.can_move_to(1, 1, B1) is False
-    assert wn52.can_move_to(2, 2, B1) is False
-    assert bn11.can_move_to(1, 4, B1) is False
-    assert wn52.can_move_to(7, 3, B1) is False
-    assert bn11.can_move_to(3, 0, B1) is False
+def test_can_move_to_knight_cannot_reach_but_not_checked(board1):
+    assert wn54.can_move_to(3, 5, board1) is False
+    assert bn11.can_move_to(2, 3, board1) is False
+    assert wn12.can_move_to(2, 3, board1) is False
+    assert bn24.can_move_to(1, 1, board1) is False
+    assert wn12.can_move_to(1, 2, board1) is False
+    assert bn11.can_move_to(1, 1, board1) is False
+    assert wn52.can_move_to(2, 2, board1) is False
+    assert bn11.can_move_to(1, 4, board1) is False
+    assert wn52.can_move_to(7, 3, board1) is False
+    assert bn11.can_move_to(3, 0, board1) is False
 
 
 @pytest.fixture(scope="function")
