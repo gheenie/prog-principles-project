@@ -83,7 +83,7 @@ def are_pieces_same_side(pos_X: int, pos_Y: int, B: Board, moving_piece_side: bo
     stationary_piece = None
     if is_piece_at(pos_X, pos_Y, B):
         stationary_piece = piece_at(pos_X, pos_Y, B)
-        if stationary_piece.is_white() == moving_piece_side:
+        if stationary_piece.is_white() is moving_piece_side:
             return True
         
     return False
