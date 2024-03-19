@@ -352,6 +352,12 @@ def board3():
     wn25 = Knight(2, 5, True)
     wk35 = King(3, 4, True)
 
+    bn11 = Knight(1, 1,False)
+    bn24 = Knight(2, 4, False)
+    bn32 = Knight(3, 2, False)
+    bn43 = Knight(4, 3, False)
+    bk23 = King(2, 3, False)
+
     return (5, [wn12, bn11, wn52, bn24, wn54, wk35, bk23, wn25, bn32, bn43])
 
 
