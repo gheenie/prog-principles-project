@@ -118,7 +118,7 @@ B1 = (5, [wn1, bn1, wn2, bn2, wn3, wk1, bk1])
 
 
 def test_is_piece_at1():
-    assert is_piece_at(2,2, B1) is False
+    assert is_piece_at(2,2, B1) == False
 
 
 def test_is_piece_at_is_true_for_any_colour_pieces():
