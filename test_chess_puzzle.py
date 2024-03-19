@@ -181,12 +181,14 @@ def test_can_reach_knight_out_of_bounds_with_valid_movement():
     assert bn2.can_reach(3, 6, B1) == False
 
 
-wn12 = Knight(1,2,True)
-wn52 = Knight(5,2,True)
-wn54 = Knight(5,4, True)
-wn44 = Knight(4, 4, True)
-wn25 = Knight(2, 5, True)
-wk35 = King(3,5, True)
+@pytest.fixture(scope="function")
+def board2():
+    wn12 = Knight(1,2,True)
+    wn52 = Knight(5,2,True)
+    wn54 = Knight(5,4, True)
+    wn44 = Knight(4, 4, True)
+    wn25 = Knight(2, 5, True)
+    wk35 = King(3,5, True)
 
 bn11 = Knight(1,1,False)
 bn24 = Knight(2,4, False)
