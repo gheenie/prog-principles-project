@@ -207,7 +207,7 @@ def board2():
 
 
 def test_can_reach_white_knight_with_valid_movement_landing_on_white_piece(board2):
-    wn52 = Knight(5, 2, True)
+    wn52 = piece_at(5, 2, board2)
 
     # Landing on white knight.
     assert wn52.can_reach(4, 4, board2) is False
@@ -216,7 +216,7 @@ def test_can_reach_white_knight_with_valid_movement_landing_on_white_piece(board
 
 
 def test_can_reach_black_knight_with_valid_movement_landing_on_black_piece(board2):
-    bn11 = Knight(1, 1,False)
+    bn11 = piece_at(1, 1, board2)
 
     # Landing on black knight.
     assert bn11.can_reach(3, 2, board2) is False
@@ -225,8 +225,8 @@ def test_can_reach_black_knight_with_valid_movement_landing_on_black_piece(board
 
 
 def test_can_reach_knight_valid_movement_and_no_same_side_piece(board2):
-    wn44 = Knight(4, 4, True)
-    bn43 = Knight(4, 3, False)
+    wn44 = piece_at(4, 4, board2)
+    bn43 = piece_at(4, 3, board2)
 
     # Landing on opponent knight.
     assert wn1.can_reach(2, 4, B1) is True
@@ -264,14 +264,14 @@ def test_can_reach_king_out_of_bounds_with_valid_movement():
 
 
 def test_can_reach_white_king_with_valid_movement_landing_on_white_piece(board2):
-    wk35 = King(3, 5, True)
+    wk35 = piece_at(3, 5, board2)
 
     assert wk35.can_reach(4, 4, board2) is False
     assert wk35.can_reach(2, 5, board2) is False
 
 
 def test_can_reach_black_king_with_valid_movement_landing_on_black_piece(board2):
-    bk23 = King(2, 3, False)
+    bk23 = piece_at(2, 3, board2)
 
     assert bk1.can_reach(2, 4, B1) is False
     assert bk23.can_reach(3, 2, board2) is False
@@ -326,8 +326,8 @@ def board3():
 
 
 def test_can_move_to_knight_can_reach_but_checked(board2):
-    wn54 = Knight(5, 4, True)
-    bn32 = Knight(3, 2, False)
+    wn54 = piece_at(5, 4, board2)
+    bn32 = piece_at(3, 2, board2)
 
     assert wn54.can_move_to(4, 2, board2) is False
     assert bn32.can_move_to(5, 1, board2) is False
@@ -335,7 +335,7 @@ def test_can_move_to_knight_can_reach_but_checked(board2):
 
 def test_can_move_to_knight_can_move_by_removing_check(board2):
     wn31 = Knight(3, 1, True)
-    bn32 = Knight(3, 2, False)
+    bn32 = piece_at(3, 2, board2)
     board2[1].append(wn31)
 
     assert wn31.can_move_to(4, 3, board2) is True
