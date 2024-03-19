@@ -97,23 +97,20 @@ class Knight(Piece):
         on board B according to rule [Rule1] and [Rule3] (see section Intro)
         Hint: use is_piece_at
         '''
-        # Implement rule 1.
+        # Check rule 1.
         if not (
                 abs(self.pos_x-pos_X)==2 and abs(self.pos_y-pos_Y)==1
                 or abs(self.pos_x-pos_X)==1 and abs(self.pos_y-pos_Y)==2
         ):
             return False
         
-        # Implement rule 3.
+        # Check rule 3.
         try:
-            if are_pieces_same_side(pos_X, pos_Y, B, self.side):
-                return False
+            return not are_pieces_same_side(pos_X, pos_Y, B, self.side)
         except ValueError as e:
             # Handle edge cases.
             if e.args[0] == 'One of the coordinate is out of bounds.':
                 return False
-        
-        return True
             
     def can_move_to(self, pos_X : int, pos_Y : int, B: Board) -> bool:
         '''
@@ -157,14 +154,11 @@ class King(Piece):
         
         # Implement rule 3.
         try:
-            if are_pieces_same_side(pos_X, pos_Y, B, self.side):
-                return False
+            return not are_pieces_same_side(pos_X, pos_Y, B, self.side)
         except ValueError as e:
             # Handle edge cases.
             if e.args[0] == 'One of the coordinate is out of bounds.':
                 return False
-        
-        return True
 
     def can_move_to(self, pos_X : int, pos_Y : int, B: Board) -> bool:
         '''checks if this king can move to coordinates pos_X, pos_Y on board B according to all chess rules'''
