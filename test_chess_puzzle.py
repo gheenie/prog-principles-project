@@ -164,18 +164,18 @@ def board1():
     wn54 = Knight(5, 4, True)
     wk35 = King(3, 5, True)
 
-    bn1 = Knight(1, 1, False)
+    bn11 = Knight(1, 1, False)
     bk1 = King(2, 3, False)
     bn2 = Knight(2, 4, False)
 
-    return (5, [wn12, bn1, wn52, bn2, wn54, wk35, bk1])
+    return (5, [wn12, bn11, wn52, bn2, wn54, wk35, bk1])
 
 
 def test_can_reach1():
     '''Knight not moving 3 spaces total.'''
-    assert bn1.can_reach(2,2, B1) == False
-    assert bn1.can_reach(1, 2, B1) is False
-    assert bn1.can_reach(5, 1, B1) is False
+    assert bn11.can_reach(2,2, B1) == False
+    assert bn11.can_reach(1, 2, B1) is False
+    assert bn11.can_reach(5, 1, B1) is False
     assert bn2.can_reach(2, 2, B1) is False
     assert bn2.can_reach(3, 4, B1) is False
     assert bn2.can_reach(1, 1, B1) is False
@@ -184,12 +184,12 @@ def test_can_reach1():
     assert wn54.can_reach(2, 3, B1) is False
     # Remaining on the same spot.
     assert wn12.can_reach(1, 2, B1) is False
-    assert bn1.can_reach(1, 1, B1) is False
+    assert bn11.can_reach(1, 1, B1) is False
 
 
 def test_can_reach_knight_moving_3_spaces_in_only_one_dimension():
     '''A knight moves 3 total spaces, but all in a straight line.'''
-    assert bn1.can_reach(1, 4, B1) is False
+    assert bn11.can_reach(1, 4, B1) is False
     assert bn2.can_reach(5, 4, B1) is False
     assert wn12.can_reach(1, 5, B1) is False
     assert wn52.can_reach(2, 2, B1) is False
@@ -198,7 +198,7 @@ def test_can_reach_knight_moving_3_spaces_in_only_one_dimension():
 def test_can_reach_knight_out_of_bounds_with_valid_movement():
     assert wn12.can_reach(-1, 1, B1) is False
     assert wn52.can_reach(7, 3, B1) is False
-    assert bn1.can_reach(3, 0, B1) is False
+    assert bn11.can_reach(3, 0, B1) is False
     assert bn2.can_reach(3, 6, B1) is False
 
 
@@ -242,7 +242,7 @@ def test_can_reach_black_knight_with_valid_movement_landing_on_black_piece(board
     # Landing on black knight.
     assert bn11.can_reach(3, 2, board2) is False
     # Landing on black king.
-    assert bn1.can_reach(2, 3, B1) is False
+    assert bn11.can_reach(2, 3, B1) is False
 
 
 def test_can_reach_knight_valid_movement_and_no_same_side_piece(board2):
@@ -254,7 +254,7 @@ def test_can_reach_knight_valid_movement_and_no_same_side_piece(board2):
     assert bn2.can_reach(1, 2, B1) is True
     # Landing on empty space.
     assert wn52.can_reach(3, 3, B1) is True
-    assert bn1.can_reach(3, 2, B1) is True
+    assert bn11.can_reach(3, 2, B1) is True
     # Landing on opponent king.
     assert wn44.can_reach(2, 3, board2) is True
     assert bn43.can_reach(3, 5, board2) is True
@@ -311,15 +311,15 @@ def test_can_reach_king_valid_movement_and_no_same_side_piece():
 
 def test_can_move_to_knight_cannot_reach_but_not_checked():
     assert wn54.can_move_to(3, 5, B1) is False
-    assert bn1.can_move_to(2, 3, B1) is False
+    assert bn11.can_move_to(2, 3, B1) is False
     assert wn12.can_move_to(2, 3, B1) is False
     assert bn2.can_move_to(1, 1, B1) is False
     assert wn12.can_move_to(1, 2, B1) is False
-    assert bn1.can_move_to(1, 1, B1) is False
+    assert bn11.can_move_to(1, 1, B1) is False
     assert wn52.can_move_to(2, 2, B1) is False
-    assert bn1.can_move_to(1, 4, B1) is False
+    assert bn11.can_move_to(1, 4, B1) is False
     assert wn52.can_move_to(7, 3, B1) is False
-    assert bn1.can_move_to(3, 0, B1) is False
+    assert bn11.can_move_to(3, 0, B1) is False
 
 
 @pytest.fixture(scope="function")
@@ -377,7 +377,7 @@ def test_can_move_to_knight_can_move_with_capturing(board2):
 
 def test_can_move_to_knight_can_move_to_empty_space():
     assert wn12.can_move_to(3, 3, B1) is True
-    assert bn1.can_move_to(3, 2, B1) is True
+    assert bn11.can_move_to(3, 2, B1) is True
 
 
 @pytest.mark.skip
