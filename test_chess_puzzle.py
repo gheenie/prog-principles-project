@@ -288,10 +288,6 @@ def test_can_reach_king_valid_movement_and_no_same_side_piece():
     assert bk1.can_reach(1, 2, B1) is True
 
 
-def test_can_move_to1():
-    assert wk1.can_move_to(4,5, B1) == False
-
-
 def test_can_move_to_knight_cannot_reach_but_not_checked():
     assert wn3.can_move_to(3, 5, B1) is False
     assert bn1.can_move_to(2, 3, B1) is False
@@ -361,6 +357,10 @@ def test_can_move_to_knight_can_move_with_capturing(board2):
 def test_can_move_to_knight_can_move_to_empty_space():
     assert wn1.can_move_to(3, 3, B1) is True
     assert bn1.can_move_to(3, 2, B1) is True
+
+
+def test_can_move_to1():
+    assert wk1.can_move_to(4,5, B1) == False
 
 
 def test_move_to1():
