@@ -404,6 +404,8 @@ def test_can_move_to_knight_can_move_by_removing_check(board2):
 
 
 def test_can_move_to_knight_can_move_with_capturing(board1, board2):
+    wn12 = piece_at(1, 2, board1)
+    bn24 = piece_at(2, 4, board1)
     wn44 = piece_at(4, 4, board2)
     bn43 = piece_at(4, 3, board2)
 
@@ -416,6 +418,9 @@ def test_can_move_to_knight_can_move_with_capturing(board1, board2):
 
 
 def test_can_move_to_knight_can_move_to_empty_space(board1):
+    wn12 = piece_at(1, 2, board1)
+    bn11 = piece_at(1, 1, board1)
+
     assert wn12.can_move_to(3, 3, board1) is True
     assert bn11.can_move_to(3, 2, board1) is True
 
