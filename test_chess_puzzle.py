@@ -362,22 +362,7 @@ def test_can_move_to_knight_cannot_reach_but_not_checked(board1):
     assert bn11.can_move_to(3, 0, board1) is False
 
 
-@pytest.fixture(scope="function")
-def board3():
-    '''
-     ♘   
-     ♞♔ ♘
-     ♚ ♞ 
-    ♘ ♞ ♘
-    ♞    
-    '''
-    wn12 = Knight(1, 2, True)
-    wn52 = Knight(5, 2, True)
-    wn54 = Knight(5, 4, True)
-    wn25 = Knight(2, 5, True)
-    wk35 = King(3, 4, True)
 
-    bn11 = Knight(1, 1, False)
     bn24 = Knight(2, 4, False)
     bn32 = Knight(3, 2, False)
     bn43 = Knight(4, 3, False)
@@ -476,7 +461,22 @@ def test_is_check1():
     assert is_check(True, B2) == True
 
 
-def test_is_check_white_king_checked_by_black_king(board3):
+@pytest.fixture(scope="function")
+def board3():
+    '''
+     ♘   
+     ♞♔ ♘
+     ♚ ♞ 
+    ♘ ♞ ♘
+    ♞    
+    '''
+    wn12 = Knight(1, 2, True)
+    wn52 = Knight(5, 2, True)
+    wn54 = Knight(5, 4, True)
+    wn25 = Knight(2, 5, True)
+    wk35 = King(3, 4, True)
+
+    bn11 = Knight(1, 1, False)def test_is_check_white_king_checked_by_black_king(board3):
     assert is_check(True, board3) is True
 
 
