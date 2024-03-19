@@ -176,13 +176,17 @@ def test_can_reach_knight_moving_3_spaces_in_only_one_dimension():
     assert wn2.can_reach(2, 2, B1) == False
 
 
-def test_can_reach_king_moving_more_than_1_space():
-    assert wk1.can_reach(2, 4, B1) == False
-    assert wk1.can_reach(3, 4, B1) == False
-    assert wk1.can_reach(4, 5, B1) == False
-    assert bk1.can_reach(3, 4, B1) == False
-    assert bk1.can_reach(1, 3, B1) == False
-    assert bk1.can_reach(2, 4, B1) == False
+def test_can_reach_king_moving_more_than_1_space_in_any_dimension():
+    assert wk1.can_reach(1, 5, B1) == False
+    assert wk1.can_reach(5, 5, B1) == False
+    assert wk1.can_reach(3, 2, B1) == False
+    assert wk1.can_reach(1, 3, B1) == False
+    assert wk1.can_reach(2, 3, B1) == False
+    assert bk1.can_reach(2, 1, B1) == False
+    assert bk1.can_reach(2, 5, B1) == False
+    assert bk1.can_reach(5, 3, B1) == False
+    assert bk1.can_reach(4, 1, B1) == False
+    assert bk1.can_reach(4, 2, B1) == False
 
 
 def test_can_reach_king_remaining_on_the_same_spot():
