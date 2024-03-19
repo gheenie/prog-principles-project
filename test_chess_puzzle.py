@@ -152,7 +152,7 @@ def test_piece_at1():
 
 def test_can_reach1():
     '''Knight not moving 3 spaces total.'''
-    assert bn1.can_reach(2,2, B1) is False
+    assert bn1.can_reach(2,2, B1) == False
     assert bn1.can_reach(1, 2, B1) is False
     assert bn1.can_reach(5, 1, B1) is False
     assert bn2.can_reach(2, 2, B1) is False
