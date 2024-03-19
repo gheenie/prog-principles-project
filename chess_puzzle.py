@@ -1,6 +1,5 @@
 def location2index(loc: str) -> tuple[int, int]:
     '''converts chess location to corresponding x and y coordinates'''
-
     # Check edge cases.
     if not isinstance(loc, str):
         raise TypeError('Location is not a string.')
@@ -25,7 +24,6 @@ def location2index(loc: str) -> tuple[int, int]:
 
 def index2location(x: int, y: int) -> str:
     '''converts  pair of coordinates to corresponding location'''
-
     # Check edge cases.
     if not isinstance(x, int) or not isinstance(y, int):
         raise TypeError('One of the indices is not an integer.')
@@ -41,9 +39,9 @@ class Piece:
     pos_x : int	
     pos_y : int
     side : bool #True for White and False for Black
+
     def __init__(self, pos_X : int, pos_Y : int, side_ : bool):
         '''sets initial values'''
-
         self.pos_x = pos_X
         self.pos_y = pos_Y
         self.side = side_
@@ -54,7 +52,6 @@ Board = tuple[int, list[Piece]]
 
 def is_piece_at(pos_X : int, pos_Y : int, B: Board) -> bool:
     '''checks if there is piece at coordinates pox_X, pos_Y of board B''' 
-    
     # Check edge cases.
     if pos_X<1 or pos_X>B[0] or pos_Y<1 or pos_Y>B[0]:
         raise ValueError('One of the coordinate is out of bounds.')
@@ -72,7 +69,6 @@ def piece_at(pos_X : int, pos_Y : int, B: Board) -> Piece:
     returns the piece at coordinates pox_X, pos_Y of board B 
     assumes some piece at coordinates pox_X, pos_Y of board B is present
     '''
-
     pieces = iter(B[1])
     for piece in pieces:
         if piece.pos_x==pos_X and piece.pos_y==pos_Y:
@@ -82,7 +78,6 @@ def piece_at(pos_X : int, pos_Y : int, B: Board) -> Piece:
 class Knight(Piece):
     def __init__(self, pos_X : int, pos_Y : int, side_ : bool):
         '''sets initial values by calling the constructor of Piece'''
-
         super().__init__(pos_X, pos_Y, side_)
 	
     def can_reach(self, pos_X : int, pos_Y : int, B: Board) -> bool:
@@ -91,7 +86,6 @@ class Knight(Piece):
         on board B according to rule [Rule1] and [Rule3] (see section Intro)
         Hint: use is_piece_at
         '''
-
         # Implement rule 1.
         if not (
                 abs(self.pos_x-pos_X)==2 and abs(self.pos_y-pos_Y)==1
@@ -107,12 +101,12 @@ class Knight(Piece):
                 if piece.side == self.side:
                     return False
         except ValueError as e:
+            # Handle edge cases.
             if e.args[0] == 'One of the coordinate is out of bounds.':
                 return False
         
         return True
             
-
     def can_move_to(self, pos_X : int, pos_Y : int, B: Board) -> bool:
         '''
         checks if this knight can move to coordinates pos_X, pos_Y
