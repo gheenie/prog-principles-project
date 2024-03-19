@@ -92,12 +92,20 @@ class Knight(Piece):
         Hint: use is_piece_at
         '''
 
+        # Implement rule 1.
         if not (
                 abs(self.pos_x-pos_X)==2 and abs(self.pos_y-pos_Y)==1
                 or abs(self.pos_x-pos_X)==1 and abs(self.pos_y-pos_Y)==2
         ):
             return False
         
+        # Implement rule 3.
+        piece = None
+        if is_piece_at(pos_X, pos_Y, B):
+            piece = piece_at(pos_X, pos_Y, B)
+            if piece.side == self.side:
+                return False
+
         return True
             
 
