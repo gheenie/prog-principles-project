@@ -162,6 +162,15 @@ def test_can_reach1():
     assert wn3.can_reach(2, 3, B1) == False
 
 
+def test_can_reach_knight_3_spaces_in_only_one_dimension():
+    '''A knight moves 3 total spaces, but not all in a straight line.'''
+
+    assert bn1.can_reach(1, 4) == False
+    assert bn2.can_reach(5, 4) == False
+    assert wn1.can_reach(1, 5) == False
+    assert wn2.can_reach(2, 2) == False
+
+
 def test_can_move_to1():
     assert wk1.can_move_to(4,5, B1) == False
 
