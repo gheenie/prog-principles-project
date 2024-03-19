@@ -321,14 +321,6 @@ def test_can_reach_king_remaining_on_the_same_spot(board1):
     assert bk23.can_reach(2, 3, board1) is False
 
 
-def test_can_reach_king_out_of_bounds_with_valid_movement(board1):
-    wk35 = piece_at(3, 5, board1)
-
-    assert wk35.can_reach(3, 6, board1) is False
-    assert wk35.can_reach(2, 6, board1) is False
-    assert wk35.can_reach(4, 6, board1) is False
-
-
 def test_can_reach_white_king_with_valid_movement_landing_on_white_piece(board2):
     wk35 = piece_at(3, 5, board2)
 
@@ -341,6 +333,14 @@ def test_can_reach_black_king_with_valid_movement_landing_on_black_piece(board1,
 
     assert bk23.can_reach(2, 4, board1) is False
     assert bk23.can_reach(3, 2, board2) is False
+
+
+def test_can_reach_king_out_of_bounds_with_valid_movement(board1):
+    wk35 = piece_at(3, 5, board1)
+
+    assert wk35.can_reach(3, 6, board1) is False
+    assert wk35.can_reach(2, 6, board1) is False
+    assert wk35.can_reach(4, 6, board1) is False
 
 
 def test_can_move_to_knight_cannot_reach_but_not_checked(board1):
