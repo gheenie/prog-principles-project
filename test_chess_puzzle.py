@@ -337,6 +337,24 @@ def test_is_check1():
     assert is_check(True, B2) == True
 
 
+@pytest.fixture(scope="function")
+def board3():
+    '''
+     ♘   
+     ♞♔ ♘
+     ♚ ♞ 
+    ♘ ♞ ♘
+    ♞    
+    '''
+    wn12 = Knight(1, 2, True)
+    wn52 = Knight(5, 2, True)
+    wn54 = Knight(5, 4, True)
+    wn25 = Knight(2, 5, True)
+    wk35 = King(3, 4, True)
+
+    return (5, [wn12, bn11, wn52, bn24, wn54, wk35, bk23, wn25, bn32, bn43])
+
+
 def test_is_check_white_king_checked_by_black_king():
     assert False
 
