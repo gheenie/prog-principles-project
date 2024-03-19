@@ -75,15 +75,13 @@ def piece_at(pos_X : int, pos_Y : int, B: Board) -> Piece:
             return piece
 
 
-def are_pieces_same_side(pos_X: int, pos_Y: int, B: Board, moving_piece_side: bool) -> bool:
-    '''Implement rule 3.'''
-    stationary_piece = None
+def get_piece_or_none(pos_X: int, pos_Y: int, B: Board) -> Piece:
+    '''Return exactly what the chess cell has.'''
+    piece = None
     if is_piece_at(pos_X, pos_Y, B):
-        stationary_piece = piece_at(pos_X, pos_Y, B)
-        if stationary_piece.side is moving_piece_side:
-            return True
+        piece = piece_at(pos_X, pos_Y, B)
         
-    return False
+    return piece
 
 
 class Knight(Piece):
@@ -106,7 +104,10 @@ class Knight(Piece):
         
         # Check rule 3.
         try:
-            return not are_pieces_same_side(pos_X, pos_Y, B, self.side)
+            stationary_piece = get_piece_or_none(pos_X, pos_Y, B)
+            if stationary_piece is None:
+                return True
+            return stationary_piece.side is not self.side
         except ValueError as e:
             # Handle edge cases.
             if e.args[0] == 'One of the coordinate is out of bounds.':
@@ -154,7 +155,10 @@ class King(Piece):
         
         # Implement rule 3.
         try:
-            return not are_pieces_same_side(pos_X, pos_Y, B, self.side)
+            stationary_piece = get_piece_or_none(pos_X, pos_Y, B)
+            if stationary_piece is None:
+                return True
+            return stationary_piece.side is not self.side
         except ValueError as e:
             # Handle edge cases.
             if e.args[0] == 'One of the coordinate is out of bounds.':
