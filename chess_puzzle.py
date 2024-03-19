@@ -52,12 +52,6 @@ class Piece:
 Board = tuple[int, list[Piece]]
 
 
-def get_pieces(board: Board):
-    '''Return an iterator of the list of pieces on the board.'''
-    
-    return (piece for piece in board[1])
-
-
 def is_piece_at(pos_X : int, pos_Y : int, B: Board) -> bool:
     '''checks if there is piece at coordinates pox_X, pos_Y of board B''' 
     
@@ -65,7 +59,7 @@ def is_piece_at(pos_X : int, pos_Y : int, B: Board) -> bool:
     if pos_X<1 or pos_X>B[0] or pos_Y<1 or pos_Y>B[0]:
         raise ValueError('One of the coordinate is out of bounds.')
 
-    pieces = get_pieces(B)
+    pieces = iter(B[1])
     for piece in pieces:
         if piece.pos_x==pos_X and piece.pos_y==pos_Y:
             return True
@@ -78,6 +72,12 @@ def piece_at(pos_X : int, pos_Y : int, B: Board) -> Piece:
     returns the piece at coordinates pox_X, pos_Y of board B 
     assumes some piece at coordinates pox_X, pos_Y of board B is present
     '''
+
+    pieces = iter(B[1])
+    for piece in pieces:
+        if piece.pos_x==pos_X and piece.pos_y==pos_Y:
+            return piece
+
 
 class Knight(Piece):
     def __init__(self, pos_X : int, pos_Y : int, side_ : bool):
