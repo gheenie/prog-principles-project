@@ -329,12 +329,12 @@ def board3():
     return (5, [wn12, bn11, wn52, bn24, wn54, wk35, bk23, wn25, bn32, bn43])
 
 
-def test_can_move_to_knight_can_reach_but_checked(board3):
-    wn12 = Knight(1, 2, True)
+def test_can_move_to_knight_can_reach_but_checked(board2):
+    wn54 = Knight(5, 4, True)
     bn32 = Knight(3, 2, False)
 
-    assert wn12.can_move_to(3, 3, board3) is False
-    assert bn32.can_move_to(4, 4, board3) is False
+    assert wn54.can_move_to(4, 2, board2) is False
+    assert bn32.can_move_to(5, 1, board2) is False
 
 
 def test_can_move_to_knight_can_move_by_removing_check():
