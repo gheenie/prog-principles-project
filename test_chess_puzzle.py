@@ -175,18 +175,18 @@ def board1():
     return (5, [wn12, bn11, wn52, bn24, wn54, wk35, bk23])
 
 
-def test_can_reach_knight_not_moving_3_spaces():
-    assert bn11.can_reach(1, 2, B1) is False
-    assert bn11.can_reach(5, 1, B1) is False
-    assert bn24.can_reach(2, 2, B1) is False
-    assert bn24.can_reach(3, 4, B1) is False
-    assert bn24.can_reach(1, 1, B1) is False
-    assert wn12.can_reach(2, 3, B1) is False
-    assert wn52.can_reach(5, 1, B1) is False
-    assert wn54.can_reach(2, 3, B1) is False
+def test_can_reach_knight_not_moving_3_spaces(board1):
+    assert bn11.can_reach(1, 2, board1) is False
+    assert bn11.can_reach(5, 1, board1) is False
+    assert bn24.can_reach(2, 2, board1) is False
+    assert bn24.can_reach(3, 4, board1) is False
+    assert bn24.can_reach(1, 1, board1) is False
+    assert wn12.can_reach(2, 3, board1) is False
+    assert wn52.can_reach(5, 1, board1) is False
+    assert wn54.can_reach(2, 3, board1) is False
     # Remaining on the same spot.
-    assert wn12.can_reach(1, 2, B1) is False
-    assert bn11.can_reach(1, 1, B1) is False
+    assert wn12.can_reach(1, 2, board1) is False
+    assert bn11.can_reach(1, 1, board1) is False
 
 
 def test_can_reach_knight_moving_3_spaces_in_only_one_dimension():
