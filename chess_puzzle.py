@@ -91,6 +91,16 @@ class Knight(Piece):
         on board B according to rule [Rule1] and [Rule3] (see section Intro)
         Hint: use is_piece_at
         '''
+
+        if not (
+                abs(self.pos_x-pos_X)==2 and abs(self.pos_y-pos_Y)==1
+                or abs(self.pos_x-pos_X)==1 and abs(self.pos_y-pos_Y)==2
+        ):
+            return False
+        
+        return True
+            
+
     def can_move_to(self, pos_X : int, pos_Y : int, B: Board) -> bool:
         '''
         checks if this knight can move to coordinates pos_X, pos_Y
