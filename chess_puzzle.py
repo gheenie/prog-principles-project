@@ -133,6 +133,16 @@ class King(Piece):
 
     def can_reach(self, pos_X : int, pos_Y : int, B: Board) -> bool:
         '''checks if this king can move to coordinates pos_X, pos_Y on board B according to rule [Rule2] and [Rule3]'''
+        # Implement rule 1.
+        if (
+                abs(self.pos_x-pos_X) > 1
+                or abs(self.pos_y-pos_Y) > 1
+                or abs(self.pos_x-pos_X)+abs(self.pos_y-pos_Y) <= 0
+        ):
+            return False
+        
+        return True
+
     def can_move_to(self, pos_X : int, pos_Y : int, B: Board) -> bool:
         '''checks if this king can move to coordinates pos_X, pos_Y on board B according to all chess rules'''
     def move_to(self, pos_X : int, pos_Y : int, B: Board) -> Board:
