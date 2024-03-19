@@ -141,6 +141,13 @@ class King(Piece):
         ):
             return False
         
+        # Implement rule 3.
+        piece = None
+        if is_piece_at(pos_X, pos_Y, B):
+            piece = piece_at(pos_X, pos_Y, B)
+            if piece.side == self.side:
+                return False
+        
         return True
 
     def can_move_to(self, pos_X : int, pos_Y : int, B: Board) -> bool:
