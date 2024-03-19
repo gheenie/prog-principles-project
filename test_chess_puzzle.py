@@ -284,6 +284,9 @@ def test_can_reach_knight_valid_movement_and_no_same_side_piece(board1, board2):
 
 
 def test_can_reach_king_moving_more_than_1_space_in_a_single_dimension(board1):
+    wk35 = piece_at(3, 5, board1)
+    bk23 = piece_at(2, 3, board1)
+
     assert wk35.can_reach(1, 5, board1) is False
     assert wk35.can_reach(5, 5, board1) is False
     assert wk35.can_reach(3, 2, board1) is False
@@ -297,11 +300,16 @@ def test_can_reach_king_moving_more_than_1_space_in_a_single_dimension(board1):
 
 
 def test_can_reach_king_remaining_on_the_same_spot(board1):
+    wk35 = piece_at(3, 5, board1)
+    bk23 = piece_at(2, 3, board1)
+
     assert wk35.can_reach(3, 5, board1) is False
     assert bk23.can_reach(2, 3, board1) is False
 
 
 def test_can_reach_king_out_of_bounds_with_valid_movement(board1):
+    wk35 = piece_at(3, 5, board1)
+
     assert wk35.can_reach(3, 6, board1) is False
     assert wk35.can_reach(2, 6, board1) is False
     assert wk35.can_reach(4, 6, board1) is False
