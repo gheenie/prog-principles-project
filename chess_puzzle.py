@@ -176,6 +176,19 @@ def is_check(side: bool, B: Board) -> bool:
     checks if configuration of B is check for side
     Hint: use can_reach
     '''
+    # Get the index of the king of the defending side.
+    defending_king_xy = None
+    pieces = iter(B[1])
+    for piece in pieces:
+        if isinstance(piece, King) and piece.is_white() is side:
+            defending_king_xy = (piece.pos_x, piece.pos_y)
+            
+    pieces = iter(B[1])
+    for piece in pieces:
+        if piece.is_white() is not side and piece.can_reach(defending_king_xy[0], defending_king_xy[1], B):
+            return True
+        
+    return False
 
 def is_checkmate(side: bool, B: Board) -> bool:
     '''
