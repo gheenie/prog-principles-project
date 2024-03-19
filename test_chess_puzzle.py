@@ -361,20 +361,21 @@ def board3():
     return (5, [wn12, bn11, wn52, bn24, wn54, wk35, bk23, wn25, bn32, bn43])
 
 
-def test_is_check_white_king_checked_by_black_king():
-    assert False
+def test_is_check_white_king_checked_by_black_king(board3):
+    assert is_check(True, board3) is True
 
 
 def test_is_check_black_king_checked_by_white_knight(board2):
     assert is_check(False, board2)
 
 
-def test_is_check_black_king_checked_by_white_king():
-    assert False
+def test_is_check_black_king_checked_by_white_king(board3):
+    assert is_check(False, board3) is True
 
 
 def test_is_check_king_not_in_check():
-    assert False
+    assert is_check(True, B1) is False
+    assert is_check(False, B1) is False
 
 
 def test_is_checkmate1():
