@@ -1,3 +1,6 @@
+from copy import deepcopy
+
+
 def location2index(loc: str) -> tuple[int, int]:
     '''converts chess location to corresponding x and y coordinates'''
     # Check edge cases.
@@ -128,17 +131,22 @@ class Knight(Piece):
         - thirdly, construct new board resulting from move
         - finally, to check [Rule4], use is_check on new board
         '''
-        if self.can_reach(pos_X, pos_Y, B) is False:
+        board_copy = deepcopy(B)
+
+        if self.can_reach(pos_X, pos_Y, board_copy) is False:
             return False
         
-        stationary_piece = get_piece_or_none(pos_X, pos_Y, B)
+        # Remove any enemy pieces.
+        stationary_piece = get_piece_or_none(pos_X, pos_Y, board_copy)
         if stationary_piece is not None:
-            B[1].remove(stationary_piece)
+            board_copy[1].remove(stationary_piece)
         
-        self.pos_x = pos_X
-        self.pos_y = pos_Y
+        # Move the current piece.
+        self_copy = piece_at(self.pos_x, self.pos_y, board_copy)
+        self_copy.pos_x = pos_X
+        self_copy.pos_y = pos_Y
         
-        return not is_check(self.side, B)
+        return not is_check(self.side, board_copy)
 
     def move_to(self, pos_X : int, pos_Y : int, B: Board) -> Board:
         '''
