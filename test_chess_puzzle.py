@@ -206,21 +206,28 @@ def board2():
     return (5, [wn12, bn11, wn52, bn24, wn54, wk35, bk23, wn44, wn25, bn32, bn43])
 
 
-def test_can_reach_white_knight_with_valid_movement_landing_on_white_piece():
+def test_can_reach_white_knight_with_valid_movement_landing_on_white_piece(board2):
+    wn52 = Knight(5, 2, True)
+
     # Landing on white knight.
     assert wn52.can_reach(4, 4, board2) == False
     # Landing on white king.
     assert wn3.can_reach(3, 5, B1) == False
 
 
-def test_can_reach_black_knight_with_valid_movement_landing_on_black_piece():
+def test_can_reach_black_knight_with_valid_movement_landing_on_black_piece(board2):
+    bn11 = Knight(1, 1,False)
+
     # Landing on black knight.
     assert bn11.can_reach(3, 2, board2) == False
     # Landing on black king.
     assert bn1.can_reach(2, 3, B1) == False
 
 
-def test_can_reach_knight_valid_movement_and_no_same_side_piece():
+def test_can_reach_knight_valid_movement_and_no_same_side_piece(board2):
+    wn44 = Knight(4, 4, True)
+    bn43 = Knight(4, 3, False)
+
     # Landing on opponent knight.
     assert wn1.can_reach(2, 4, B1)
     assert bn2.can_reach(1, 2, B1)
@@ -256,12 +263,16 @@ def test_can_reach_king_out_of_bounds_with_valid_movement():
     assert wk1.can_reach(4, 6, B1) == False
 
 
-def test_can_reach_white_king_with_valid_movement_landing_on_white_piece():
+def test_can_reach_white_king_with_valid_movement_landing_on_white_piece(board2):
+    wk35 = King(3, 5, True)
+
     assert wk35.can_reach(4, 4, board2) == False
     assert wk35.can_reach(2, 5, board2) == False
 
 
-def test_can_reach_black_king_with_valid_movement_landing_on_black_piece():
+def test_can_reach_black_king_with_valid_movement_landing_on_black_piece(board2):
+    bk23 = King(2, 3, False)
+    
     assert bk1.can_reach(2, 4, B1) == False
     assert bk23.can_reach(3, 2, board2) == False
 
