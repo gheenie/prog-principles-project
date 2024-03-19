@@ -366,7 +366,7 @@ def test_is_check_white_king_checked_by_black_king(board3):
 
 
 def test_is_check_black_king_checked_by_white_knight(board2):
-    assert is_check(False, board2)
+    assert is_check(False, board2) is True
 
 
 def test_is_check_black_king_checked_by_white_king(board3):
