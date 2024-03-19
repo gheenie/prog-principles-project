@@ -266,6 +266,17 @@ def test_can_reach_black_king_with_valid_movement_landing_on_black_piece():
     assert bk21.can_reach(3, 2, board2) == False
 
 
+def test_can_reach_king_valid_movement_and_no_same_side_piece():
+    # Landing on empty space.
+    assert wk1.can_reach(2, 5, B1)
+    assert wk1.can_reach(3, 4, B1)
+    assert bk1.can_reach(1, 3, B1)
+    assert bk1.can_reach(2, 2, B1)
+    # Landing on opponent knight.
+    assert wk1.can_reach(2, 4, B1)
+    assert bk1.can_reach(1, 2, B1)
+
+
 def test_can_move_to1():
     assert wk1.can_move_to(4,5, B1) == False
 
