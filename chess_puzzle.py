@@ -127,6 +127,12 @@ class Knight(Piece):
         - thirdly, construct new board resulting from move
         - finally, to check [Rule4], use is_check on new board
         '''
+        if not self.can_reach(pos_X, pos_Y, B):
+            return False
+        
+        if is_piece_at(pos_X, pos_Y, B):
+            stationary_piece = piece_at(pos_X, pos_Y, B)
+
     def move_to(self, pos_X : int, pos_Y : int, B: Board) -> Board:
         '''
         returns new board resulting from move of this knight to coordinates pos_X, pos_Y on board B 
