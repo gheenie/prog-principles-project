@@ -152,6 +152,14 @@ def test_piece_at1():
 
 def test_can_reach1():
     assert bn1.can_reach(2,2, B1) == False
+    assert bn1.can_reach(1, 2, B1) == False
+    assert bn1.can_reach(5, 1, B1) == False
+    assert bn2.can_reach(2, 2, B1) == False
+    assert bn2.can_reach(3, 4, B1) == False
+    assert bn2.can_reach(1, 1, B1) == False
+    assert wn1.can_reach(2, 3, B1) == False
+    assert wn2.can_reach(5, 1, B1) == False
+    assert wn3.can_reach(2, 3, B1) == False
 
 
 def test_can_move_to1():
