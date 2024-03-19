@@ -142,10 +142,15 @@ class King(Piece):
             return False
         
         # Implement rule 3.
-        piece = None
-        if is_piece_at(pos_X, pos_Y, B):
-            piece = piece_at(pos_X, pos_Y, B)
-            if piece.side == self.side:
+        try:
+            piece = None
+            if is_piece_at(pos_X, pos_Y, B):
+                piece = piece_at(pos_X, pos_Y, B)
+                if piece.side == self.side:
+                    return False
+        except ValueError as e:
+            # Handle edge cases.
+            if e.args[0] == 'One of the coordinate is out of bounds.':
                 return False
         
         return True
