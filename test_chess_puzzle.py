@@ -343,6 +343,14 @@ def test_can_reach_king_out_of_bounds_with_valid_movement(board1):
     assert wk35.can_reach(4, 6, board1) is False
 
 
+def test_can_move_to_knight_can_move_to_empty_space(board1):
+    wn12 = piece_at(1, 2, board1)
+    bn11 = piece_at(1, 1, board1)
+
+    assert wn12.can_move_to(3, 3, board1) is True
+    assert bn11.can_move_to(3, 2, board1) is True
+
+
 def test_can_move_to_knight_cannot_reach_but_not_checked(board1):
     wn12 = piece_at(1, 2, board1)
     wn52 = piece_at(5, 2, board1)
@@ -391,14 +399,6 @@ def test_can_move_to_knight_can_move_with_capturing(board1, board2):
     # Capturing king.
     assert wn44.can_move_to(2, 3, board2) is True
     assert bn43.can_move_to(3, 5, board2) is True
-
-
-def test_can_move_to_knight_can_move_to_empty_space(board1):
-    wn12 = piece_at(1, 2, board1)
-    bn11 = piece_at(1, 1, board1)
-
-    assert wn12.can_move_to(3, 3, board1) is True
-    assert bn11.can_move_to(3, 2, board1) is True
 
 
 @pytest.mark.skip
