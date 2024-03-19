@@ -213,7 +213,10 @@ def test_can_reach_white_knight_with_valid_movement_landing_on_white_piece():
 
 
 def test_can_reach_black_knight_with_valid_movement_landing_on_black_piece():
-    pass
+    # Landing on black knight.
+    assert bn21.can_reach(3, 2, board2) == False
+    # Landing on black king.
+    assert bn1.can_reach(2, 3, B1) == False
 
 
 def test_can_reach_king_moving_more_than_1_space_in_a_single_dimension():
