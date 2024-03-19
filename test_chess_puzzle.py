@@ -441,7 +441,7 @@ def test_can_move_to_king_can_move_to_empty_space(board1):
     wk35 = piece_at(3, 5, board1)
     bk23 = piece_at(2, 3, board1)
 
-    assert wk35.can_move_to(3, 4, board1) is True
+    assert wk35.can_move_to(2, 5, board1) is True
     assert bk23.can_move_to(1, 4, board1) is True
 
 
@@ -486,6 +486,16 @@ def test_can_move_to_king_cannot_reach_but_not_checked(board1):
     assert wk35.can_move_to(3, 6, board1) is False
 
 
+def test_can_move_to_king_can_reach_but_checked(board1):
+    wk35 = piece_at(3, 5, board1)
+    bk23 = piece_at(2, 3, board1)
+
+    # Checked by a king.
+    assert wk35.can_move_to(3, 4, board2) is False
+    # Checked by a knight.
+    assert bk23.can_move_to(3, 3, board2) is False
+    
+    
 @pytest.mark.skip
 def test_move_to1():
     Actual_B = wn1.move_to(2,4, B1)
