@@ -129,7 +129,6 @@ class Knight(Piece):
 class King(Piece):
     def __init__(self, pos_X : int, pos_Y : int, side_ : bool):
         '''sets initial values by calling the constructor of Piece'''
-        
         super().__init__(pos_X, pos_Y, side_)
 
     def can_reach(self, pos_X : int, pos_Y : int, B: Board) -> bool:
