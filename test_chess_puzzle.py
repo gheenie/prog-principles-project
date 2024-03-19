@@ -272,7 +272,7 @@ def test_can_reach_white_king_with_valid_movement_landing_on_white_piece(board2)
 
 def test_can_reach_black_king_with_valid_movement_landing_on_black_piece(board2):
     bk23 = King(2, 3, False)
-    
+
     assert bk1.can_reach(2, 4, B1) == False
     assert bk23.can_reach(3, 2, board2) == False
 
@@ -341,8 +341,8 @@ def test_is_check_white_king_checked_by_black_king():
     assert False
 
 
-def test_is_check_black_king_checked_by_white_knight():
-    assert False
+def test_is_check_black_king_checked_by_white_knight(board2):
+    assert is_check(False, board2)
 
 
 def test_is_check_black_king_checked_by_white_king():
