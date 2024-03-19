@@ -183,6 +183,13 @@ def test_can_reach_knight_out_of_bounds_with_valid_movement():
 
 @pytest.fixture(scope="function")
 def board2():
+    '''
+     ♘♔  
+     ♞ ♘♘
+     ♚ ♞ 
+    ♘ ♞ ♘
+    ♞    
+    '''
     wn12 = Knight(1,2,True)
     wn52 = Knight(5,2,True)
     wn54 = Knight(5,4, True)
@@ -196,14 +203,7 @@ def board2():
     bn43 = Knight(4, 3, False)
     bk23 = King(2,3, False)
 
-    board2 = (5, [wn12, bn11, wn52, bn24, wn54, wk35, bk23, wn44, wn25, bn32, bn43])
-    '''
-     ♘♔  
-     ♞ ♘♘
-     ♚ ♞ 
-    ♘ ♞ ♘
-    ♞    
-    '''
+    return (5, [wn12, bn11, wn52, bn24, wn54, wk35, bk23, wn44, wn25, bn32, bn43])
 
 
 def test_can_reach_white_knight_with_valid_movement_landing_on_white_piece():
