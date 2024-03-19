@@ -283,6 +283,20 @@ def test_can_reach_knight_out_of_bounds_with_valid_movement(board1):
     assert bn24.can_reach(3, 6, board1) is False
 
 
+def test_can_reach_king_valid_movement_and_no_same_side_piece(board1):
+    wk35 = piece_at(3, 5, board1)
+    bk23 = piece_at(2, 3, board1)
+
+    # Landing on empty space.
+    assert wk35.can_reach(2, 5, board1) is True
+    assert wk35.can_reach(3, 4, board1) is True
+    assert bk23.can_reach(1, 3, board1) is True
+    assert bk23.can_reach(2, 2, board1) is True
+    # Landing on opponent knight.
+    assert wk35.can_reach(2, 4, board1) is True
+    assert bk23.can_reach(1, 2, board1) is True
+
+
 def test_can_reach_king_moving_more_than_1_space_in_a_single_dimension(board1):
     wk35 = piece_at(3, 5, board1)
     bk23 = piece_at(2, 3, board1)
@@ -327,20 +341,6 @@ def test_can_reach_black_king_with_valid_movement_landing_on_black_piece(board1,
 
     assert bk23.can_reach(2, 4, board1) is False
     assert bk23.can_reach(3, 2, board2) is False
-
-
-def test_can_reach_king_valid_movement_and_no_same_side_piece(board1):
-    wk35 = piece_at(3, 5, board1)
-    bk23 = piece_at(2, 3, board1)
-
-    # Landing on empty space.
-    assert wk35.can_reach(2, 5, board1) is True
-    assert wk35.can_reach(3, 4, board1) is True
-    assert bk23.can_reach(1, 3, board1) is True
-    assert bk23.can_reach(2, 2, board1) is True
-    # Landing on opponent knight.
-    assert wk35.can_reach(2, 4, board1) is True
-    assert bk23.can_reach(1, 2, board1) is True
 
 
 def test_can_move_to_knight_cannot_reach_but_not_checked(board1):
