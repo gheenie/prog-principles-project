@@ -193,13 +193,14 @@ wk21 = King(3,5, True)
 bn21 = Knight(1,1,False)
 bn22 = Knight(2,4, False)
 bn23 = Knight(3, 2, False)
+bn24 = Knight(4, 3, False)
 bk21 = King(2,3, False)
 
-board2 = (5, [wn21, bn21, wn22, bn22, wn23, wk21, bk21, wn24, wn25, bn23])
+board2 = (5, [wn21, bn21, wn22, bn22, wn23, wk21, bk21, wn24, wn25, bn23, bn24])
 '''
  ♘♔  
  ♞ ♘♘
- ♚   
+ ♚ ♞ 
 ♘ ♞ ♘
 ♞    
 '''
@@ -217,6 +218,18 @@ def test_can_reach_black_knight_with_valid_movement_landing_on_black_piece():
     assert bn21.can_reach(3, 2, board2) == False
     # Landing on black king.
     assert bn1.can_reach(2, 3, B1) == False
+
+
+def test_can_reach_knight_valid_movement_and_no_same_side_piece():
+    # Landing on opponent knight.
+    assert wn1.can_reach(2, 4, B1)
+    assert bn2.can_reach(1, 2, B1)
+    # Landing on empty space.
+    assert wn2.can_reach(3, 3, B1)
+    assert bn1.can_reach(3, 2, B1)
+    # Landing on opponent king.
+    assert wn24.can_reach(2, 3, board2)
+    assert bn24.can_reach(3, 5, board2)
 
 
 def test_can_reach_king_moving_more_than_1_space_in_a_single_dimension():
