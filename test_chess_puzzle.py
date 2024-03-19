@@ -164,6 +164,12 @@ def board1():
     wn3 = Knight(5, 4, True)
     wk1 = King(3, 5, True)
 
+    bn1 = Knight(1, 1, False)
+    bk1 = King(2, 3, False)
+    bn2 = Knight(2, 4, False)
+
+    return (5, [wn1, bn1, wn2, bn2, wn3, wk1, bk1])
+
 
 def test_can_reach1():
     '''Knight not moving 3 spaces total.'''
