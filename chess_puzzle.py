@@ -56,9 +56,9 @@ def is_piece_at(pos_X : int, pos_Y : int, B: Board) -> bool:
     if pos_X<1 or pos_X>B[0] or pos_Y<1 or pos_Y>B[0]:
         raise ValueError('One of the coordinate is out of bounds.')
 
-    pieces = iter(B[1])
-    for piece in pieces:
-        if piece.pos_x==pos_X and piece.pos_y==pos_Y:
+    pieces_coordinates = ((piece.pos_x, piece.pos_y) for piece in B[1])
+    for (piece_x, piece_y) in pieces_coordinates:
+        if piece_x==pos_X and piece_y==pos_Y:
             return True
         
     return False
