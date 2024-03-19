@@ -400,8 +400,15 @@ def test_can_move_to_knight_can_reach_but_checked(board2):
 
 def test_can_move_to_knight_can_move_by_removing_check(board2):
     wn51 = Knight(5, 1, True)
-    bn32 = piece_at(3, 2, board2)
     board2[1].append(wn51)
+    '''
+     ♘♔  
+     ♞ ♘♘
+     ♚ ♞ 
+    ♘ ♞ ♘
+    ♞   ♘
+    '''
+    bn32 = piece_at(3, 2, board2)
 
     assert wn51.can_move_to(4, 3, board2) is True
     assert bn32.can_move_to(4, 4, board2) is True
