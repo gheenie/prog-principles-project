@@ -392,14 +392,19 @@ def test_can_move_to_knight_cannot_reach_but_not_checked(board1):
     bn11 = piece_at(1, 1, board1)
     bn24 = piece_at(2, 4, board1)
 
+    # Same side piece.
     assert wn54.can_move_to(3, 5, board1) is False
     assert bn11.can_move_to(2, 3, board1) is False
+    # Total squares.
     assert wn12.can_move_to(2, 3, board1) is False
     assert bn24.can_move_to(1, 1, board1) is False
+    # Same spot.
     assert wn12.can_move_to(1, 2, board1) is False
     assert bn11.can_move_to(1, 1, board1) is False
+    # 3 squares straight.
     assert wn52.can_move_to(2, 2, board1) is False
     assert bn11.can_move_to(1, 4, board1) is False
+    # Out of bounds.
     assert wn52.can_move_to(7, 3, board1) is False
     assert bn11.can_move_to(3, 0, board1) is False
 
