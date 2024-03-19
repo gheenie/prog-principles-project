@@ -347,7 +347,8 @@ def test_can_move_to_knight_can_move_by_removing_check(board2):
 
 
 def test_can_move_to_knight_can_move_with_capturing():
-    assert False
+    assert wn1.can_move_to(2, 4, B1) is True
+    assert bn2.can_move_to(1, 2, B1) is True
 
 
 def test_can_move_to_knight_can_move_to_empty_space():
