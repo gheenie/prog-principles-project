@@ -46,9 +46,6 @@ class Piece:
         self.pos_y = pos_Y
         self.side = side_
 
-    def is_white(self):
-        return self.side
-
 
 Board = tuple[int, list[Piece]]
 
@@ -83,7 +80,7 @@ def are_pieces_same_side(pos_X: int, pos_Y: int, B: Board, moving_piece_side: bo
     stationary_piece = None
     if is_piece_at(pos_X, pos_Y, B):
         stationary_piece = piece_at(pos_X, pos_Y, B)
-        if stationary_piece.is_white() is moving_piece_side:
+        if stationary_piece.side is moving_piece_side:
             return True
         
     return False
@@ -109,7 +106,7 @@ class Knight(Piece):
         
         # Implement rule 3.
         try:
-            if are_pieces_same_side(pos_X, pos_Y, B, self.is_white()):
+            if are_pieces_same_side(pos_X, pos_Y, B, self.side):
                 return False
         except ValueError as e:
             # Handle edge cases.
@@ -154,7 +151,7 @@ class King(Piece):
         
         # Implement rule 3.
         try:
-            if are_pieces_same_side(pos_X, pos_Y, B, self.is_white()):
+            if are_pieces_same_side(pos_X, pos_Y, B, self.side):
                 return False
         except ValueError as e:
             # Handle edge cases.
@@ -180,12 +177,12 @@ def is_check(side: bool, B: Board) -> bool:
     defending_king_xy = None
     pieces = iter(B[1])
     for piece in pieces:
-        if isinstance(piece, King) and piece.is_white() is side:
+        if isinstance(piece, King) and piece.side is side:
             defending_king_xy = (piece.pos_x, piece.pos_y)
-            
+
     pieces = iter(B[1])
     for piece in pieces:
-        if piece.is_white() is not side and piece.can_reach(defending_king_xy[0], defending_king_xy[1], B):
+        if piece.side is not side and piece.can_reach(defending_king_xy[0], defending_king_xy[1], B):
             return True
         
     return False
