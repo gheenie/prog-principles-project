@@ -199,7 +199,7 @@ def board2():
 
     return (5, [wn12, bn11, wn52, bn24, wn54, wk35, bk23, wn44, wn25, bn32, bn43])
     
-    
+
 def test_can_reach_knight_valid_movement_and_no_same_side_piece(board1, board2):
     wn12 = piece_at(1, 2, board1)
     wn52 = piece_at(5, 2, board1)
@@ -252,18 +252,6 @@ def test_can_reach_knight_moving_3_spaces_in_only_one_dimension(board1):
     assert wn52.can_reach(2, 2, board1) is False
 
 
-def test_can_reach_knight_out_of_bounds_with_valid_movement(board1):
-    wn12 = piece_at(1, 2, board1)
-    wn52 = piece_at(5, 2, board1)
-    bn11 = piece_at(1, 1, board1)
-    bn24 = piece_at(2, 4, board1)
-
-    assert wn12.can_reach(-1, 1, board1) is False
-    assert wn52.can_reach(7, 3, board1) is False
-    assert bn11.can_reach(3, 0, board1) is False
-    assert bn24.can_reach(3, 6, board1) is False
-
-
 def test_can_reach_white_knight_with_valid_movement_landing_on_white_piece(board1, board2):
     wn52 = piece_at(5, 2, board2)
     wn54 = piece_at(5, 4, board1)
@@ -281,6 +269,18 @@ def test_can_reach_black_knight_with_valid_movement_landing_on_black_piece(board
     assert bn11.can_reach(3, 2, board2) is False
     # Landing on black king.
     assert bn11.can_reach(2, 3, board1) is False
+
+
+def test_can_reach_knight_out_of_bounds_with_valid_movement(board1):
+    wn12 = piece_at(1, 2, board1)
+    wn52 = piece_at(5, 2, board1)
+    bn11 = piece_at(1, 1, board1)
+    bn24 = piece_at(2, 4, board1)
+
+    assert wn12.can_reach(-1, 1, board1) is False
+    assert wn52.can_reach(7, 3, board1) is False
+    assert bn11.can_reach(3, 0, board1) is False
+    assert bn24.can_reach(3, 6, board1) is False
 
 
 def test_can_reach_king_moving_more_than_1_space_in_a_single_dimension(board1):
