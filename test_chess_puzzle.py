@@ -152,7 +152,6 @@ def test_piece_at1():
 
 def test_can_reach1():
     '''Knight not moving 3 spaces total.'''
-
     assert bn1.can_reach(2,2, B1) == False
     assert bn1.can_reach(1, 2, B1) == False
     assert bn1.can_reach(5, 1, B1) == False
@@ -169,7 +168,6 @@ def test_can_reach1():
 
 def test_can_reach_knight_moving_3_spaces_in_only_one_dimension():
     '''A knight moves 3 total spaces, but all in a straight line.'''
-
     assert bn1.can_reach(1, 4, B1) == False
     assert bn2.can_reach(5, 4, B1) == False
     assert wn1.can_reach(1, 5, B1) == False
