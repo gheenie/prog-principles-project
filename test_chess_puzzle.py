@@ -354,17 +354,20 @@ def test_can_move_to_knight_can_move_to_empty_space(board1):
 def test_can_move_to_knight_can_move_by_capturing(board1, board2):
     wn12 = piece_at(1, 2, board1)
     bn24 = piece_at(2, 4, board1)
-    wn44 = piece_at(4, 4, board2)
-    bn43 = piece_at(4, 3, board2)
-    board2[1].remove(bn43)
 
     # Capturing knight.
     assert wn12.can_move_to(2, 4, board1) is True
     assert bn24.can_move_to(1, 2, board1) is True
+
+    wn44 = piece_at(4, 4, board2)
+    bn43 = piece_at(4, 3, board2)
+    # Remove the edge case of capturing king while being checked yourself.
+    board2[1].remove(bn43)
+    
     # Capturing king.
     assert wn44.can_move_to(2, 3, board2) is True
-    board2[1].remove(wn44)
     board2[1].append(bn43)
+    board2[1].remove(wn44)
     assert bn43.can_move_to(3, 5, board2) is True
 
 
@@ -396,11 +399,11 @@ def test_can_move_to_knight_can_reach_but_checked(board2):
 
 
 def test_can_move_to_knight_can_move_by_removing_check(board2):
-    wn31 = Knight(3, 1, True)
+    wn51 = Knight(5, 1, True)
     bn32 = piece_at(3, 2, board2)
-    board2[1].append(wn31)
+    board2[1].append(wn51)
 
-    assert wn31.can_move_to(4, 3, board2) is True
+    assert wn51.can_move_to(4, 3, board2) is True
     assert bn32.can_move_to(4, 4, board2) is True
 
 
