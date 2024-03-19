@@ -46,6 +46,9 @@ class Piece:
         self.pos_y = pos_Y
         self.side = side_
 
+    def is_white(self):
+        return self.side
+
 
 Board = tuple[int, list[Piece]]
 
@@ -80,7 +83,7 @@ def are_pieces_same_side(pos_X: int, pos_Y: int, B: Board, moving_piece_side: bo
     stationary_piece = None
     if is_piece_at(pos_X, pos_Y, B):
         stationary_piece = piece_at(pos_X, pos_Y, B)
-        if stationary_piece.side == moving_piece_side:
+        if stationary_piece.is_white() == moving_piece_side:
             return True
         
     return False
@@ -106,7 +109,7 @@ class Knight(Piece):
         
         # Implement rule 3.
         try:
-            if are_pieces_same_side(pos_X, pos_Y, B, self.side):
+            if are_pieces_same_side(pos_X, pos_Y, B, self.is_white()):
                 return False
         except ValueError as e:
             # Handle edge cases.
@@ -151,7 +154,7 @@ class King(Piece):
         
         # Implement rule 3.
         try:
-            if are_pieces_same_side(pos_X, pos_Y, B, self.side):
+            if are_pieces_same_side(pos_X, pos_Y, B, self.is_white()):
                 return False
         except ValueError as e:
             # Handle edge cases.
