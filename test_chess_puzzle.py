@@ -175,6 +175,23 @@ def board1():
     return (5, [wn12, bn11, wn52, bn24, wn54, wk35, bk23])
 
 
+@pytest.fixture(scope="function")
+def board2():
+    '''
+     ♘♔  
+     ♞ ♘♘
+     ♚ ♞ 
+    ♘ ♞ ♘
+    ♞    
+    '''
+    wn12 = Knight(1, 2, True)
+    wn52 = Knight(5, 2, True)
+    wn54 = Knight(5, 4, True)
+    wn44 = Knight(4, 4, True)
+    wn25 = Knight(2, 5, True)
+    wk35 = King(3, 5, True)
+
+    
 def test_can_reach_knight_valid_movement_and_no_same_side_piece(board1, board2):
     wn12 = piece_at(1, 2, board1)
     wn52 = piece_at(5, 2, board1)
@@ -239,23 +256,7 @@ def test_can_reach_knight_out_of_bounds_with_valid_movement(board1):
     assert bn24.can_reach(3, 6, board1) is False
 
 
-@pytest.fixture(scope="function")
-def board2():
-    '''
-     ♘♔  
-     ♞ ♘♘
-     ♚ ♞ 
-    ♘ ♞ ♘
-    ♞    
-    '''
-    wn12 = Knight(1, 2, True)
-    wn52 = Knight(5, 2, True)
-    wn54 = Knight(5, 4, True)
-    wn44 = Knight(4, 4, True)
-    wn25 = Knight(2, 5, True)
-    wk35 = King(3, 5, True)
-
-    bn11 = Knight(1, 1,False)
+bn11 = Knight(1, 1,False)
     bn24 = Knight(2, 4, False)
     bn32 = Knight(3, 2, False)
     bn43 = Knight(4, 3, False)
