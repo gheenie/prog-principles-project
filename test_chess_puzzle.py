@@ -362,15 +362,6 @@ def test_can_move_to_knight_cannot_reach_but_not_checked(board1):
     assert bn11.can_move_to(3, 0, board1) is False
 
 
-
-    bn24 = Knight(2, 4, False)
-    bn32 = Knight(3, 2, False)
-    bn43 = Knight(4, 3, False)
-    bk23 = King(2, 3, False)
-
-    return (5, [wn12, bn11, wn52, bn24, wn54, wk35, bk23, wn25, bn32, bn43])
-
-
 def test_can_move_to_knight_can_reach_but_checked(board2):
     wn54 = piece_at(5, 4, board2)
     bn32 = piece_at(3, 2, board2)
@@ -476,7 +467,15 @@ def board3():
     wn25 = Knight(2, 5, True)
     wk35 = King(3, 4, True)
 
-    bn11 = Knight(1, 1, False)def test_is_check_white_king_checked_by_black_king(board3):
+    bn11 = Knight(1, 1, False)
+    bn24 = Knight(2, 4, False)
+    bn32 = Knight(3, 2, False)
+    bn43 = Knight(4, 3, False)
+    bk23 = King(2, 3, False)
+
+    return (5, [wn12, bn11, wn52, bn24, wn54, wk35, bk23, wn25, bn32, bn43])
+    
+def test_is_check_white_king_checked_by_black_king(board3):
     assert is_check(True, board3) is True
 
 
