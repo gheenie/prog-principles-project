@@ -206,7 +206,10 @@ board2 = (5, [wn21, bn21, wn22, bn22, wn23, wk21, bk21, wn24, wn25, bn23])
 
 
 def test_can_reach_white_knight_with_valid_movement_landing_on_white_piece():
-    pass
+    # Landing on white knight.
+    assert wn22.can_reach(4, 4, board2) == False
+    # Landing on white king.
+    assert wn3.can_reach(3, 5, B1) == False
 
 
 def test_can_reach_black_knight_with_valid_movement_landing_on_black_piece():
