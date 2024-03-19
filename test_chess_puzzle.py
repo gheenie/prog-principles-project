@@ -324,6 +324,22 @@ def test_is_check1():
     assert is_check(True, B2) == True
 
 
+def test_is_check_white_king_checked_by_black_king():
+    assert False
+
+
+def test_is_check_black_king_checked_by_white_knight():
+    assert False
+
+
+def test_is_check_black_king_checked_by_white_king():
+    assert False
+
+
+def test_is_check_king_not_in_check():
+    assert False
+
+
 def test_is_checkmate1():
     wk1a = King(1,5,True)
     bn2a = Knight(3,4, False)
