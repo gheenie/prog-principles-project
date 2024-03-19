@@ -46,6 +46,9 @@ class Piece:
         self.pos_y = pos_Y
         self.side = side_
 
+    def __str__(self):
+        return f'{self.pos_x}, {self.pos_y}, {self.side}'
+
 
 Board = tuple[int, list[Piece]]
 
@@ -125,11 +128,17 @@ class Knight(Piece):
         - thirdly, construct new board resulting from move
         - finally, to check [Rule4], use is_check on new board
         '''
-        if not self.can_reach(pos_X, pos_Y, B):
+        if self.can_reach(pos_X, pos_Y, B) is False:
             return False
         
-        if is_piece_at(pos_X, pos_Y, B):
-            stationary_piece = piece_at(pos_X, pos_Y, B)
+        stationary_piece = get_piece_or_none(pos_X, pos_Y, B)
+        if stationary_piece is not None:
+            B[1].remove(stationary_piece)
+        
+        self.pos_x = pos_X
+        self.pos_y = pos_Y
+        
+        return not is_check(self.side, B)
 
     def move_to(self, pos_X : int, pos_Y : int, B: Board) -> Board:
         '''
