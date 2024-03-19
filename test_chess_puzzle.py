@@ -186,18 +186,21 @@ def test_can_reach_knight_out_of_bounds_with_valid_movement():
 wn21 = Knight(1,2,True)
 wn22 = Knight(5,2,True)
 wn23 = Knight(5,4, True)
+wn24 = Knight(4, 4, True)
+wn25 = Knight(2, 5, True)
 wk21 = King(3,5, True)
 
 bn21 = Knight(1,1,False)
 bn22 = Knight(2,4, False)
+bn23 = Knight(3, 2, False)
 bk21 = King(2,3, False)
 
-board2 = (5, [wn21, bn21, wn22, bn22, wn23, wk21, bk21])
+board2 = (5, [wn21, bn21, wn22, bn22, wn23, wk21, bk21, wn24, wn25, bn23])
 '''
-  ♔  
- ♞  ♘
+ ♘♔  
+ ♞ ♘♘
  ♚   
-♘   ♘
+♘ ♞ ♘
 ♞    
 '''
 
