@@ -183,6 +183,14 @@ def test_can_reach_knight_out_of_bounds_with_valid_movement():
     assert bn2.can_reach(3, 6, B1) == False
 
 
+def test_can_reach_white_knight_with_valid_movement_landing_on_white_piece():
+    pass
+
+
+def test_can_reach_black_knight_with_valid_movement_landing_on_black_piece():
+    pass
+
+
 def test_can_reach_king_moving_more_than_1_space_in_a_single_dimension():
     assert wk1.can_reach(1, 5, B1) == False
     assert wk1.can_reach(5, 5, B1) == False
@@ -205,6 +213,14 @@ def test_can_reach_king_out_of_bounds_with_valid_movement():
     assert wk1.can_reach(3, 6, B1) == False
     assert wk1.can_reach(2, 6, B1) == False
     assert wk1.can_reach(4, 6, B1) == False
+
+
+def test_can_reach_white_king_with_valid_movement_landing_on_white_piece():
+    pass
+
+
+def test_can_reach_black_king_with_valid_movement_landing_on_black_piece():
+    pass
 
 
 def test_can_move_to1():
