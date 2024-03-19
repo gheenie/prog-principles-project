@@ -180,6 +180,14 @@ def test_can_reach_king_moving_more_than_1_space():
     assert bk1.can_reach(2, 4, B1) == False
 
 
+def test_can_reach_out_of_bounds_with_valid_movement():
+    assert wk1.can_reach(3, 6, B1) == False
+    assert wn1.can_reach(-1, 1, B1) == False
+    assert wn2.can_reach(7, 3, B1) == False
+    assert bn1.can_reach(3, 0, B1) == False
+    assert bn2.can_reach(3, 6, B1) == False
+
+
 def test_can_move_to1():
     assert wk1.can_move_to(4,5, B1) == False
 
