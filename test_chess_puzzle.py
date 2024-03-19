@@ -244,7 +244,8 @@ def test_can_reach_king_out_of_bounds_with_valid_movement():
 
 
 def test_can_reach_white_king_with_valid_movement_landing_on_white_piece():
-    pass
+    assert wk21.can_reach(4, 4, board2) == False
+    assert wk21.can_reach(2, 5, board2) == False
 
 
 def test_can_reach_black_king_with_valid_movement_landing_on_black_piece():
