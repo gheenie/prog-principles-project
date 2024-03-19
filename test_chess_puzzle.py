@@ -343,8 +343,8 @@ def test_can_move_to_knight_can_move_by_removing_check(board2):
 
 
 def test_can_move_to_knight_can_move_with_capturing(board2):
-    wn44 = Knight(4, 4, True)
-    bn43 = Knight(4, 3, False)
+    wn44 = piece_at(4, 4, board2)
+    bn43 = piece_at(4, 3, board2)
 
     # Capturing knight.
     assert wn1.can_move_to(2, 4, B1) is True
