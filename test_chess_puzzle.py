@@ -150,6 +150,10 @@ def test_piece_at1():
     assert piece_at(1,1, B1) == bn1
 
 
+def test_can_reach1():
+    assert bn1.can_reach(2,2, B1) == False
+
+
 @pytest.fixture(scope="function")
 def board1():
     '''
@@ -171,9 +175,7 @@ def board1():
     return (5, [wn12, bn11, wn52, bn24, wn54, wk35, bk23])
 
 
-def test_can_reach1():
-    '''Knight not moving 3 spaces total.'''
-    assert bn11.can_reach(2,2, B1) == False
+def test_can_reach_knight_not_moving_3_spaces():
     assert bn11.can_reach(1, 2, B1) is False
     assert bn11.can_reach(5, 1, B1) is False
     assert bn24.can_reach(2, 2, B1) is False
