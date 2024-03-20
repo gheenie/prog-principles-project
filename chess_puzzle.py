@@ -156,7 +156,12 @@ class Knight(Piece):
         returns new board resulting from move of this knight to coordinates pos_X, pos_Y on board B 
         assumes this move is valid according to chess rules
         '''
+        # Move the current piece.
+        self.pos_x = pos_X
+        self.pos_y = pos_Y
 
+        return B
+        
 
 class King(Piece):
     def __init__(self, pos_X : int, pos_Y : int, side_ : bool):
