@@ -446,10 +446,19 @@ def test_can_move_to_king_can_move_to_empty_space(board1):
 
 
 def test_can_move_to_king_can_move_by_capturing_knight(board1):
+    bn25 = Knight(2, 5, False)
+    board1[1].append(bn25)
+    '''
+     ♞♔  
+     ♞  ♘
+     ♚   
+    ♘   ♘
+    ♞    
+    '''
     wk35 = piece_at(3, 5, board1)
     bk23 = piece_at(2, 3, board1)
 
-    assert wk35.can_move_to(2, 4, board1) is True
+    assert wk35.can_move_to(2, 5, board1) is True
     assert bk23.can_move_to(1, 2, board1) is True
 
 
