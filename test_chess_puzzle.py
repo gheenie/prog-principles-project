@@ -343,7 +343,7 @@ def test_can_reach_king_out_of_bounds_with_valid_movement(board1):
     assert wk35.can_reach(4, 6, board1) is False
 
 
-def test_can_move_to_knight_can_move_to_empty_space(board1):
+def test_can_move_to_knight_can_move_to_empty_space_and_not_checked(board1):
     wn12 = piece_at(1, 2, board1)
     bn11 = piece_at(1, 1, board1)
 
@@ -351,7 +351,7 @@ def test_can_move_to_knight_can_move_to_empty_space(board1):
     assert bn11.can_move_to(3, 2, board1) is True
 
 
-def test_can_move_to_knight_can_move_by_capturing_knight(board1):
+def test_can_move_to_knight_can_move_by_capturing_knight_and_not_checked(board1):
     wn12 = piece_at(1, 2, board1)
     bn24 = piece_at(2, 4, board1)
 
@@ -359,7 +359,7 @@ def test_can_move_to_knight_can_move_by_capturing_knight(board1):
     assert bn24.can_move_to(1, 2, board1) is True
 
 
-def test_can_move_to_knight_can_move_by_capturing_king(board2):
+def test_can_move_to_knight_can_move_by_capturing_king_and_checked(board2):
     wn44 = piece_at(4, 4, board2)
     bn43 = piece_at(4, 3, board2)
     
@@ -419,7 +419,7 @@ def test_can_move_to1():
     assert wk1.can_move_to(4,5, B1) == False
 
 
-def test_can_move_to_king_can_move_to_empty_space(board1):
+def test_can_move_to_king_can_move_to_empty_space_and_not_checked(board1):
     wk35 = piece_at(3, 5, board1)
     bk23 = piece_at(2, 3, board1)
 
@@ -427,7 +427,7 @@ def test_can_move_to_king_can_move_to_empty_space(board1):
     assert bk23.can_move_to(1, 4, board1) is True
 
 
-def test_can_move_to_king_can_move_by_capturing_knight(board1):
+def test_can_move_to_king_can_move_by_capturing_knight_and_not_checked(board1):
     bn25 = Knight(2, 5, False)
     board1[1].append(bn25)
     '''
@@ -444,8 +444,7 @@ def test_can_move_to_king_can_move_by_capturing_knight(board1):
     assert bk23.can_move_to(1, 2, board1) is True
 
 
-@pytest.mark.skip
-def test_can_move_to_king_can_move_by_capturing_king(board1):
+def test_can_move_to_king_can_move_by_capturing_king_and_checked(board1):
     wk35 = piece_at(3, 5, board1)
     bk23 = piece_at(2, 3, board1)
     wk35.pos_x = 4
