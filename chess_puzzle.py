@@ -139,6 +139,9 @@ class Knight(Piece):
         # Remove any enemy pieces.
         stationary_piece = get_piece_or_none(pos_X, pos_Y, board_copy)
         if stationary_piece is not None:
+            # Move is immediately valid if king is eaten.
+            if isinstance(stationary_piece, King):
+                return True
             board_copy[1].remove(stationary_piece)
         
         # Move the current piece.
