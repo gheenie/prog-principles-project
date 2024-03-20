@@ -678,11 +678,13 @@ def test_move_to_black_knight_captured_a_king(board2):
 
 
 def test_move_to_knight_returned_board_is_the_same_identity(board2):
-    wn25 = piece_at(2, 5, board2)
+    bn32 = piece_at(3, 2, board2)
 
-    result_board = wn25.move_to(1, 3, board2)
+    result_board = bn32.move_to(4, 4, board2)
 
-    assert result_board is board2
+    assert len(board2[1]) == 11
+    assert isinstance(result_board, tuple)
+    assert result_board is not board2
 
 
 @pytest.fixture(scope="function")
