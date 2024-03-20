@@ -359,30 +359,11 @@ def test_can_move_to_knight_can_move_by_capturing_knight(board1):
     assert bn24.can_move_to(1, 2, board1) is True
 
 
-@pytest.mark.skip
 def test_can_move_to_knight_can_move_by_capturing_king(board2):
     wn44 = piece_at(4, 4, board2)
     bn43 = piece_at(4, 3, board2)
-    # Remove the edge case of capturing king while being checked yourself.
-    board2[1].remove(bn43)
-    '''
-     ♘♔  
-     ♞ ♘♘
-     ♚   
-    ♘ ♞ ♘
-    ♞    
-    '''
     
     assert wn44.can_move_to(2, 3, board2) is True
-    board2[1].append(bn43)
-    board2[1].remove(wn44)
-    '''
-     ♘♔  
-     ♞  ♘
-     ♚ ♞ 
-    ♘ ♞ ♘
-    ♞    
-    '''
     assert bn43.can_move_to(3, 5, board2) is True
 
 
