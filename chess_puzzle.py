@@ -156,6 +156,11 @@ class Knight(Piece):
         returns new board resulting from move of this knight to coordinates pos_X, pos_Y on board B 
         assumes this move is valid according to chess rules
         '''
+        # Remove any enemy pieces.
+        stationary_piece = get_piece_or_none(pos_X, pos_Y, B)
+        if stationary_piece is not None:
+            B[1].remove(stationary_piece)
+
         # Move the current piece.
         self.pos_x = pos_X
         self.pos_y = pos_Y
