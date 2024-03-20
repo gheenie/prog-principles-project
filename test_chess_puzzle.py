@@ -809,6 +809,11 @@ def test_move_to_black_king_no_capture(board4):
 
 
 def test_move_to_king_returned_board_is_the_same_identity(board4):
+    wk34 = piece_at(3, 4, board4)
+
+    result_board = wk34.move_to(3, 5, board4)
+
+    assert result_board is not board4
 
 
 def test_is_check1():
