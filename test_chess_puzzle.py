@@ -444,23 +444,20 @@ def test_can_move_to_king_can_move_by_capturing_knight_and_not_checked(board1):
     assert bk23.can_move_to(1, 2, board1) is True
 
 
-def test_can_move_to_king_can_move_by_capturing_king_and_checked(board1):
-    wk35 = piece_at(3, 5, board1)
-    bk23 = piece_at(2, 3, board1)
-    wk35.pos_x = 4
-    wk35.pos_y = 1
-    bk23.pos_x = 5
-    bk23.pos_y = 1
+def test_can_move_to_king_can_move_by_capturing_king_and_checked(board2):
+    wk35 = piece_at(3, 5, board2)
+    wk35.pos_y = 3
     '''
-         
-     ♞  ♘
-         
-    ♘   ♘
-    ♞  ♔♚
+     ♘   
+     ♞ ♘♘
+     ♚♔♞ 
+    ♘ ♞ ♘
+    ♞    
     '''
+    bk23 = piece_at(2, 3, board2)
     
-    assert wk35.can_move_to(5, 1, board1) is True
-    assert bk23.can_move_to(4, 1, board1) is True
+    assert wk35.can_move_to(2, 3, board2) is True
+    assert bk23.can_move_to(3, 3, board2) is True
 
 
 def test_can_move_to_king_cannot_reach_but_not_checked(board1):
