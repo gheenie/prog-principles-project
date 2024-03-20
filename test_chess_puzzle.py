@@ -445,15 +445,18 @@ def test_can_move_to_king_can_move_to_empty_space(board1):
     assert bk23.can_move_to(1, 4, board1) is True
 
 
-@pytest.mark.skip
-def test_can_move_to_king_can_move_by_capturing(board1):
+def test_can_move_to_king_can_move_by_capturing_knight(board1):
     wk35 = piece_at(3, 5, board1)
     bk23 = piece_at(2, 3, board1)
 
-    # Capturing knight.
     assert wk35.can_move_to(2, 4, board1) is True
     assert bk23.can_move_to(1, 2, board1) is True
 
+
+@pytest.mark.skip
+def test_can_move_to_king_can_move_by_capturing_king(board1):
+    wk35 = piece_at(3, 5, board1)
+    bk23 = piece_at(2, 3, board1)
     wk35.pos_x = 4
     wk35.pos_y = 1
     bk23.pos_x = 5
@@ -466,7 +469,6 @@ def test_can_move_to_king_can_move_by_capturing(board1):
     ♞  ♔♚
     '''
     
-    # Capturing king.
     assert wk35.can_move_to(5, 1, board1) is True
     assert bk23.can_move_to(4, 1, board1) is True
 
