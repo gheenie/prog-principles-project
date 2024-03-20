@@ -1,4 +1,5 @@
 from copy import deepcopy
+from copy import copy
 
 
 def location2index(loc: str) -> tuple[int, int]:
@@ -221,16 +222,18 @@ class King(Piece):
         returns new board resulting from move of this king to coordinates pos_X, pos_Y on board B 
         assumes this move is valid according to chess rules
         '''
+        board_copy = (B[0], copy(B[1]))
+
         # Remove any enemy pieces.
-        stationary_piece = get_piece_or_none(pos_X, pos_Y, B)
+        stationary_piece = get_piece_or_none(pos_X, pos_Y, board_copy)
         if stationary_piece is not None:
-            B[1].remove(stationary_piece)
+            board_copy[1].remove(stationary_piece)
 
         # Move the current piece.
         self.pos_x = pos_X
         self.pos_y = pos_Y
 
-        return B
+        return board_copy
 
 def is_check(side: bool, B: Board) -> bool:
     '''
