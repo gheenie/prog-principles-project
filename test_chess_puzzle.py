@@ -496,6 +496,24 @@ def test_can_move_to_king_can_reach_but_checked(board1):
     assert bk23.can_move_to(3, 3, board2) is False
     
     
+def test_can_move_to_king_can_move_out_of_check(board2):
+    wn25 = piece_at(2, 5, board2)
+    board2[1].remove(wn25)
+    '''
+      ♔  
+     ♞ ♘♘
+     ♚ ♞ 
+    ♘ ♞ ♘
+    ♞    
+    '''
+    wk35 = piece_at(3, 5, board2)
+    bk23 = piece_at(2, 3, board2)
+
+    assert wk35.can_move_to(2, 5, board2) is True
+    # With capturing.
+    assert bk23.can_move_to(1, 2, board2) is True
+
+
 @pytest.mark.skip
 def test_move_to1():
     Actual_B = wn1.move_to(2,4, B1)
