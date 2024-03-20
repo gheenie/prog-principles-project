@@ -183,6 +183,23 @@ class King(Piece):
 
     def can_move_to(self, pos_X : int, pos_Y : int, B: Board) -> bool:
         '''checks if this king can move to coordinates pos_X, pos_Y on board B according to all chess rules'''
+        board_copy = deepcopy(B)
+
+        if self.can_reach(pos_X, pos_Y, board_copy) is False:
+            return False
+        
+        # Remove any enemy pieces.
+        stationary_piece = get_piece_or_none(pos_X, pos_Y, board_copy)
+        if stationary_piece is not None:
+            board_copy[1].remove(stationary_piece)
+        
+        # Move the current piece.
+        self_copy = piece_at(self.pos_x, self.pos_y, board_copy)
+        self_copy.pos_x = pos_X
+        self_copy.pos_y = pos_Y
+        
+        return not is_check(self.side, board_copy)
+
     def move_to(self, pos_X : int, pos_Y : int, B: Board) -> Board:
         '''
         returns new board resulting from move of this king to coordinates pos_X, pos_Y on board B 
