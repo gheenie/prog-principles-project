@@ -685,6 +685,15 @@ def test_move_to_knight_returned_board_is_the_same_identity(board2):
     assert result_board is board2
 
 
+@pytest.fixture(scope="function")
+def board4():
+    '''
+     ♞   
+     ♞♔ ♘
+     ♚   
+    ♘   ♘
+    ♞    
+    '''
 def test_is_check1():
     wk1a = King(4,5,True)
     B2 = (5, [wn1, bn1, wn2, bn2, wn3, wk1a, bk1])
