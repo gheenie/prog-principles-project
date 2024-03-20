@@ -706,6 +706,21 @@ def board4():
     return (5, [wn12, wn52, wn54, wk34, bn11, bn24, bn25, bk23])
 
 
+def test_move_to_white_king_captured_a_knight(board4):
+    
+
+def test_move_to_white_king_no_capture(board4):
+
+
+def test_move_to_black_king_captured_a_knight(board4):
+
+
+def test_move_to_black_king_no_capture(board4):
+
+
+def test_move_to_king_returned_board_is_the_same_identity(board4):
+
+
 def test_is_check1():
     wk1a = King(4,5,True)
     B2 = (5, [wn1, bn1, wn2, bn2, wn3, wk1a, bk1])
