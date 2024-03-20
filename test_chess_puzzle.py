@@ -633,7 +633,20 @@ def test_move_to_black_knight_no_capture():
     bn43 = piece_at(4, 3, board2)
     bk23 = piece_at(2, 3, board2)
     expected_board = (5, [wn12, wn52, wn54, wn44, wn25, wk35, bn11, bn24, bn32, bn43, bk23])
-    wn13 = Knight(1, 3, True)
+    bn51 = Knight(5, 1, True)
+
+    result_board = bn32.move_to(5, 1, board2)
+    result_bn32 = piece_at(5, 1, result_board)
+
+    assert result_board[0] == expected_board[0]
+    for i in range(len(expected_board)):
+        assert result_board[1][i] is expected_board[1][i]
+    assert (
+        result_bn32.pos_x == bn51.pos_x
+        and result_bn32.pos_y == bn51.pos_y
+        and result_bn32.side == bn51.side
+        and isinstance(result_bn32, Knight) is isinstance(bn51, Knight)
+    )
 
 
 def test_move_black_knight_captured_a_king():
