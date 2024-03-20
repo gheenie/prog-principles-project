@@ -677,20 +677,12 @@ def test_move_black_knight_captured_a_king(board2):
     )
 
 
-def test_move_to_returned_board_is_the_same_identity(board2):
-    wn12 = piece_at(1, 2, board2)
-    wn52 = piece_at(5, 2, board2)
-    wn54 = piece_at(5, 4, board2)
-    wn44 = piece_at(4, 4, board2)
+def test_move_to_knight_returned_board_is_the_same_identity(board2):
     wn25 = piece_at(2, 5, board2)
-    wk35 = piece_at(3, 5, board2)
-    bn11 = piece_at(1, 1, board2)
-    bn24 = piece_at(2, 4, board2)
-    bn32 = piece_at(3, 2, board2)
-    bn43 = piece_at(4, 3, board2)
-    bk23 = piece_at(2, 3, board2)
-    expected_board = (5, [wn12, wn52, wn54, wn44, wn25, wk35, bn11, bn24, bn32, bn43, bk23])
-    bn51 = Knight(5, 1, False)
+
+    result_board = wn25.move_to(1, 3, board2)
+
+    assert result_board is board2
 
 
 def test_is_check1():
