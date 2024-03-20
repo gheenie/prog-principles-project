@@ -592,7 +592,7 @@ def test_move_to_white_knight_captured_a_king(board2):
     )
 
 
-def test_move_to_black_knight_captured_a_knight():
+def test_move_to_black_knight_captured_a_knight(board2):
     wn12 = piece_at(1, 2, board2)
     wn52 = piece_at(5, 2, board2)
     wn54 = piece_at(5, 4, board2)
@@ -620,7 +620,7 @@ def test_move_to_black_knight_captured_a_knight():
     )
 
 
-def test_move_to_black_knight_no_capture():
+def test_move_to_black_knight_no_capture(board2):
     wn12 = piece_at(1, 2, board2)
     wn52 = piece_at(5, 2, board2)
     wn54 = piece_at(5, 4, board2)
