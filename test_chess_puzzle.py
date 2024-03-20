@@ -167,12 +167,11 @@ def board1():
     wn52 = Knight(5, 2, True)
     wn54 = Knight(5, 4, True)
     wk35 = King(3, 5, True)
-
     bn11 = Knight(1, 1, False)
-    bk23 = King(2, 3, False)
     bn24 = Knight(2, 4, False)
+    bk23 = King(2, 3, False)
 
-    return (5, [wn12, bn11, wn52, bn24, wn54, wk35, bk23])
+    return (5, [wn12, wn52, wn54, wk35, bn11, bn24, bk23])
 
 
 @pytest.fixture(scope="function")
@@ -190,14 +189,13 @@ def board2():
     wn44 = Knight(4, 4, True)
     wn25 = Knight(2, 5, True)
     wk35 = King(3, 5, True)
-
     bn11 = Knight(1, 1,False)
     bn24 = Knight(2, 4, False)
     bn32 = Knight(3, 2, False)
     bn43 = Knight(4, 3, False)
     bk23 = King(2, 3, False)
 
-    return (5, [wn12, bn11, wn52, bn24, wn54, wk35, bk23, wn44, wn25, bn32, bn43])
+    return (5, [wn12, wn52, wn54, wn44, wn25, wk35, bn11, bn24, bn32, bn43, bk23])
     
 
 def test_can_reach_knight_valid_movement_and_no_same_side_piece(board1, board2):
