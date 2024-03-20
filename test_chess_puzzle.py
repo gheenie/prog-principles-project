@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 import pytest
 from chess_puzzle import *
 
@@ -545,8 +547,21 @@ def test_move_to_white_knight_no_capture(board2):
     bn32 = piece_at(3, 2, board2)
     bn43 = piece_at(4, 3, board2)
     bk23 = piece_at(2, 3, board2)
+    expected_board = (5, [wn12, wn52, wn54, wn44, wn25, wk35, bn11, bn24, bn32, bn43, bk23])
+    wn13 = Knight(1, 3, True)
 
-    wn25.move_to(1, 3, board2)
+    result_board = wn25.move_to(1, 3, board2)
+    result_wn25 = piece_at(1, 3, result_board)
+
+    assert result_board[0] == expected_board[0]
+    for i in range(len(expected_board)):
+        assert result_board[1][i] is expected_board[1][i]
+    assert (
+        result_wn25.pos_x == wn13.pos_x
+        and result_wn25.pos_y == wn13.pos_y
+        and result_wn25.side == wn13.side
+        and isinstance(result_wn25, Knight) is isinstance(wn13, Knight)
+    )
 
 
 def test_move_to_white_knight_captured_a_king():
