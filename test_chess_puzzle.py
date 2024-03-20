@@ -504,7 +504,6 @@ def test_can_move_to_king_can_move_out_of_check(board2):
     assert bk23.can_move_to(1, 2, board2) is True
 
 
-@pytest.mark.skip
 def test_move_to1():
     Actual_B = wn1.move_to(2,4, B1)
     wn1a = Knight(2,4,True)
@@ -534,6 +533,26 @@ def test_move_to1():
             if piece.pos_x == piece1.pos_x and piece.pos_y == piece1.pos_y and piece.side == piece1.side and type(piece) == type(piece1):
                 found = True
         assert found
+
+
+def test_move_to_white_knight_no_capture():
+    pass
+
+
+def test_move_to_white_knight_captured_a_king():
+    pass
+
+
+def test_move_to_black_knight_captured_a_knight():
+    pass
+
+
+def test_move_to_black_knight_no_capture():
+    pass
+
+
+def test_move_black_knight_captured_a_king():
+    pass
 
 
 def test_is_check1():
