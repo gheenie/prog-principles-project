@@ -189,7 +189,7 @@ def board2():
     wn44 = Knight(4, 4, True)
     wn25 = Knight(2, 5, True)
     wk35 = King(3, 5, True)
-    bn11 = Knight(1, 1,False)
+    bn11 = Knight(1, 1, False)
     bn24 = Knight(2, 4, False)
     bn32 = Knight(3, 2, False)
     bn43 = Knight(4, 3, False)
@@ -533,8 +533,20 @@ def test_move_to1():
         assert found
 
 
-def test_move_to_white_knight_no_capture():
-    pass
+def test_move_to_white_knight_no_capture(board2):
+    wn12 = piece_at(1, 2, board2)
+    wn52 = piece_at(5, 2, board2)
+    wn54 = piece_at(5, 4, board2)
+    wn44 = piece_at(4, 4, board2)
+    wn25 = piece_at(2, 5, board2)
+    wk35 = piece_at(3, 5, board2)
+    bn11 = piece_at(1, 1, board2)
+    bn24 = piece_at(2, 4, board2)
+    bn32 = piece_at(3, 2, board2)
+    bn43 = piece_at(4, 3, board2)
+    bk23 = piece_at(2, 3, board2)
+
+    wn25.move_to(1, 3, board2)
 
 
 def test_move_to_white_knight_captured_a_king():
