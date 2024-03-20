@@ -694,6 +694,18 @@ def board4():
     ♘   ♘
     ♞    
     '''
+    wn12 = Knight(1, 2, True)
+    wn52 = Knight(5, 2, True)
+    wn54 = Knight(5, 4, True)
+    wk34 = King(3, 4, True)
+    bn11 = Knight(1, 1, False)
+    bn24 = Knight(2, 4, False)
+    bn25 = Knight(2, 5, False)
+    bk23 = King(2, 3, False)
+
+    return (5, [wn12, wn52, wn54, wk34, bn11, bn24, bn25, bk23])
+
+
 def test_is_check1():
     wk1a = King(4,5,True)
     B2 = (5, [wn1, bn1, wn2, bn2, wn3, wk1a, bk1])
