@@ -783,6 +783,7 @@ def test_move_to_black_king_captured_a_knight(board4):
 
 
 def test_move_to_black_king_no_capture(board4):
+    wn12 = piece_at(1, 2, board4)
     wn52 = piece_at(5, 2, board4)
     wn54 = piece_at(5, 4, board4)
     wk34 = piece_at(3, 4, board4)
@@ -790,8 +791,21 @@ def test_move_to_black_king_no_capture(board4):
     bn24 = piece_at(2, 4, board4)
     bn25 = piece_at(2, 5, board4)
     bk23 = piece_at(2, 3, board4)
-    expected_board = (5, [wn52, wn54, wk34, bn11, bn24, bn25, bk23])
-    bk12 = King(1, 2, False)
+    expected_board = (5, [wn12, wn52, wn54, wk34, bn11, bn24, bn25, bk23])
+    bk13 = King(1, 3, False)
+
+    result_board = bk23.move_to(1, 3, board4)
+    result_bk23 = piece_at(1, 3, result_board)
+
+    assert result_board[0] == expected_board[0]
+    for i in range(len(expected_board)):
+        assert result_board[1][i] is expected_board[1][i]
+    assert (
+        result_bk23.pos_x == bk13.pos_x
+        and result_bk23.pos_y == bk13.pos_y
+        and result_bk23.side == bk13.side
+        and isinstance(result_bk23, King) is isinstance(bk13, King)
+    )
 
 
 def test_move_to_king_returned_board_is_the_same_identity(board4):
