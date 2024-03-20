@@ -257,6 +257,7 @@ def is_check(side: bool, B: Board) -> bool:
         
     return False
 
+
 def is_checkmate(side: bool, B: Board) -> bool:
     '''
     checks if configuration of B is checkmate for side
@@ -265,6 +266,7 @@ def is_checkmate(side: bool, B: Board) -> bool:
     - use is_check
     - use can_reach 
     '''
+
 
 def is_stalemate(side: bool, B: Board) -> bool:
     '''
@@ -275,11 +277,13 @@ def is_stalemate(side: bool, B: Board) -> bool:
     - use can_move_to 
     '''
 
+
 def read_board(filename: str) -> Board:
     '''
     reads board configuration from file in current directory in plain format
     raises IOError exception if file is not valid (see section Plain board configurations)
     '''
+
 
 def save_board(filename: str, B: Board) -> None:
     '''saves board configuration into file in current directory in plain format'''
@@ -295,6 +299,7 @@ def find_black_move(B: Board) -> tuple[Piece, int, int]:
     - use can_move_to
     '''
 
+
 def conf2unicode(B: Board) -> str: 
     '''converts board cofiguration B to unicode format string (see section Unicode board configurations)'''
 
@@ -307,6 +312,7 @@ def main() -> None:
     filename = input("File name for initial configuration: ")
     ...
     '''    
+
 
 if __name__ == '__main__': #keep this in
    main()
