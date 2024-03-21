@@ -1038,6 +1038,21 @@ def test_is_checkmate_false_with_blocker_that_can_be_eaten_and_zoning():
 
     assert is_checkmate(False, board) is False
 
+    # Swap the sides.
+    bk44 = King(4, 4, False)
+    bn32 = Knight(3, 2, False)
+    bn34 = Knight(3, 4, False)
+    bn25 = Knight(2, 5, False)
+    bn35 = Knight(3, 5, False)
+    wk22 = King(2, 2, True)
+    wn11 = Knight(1, 1, True)
+    wn21 = Knight(2, 1, True)
+    wn31 = Knight(3, 1, True)
+    wn12 = Knight(1, 2, True)
+    board = (5, [bk44, bn32, bn34, bn25, bn35, wk22, wn11, wn21, wn31, wn12])
+
+    assert is_checkmate(True, board) is False
+
 
 @pytest.mark.skip
 def test_read_board1():
