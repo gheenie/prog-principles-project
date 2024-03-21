@@ -6,7 +6,7 @@ from typing import Optional
 def location2index(loc: str) -> tuple[int, int]:
     '''converts chess location to corresponding x and y coordinates'''
     # Check edge cases.
-    if not isinstance(loc, str):
+    if isinstance(loc, str) is False:
         raise TypeError('Location is not a string.')
     if loc == '':
         raise ValueError('Location is empty.')
@@ -15,7 +15,7 @@ def location2index(loc: str) -> tuple[int, int]:
     row = loc[1:]
 
     # Check edge cases.
-    if column.isnumeric():
+    if column.isnumeric() is True:
         raise ValueError('Column is incorrectly formatted.')
     try:
         row = int(row)
@@ -30,7 +30,7 @@ def location2index(loc: str) -> tuple[int, int]:
 def index2location(x: int, y: int) -> str:
     '''converts  pair of coordinates to corresponding location'''
     # Check edge cases.
-    if not isinstance(x, int) or not isinstance(y, int):
+    if isinstance(x, int) is False or isinstance(y, int) is False:
         raise TypeError('One of the indices is not an integer.')
     if x<1 or x>26:
         raise ValueError('The column is out of bounds.')
@@ -140,7 +140,7 @@ class Knight(Piece):
         stationary_piece = get_piece_or_none(pos_X, pos_Y, board_copy)
         if stationary_piece is not None:
             # Move is immediately valid if king is eaten.
-            if isinstance(stationary_piece, King):
+            if isinstance(stationary_piece, King) is True:
                 return True
             board_copy[1].remove(stationary_piece)
         
@@ -149,7 +149,7 @@ class Knight(Piece):
         self_copy.pos_x = pos_X
         self_copy.pos_y = pos_Y
         
-        return not is_check(self.side, board_copy)
+        return is_check(self.side, board_copy) is False
 
     def move_to(self, pos_X : int, pos_Y : int, B: Board) -> Board:
         '''
@@ -207,7 +207,7 @@ class King(Piece):
         stationary_piece = get_piece_or_none(pos_X, pos_Y, board_copy)
         if stationary_piece is not None:
             # Move is immediately valid if king is eaten.
-            if isinstance(stationary_piece, King):
+            if isinstance(stationary_piece, King) is True:
                 return True
             board_copy[1].remove(stationary_piece)
         
@@ -216,7 +216,7 @@ class King(Piece):
         self_copy.pos_x = pos_X
         self_copy.pos_y = pos_Y
         
-        return not is_check(self.side, board_copy)
+        return is_check(self.side, board_copy) is False
 
     def move_to(self, pos_X : int, pos_Y : int, B: Board) -> Board:
         '''
@@ -245,7 +245,7 @@ def is_check(side: bool, B: Board) -> bool:
     # Get the index of the king of the defending side.
     defending_king = None
     for piece in B[1]:
-        if isinstance(piece, King) and piece.side is side:
+        if isinstance(piece, King) is True and piece.side is side:
             defending_king = piece
 
     for piece in B[1]:
@@ -268,7 +268,7 @@ def is_checkmate(side: bool, B: Board) -> bool:
 
     defending_king = None
     for piece in B[1]:
-        if isinstance(piece, King) and piece.side is side:
+        if isinstance(piece, King) is True and piece.side is side:
             defending_king = piece
 
     possible_moves = (
