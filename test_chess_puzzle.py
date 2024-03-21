@@ -1129,6 +1129,21 @@ def test_is_stalemate_can_escape_by_eating_blockers():
     assert is_stalemate(False, board) is False
 
 
+def test_is_stalemate_true_with_zoning():
+    '''
+     ♘  
+        
+        
+    ♚ ♔ 
+    '''
+    wk31 = King(3, 1, True)
+    wn24 = Knight(2, 4, True)
+    bk11 = King(1, 1, False)
+    board = (4, wk31, wn24, bk11)
+
+    assert is_stalemate(False, board) is True
+
+
 @pytest.mark.skip
 def test_read_board1():
     B = read_board("board_examp.txt")
