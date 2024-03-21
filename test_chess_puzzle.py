@@ -1153,7 +1153,7 @@ def test_is_stalemate_another_same_side_piece_remaining():
     wn24 = Knight(2, 4, True)
     bk11 = King(1, 1, False)
     bn44 = Knight(4, 4, False)
-    board = (4, wk31, wn24, bk11, bn44)
+    board = (4, [wk31, wn24, bk11, bn44])
 
     assert is_stalemate(False, board) is False
 
@@ -1162,7 +1162,7 @@ def test_is_stalemate_another_same_side_piece_remaining():
     bn24 = Knight(2, 4, False)
     wk11 = King(1, 1, True)
     wn44 = Knight(4, 4, True)
-    board = (4, bk31, bn24, wk11, wn44)
+    board = (4, [bk31, bn24, wk11, wn44])
 
     assert is_stalemate(True, board) is False
 
@@ -1178,7 +1178,7 @@ def test_is_stalemate_getting_checkmated():
     wn24 = Knight(2, 4, True)
     wn23 = Knight(2, 3, True)
     bk11 = King(1, 1, False)
-    board = (4, wk31, wn24, wn23, bk11)
+    board = (4, [wk31, wn24, wn23, bk11])
 
     assert is_stalemate(False, board) is False
     
@@ -1187,7 +1187,7 @@ def test_is_stalemate_getting_checkmated():
     bn24 = Knight(2, 4, False)
     bn23 = Knight(2, 3, False)
     wk11 = King(1, 1, True)
-    board = (4, bk31, bn24, bn23, wk11)
+    board = (4, [bk31, bn24, bn23, wk11])
 
     assert is_stalemate(True, board) is False
 
@@ -1202,7 +1202,7 @@ def test_is_stalemate_getting_checked():
     wk31 = King(3, 1, True)
     wn23 = Knight(2, 3, True)
     bk11 = King(1, 1, False)
-    board = (4, wk31, wn23, bk11)
+    board = (4, [wk31, wn23, bk11])
 
     assert is_stalemate(False, board) is False
     
@@ -1210,7 +1210,7 @@ def test_is_stalemate_getting_checked():
     bk31 = King(3, 1, False)
     bn23 = Knight(2, 3, False)
     wk11 = King(1, 1, True)
-    board = (4, bk31, bn23, wk11)
+    board = (4, [bk31, bn23, wk11])
 
     assert is_stalemate(True, board) is False
 
@@ -1223,13 +1223,13 @@ def test_is_stalemate_has_empty_escape_zones():
     '''
     wk31 = King(3, 1, True)
     bk11 = King(1, 1, False)
-    board = (3, wk31, bk11)
+    board = (3, [wk31, bk11])
 
     assert is_stalemate(False, board) is False
     
     bk31 = King(3, 1, False)
     wk11 = King(1, 1, True)
-    board = (3, bk31, wk11)
+    board = (3, [bk31, wk11])
 
     assert is_stalemate(True, board) is False
 
@@ -1244,14 +1244,14 @@ def test_is_stalemate_can_escape_by_eating_blockers():
     wk31 = King(3, 1, True)
     wn12 = Knight(1, 2, True)
     bk11 = King(1, 1, False)
-    board = (4, wk31, wn12, bk11)
+    board = (4, [wk31, wn12, bk11])
 
     assert is_stalemate(False, board) is False
 
     bk31 = King(3, 1, False)
     bn12 = Knight(1, 2, False)
     wk11 = King(1, 1, True)
-    board = (4, bk31, bn12, wk11)
+    board = (4, [bk31, bn12, wk11])
 
     assert is_stalemate(True, board) is False
 
@@ -1266,14 +1266,14 @@ def test_is_stalemate_true_with_zoning():
     wk31 = King(3, 1, True)
     wn24 = Knight(2, 4, True)
     bk11 = King(1, 1, False)
-    board = (4, wk31, wn24, bk11)
+    board = (4, [wk31, wn24, bk11])
 
     assert is_stalemate(False, board) is True
     
     bk31 = King(3, 1, False)
     bn24 = Knight(2, 4, False)
     wk11 = King(1, 1, True)
-    board = (4, bk31, bn24, wk11)
+    board = (4, [bk31, bn24, wk11])
 
     assert is_stalemate(True, board) is True
 
