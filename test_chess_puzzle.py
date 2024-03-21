@@ -874,7 +874,6 @@ def test_is_check_king_not_in_check():
     assert is_check(False, B1) is False
 
 
-@pytest.mark.skip
 def test_is_checkmate1():
     wk1a = King(1,5,True)
     bn2a = Knight(3,4, False)
@@ -889,6 +888,21 @@ def test_is_checkmate1():
     ♞    
     '''
     assert is_checkmate(True, B2) == True
+
+
+def test_is_checkmate_false_with_king_checking():
+
+
+def test_is_checkmate_false_with_king_checking_and_zoning():
+
+
+def test_is_checkmate_false_with_knight_checking():
+
+    
+def test_is_checkmate_true_with_knight_checking_and_zoning():
+
+
+def test_is_checkmate_false_with_knight_that_can_be_eaten_and_zoning():
 
 
 @pytest.mark.skip
