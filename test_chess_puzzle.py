@@ -1069,6 +1069,15 @@ def test_is_stalemate_another_same_side_piece_remaining():
 
     assert is_stalemate(False, board) is False
 
+    # Swap the sides.
+    bk31 = King(3, 1, False)
+    bn24 = Knight(2, 4, False)
+    wk11 = King(1, 1, True)
+    wn44 = Knight(4, 4, True)
+    board = (4, bk31, bn24, wk11, wn44)
+
+    assert is_stalemate(True, board) is False
+
 
 def test_is_stalemate_getting_checkmated():
     '''
