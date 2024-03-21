@@ -1003,6 +1003,17 @@ def test_is_checkmate_false_with_knight_that_can_be_eaten_and_zoning():
 
     assert is_checkmate(False, board) is False
 
+    # Swap the sides.
+    bk32 = King(3, 2, False)
+    bn23 = Knight(2, 3, False)
+    bn24 = Knight(2, 4, False)
+    wk11 = King(1, 1, True)
+    wn21 = Knight(2, 1, True)
+    wn44 = Knight(4, 4, True)
+    board = (4, [bk32, bn23, bn24, wk11, wn21, wn44])
+
+    assert is_checkmate(True, board) is True
+
 
 def test_is_checkmate_false_with_zone_that_can_be_eaten_and_zoning():
 
