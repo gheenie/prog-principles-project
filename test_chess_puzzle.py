@@ -911,7 +911,7 @@ def test_is_checkmate_false_with_king_checking():
     assert is_checkmate(True, board) is False
 
 
-def test_is_checkmate_false_with_king_checking_and_zoning():
+def test_is_checkmate_false_with_king_checking_and_zoning_and_blocking():
     '''
      ♘  
         
@@ -936,7 +936,7 @@ def test_is_checkmate_false_with_king_checking_and_zoning():
     assert is_checkmate(True, board) is False
 
 
-def test_is_checkmate_false_with_knight_checking():
+def test_is_checkmate_false_with_knight_checking_and_escape_zones():
     '''
         
      ♘  
@@ -959,7 +959,7 @@ def test_is_checkmate_false_with_knight_checking():
     assert is_checkmate(True, board) is False
 
     
-def test_is_checkmate_true_with_knight_checking_and_zoning():
+def test_is_checkmate_true_with_knight_checking_and_zoning_and_blocking():
     '''
      ♘  
      ♘  
@@ -986,7 +986,7 @@ def test_is_checkmate_true_with_knight_checking_and_zoning():
     assert is_checkmate(True, board) is True
 
 
-def test_is_checkmate_false_with_knight_that_can_be_eaten_and_zoning():
+def test_is_checkmate_false_with_knight_that_can_be_eaten_and_zoning_and_blocking():
     '''
        ♞ 
      ♘   
@@ -1016,7 +1016,14 @@ def test_is_checkmate_false_with_knight_that_can_be_eaten_and_zoning():
     assert is_checkmate(True, board) is True
 
 
-def test_is_checkmate_false_with_zone_that_can_be_eaten_and_zoning():
+def test_is_checkmate_false_with_blocker_that_can_be_eaten_and_zoning():
+    '''
+     ♘♘  
+      ♘♔ 
+         
+    ♞♚♘  
+    ♞♞♞  
+    '''
 
 
 @pytest.mark.skip
