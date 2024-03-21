@@ -1181,6 +1181,13 @@ def test_is_stalemate_true_with_zoning():
     board = (4, wk31, wn24, bk11)
 
     assert is_stalemate(False, board) is True
+    
+    bk31 = King(3, 1, False)
+    bn24 = Knight(2, 4, False)
+    wk11 = King(1, 1, True)
+    board = (4, bk31, bn24, wk11)
+
+    assert is_stalemate(True, board) is True
 
 
 @pytest.mark.skip
