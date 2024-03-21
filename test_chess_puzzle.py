@@ -1122,7 +1122,7 @@ def test_is_stalemate_getting_checked():
     bk31 = King(3, 1, False)
     bn23 = Knight(2, 3, False)
     wk11 = King(1, 1, True)
-    board = (4, wk31, wn23, bk11)
+    board = (4, bk31, bn23, wk11)
 
     assert is_stalemate(True, board) is False
 
