@@ -283,10 +283,7 @@ def is_checkmate(side: bool, B: Board) -> bool:
     # Scenario where checking piece can be eaten.
     checking_piece = None
     for piece in B[1]:
-        if (
-                piece.can_move_to(defending_king.pos_x, defending_king.pos_y, B) is True
-                and piece.side is not defending_king.side
-        ):
+        if piece.can_move_to(defending_king.pos_x, defending_king.pos_y, B) is True:
             checking_piece = piece
     for piece in B[1]:
         if piece.can_move_to(checking_piece.pos_x, checking_piece.pos_y, B) is True:
