@@ -1074,7 +1074,7 @@ def test_is_checkmate_false_with_knight_that_can_be_eaten_and_zoning_and_blockin
     assert is_checkmate(True, board) is False
 
 
-def test_is_checkmate_true_with_knight_that_can_be_eaten_by_same_side_and_zoning_and_blocking():
+def test_is_checkmate_true_with_knight_that_cant_be_eaten_by_same_side_and_zoning_and_blocking():
     '''
       ♘  
      ♘   
