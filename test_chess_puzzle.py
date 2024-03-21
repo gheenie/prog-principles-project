@@ -1013,7 +1013,7 @@ def test_is_checkmate_false_with_knight_that_can_be_eaten_and_zoning_and_blockin
     wn35 = Knight(3, 5, True)
     board = (4, [bk32, bn23, bn24, wk11, wn21, wn35])
 
-    assert is_checkmate(True, board) is True
+    assert is_checkmate(True, board) is False
 
 
 def test_is_checkmate_false_with_blocker_that_can_be_eaten_and_zoning():
