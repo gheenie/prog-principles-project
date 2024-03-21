@@ -988,18 +988,19 @@ def test_is_checkmate_true_with_knight_checking_and_zoning():
 
 def test_is_checkmate_false_with_knight_that_can_be_eaten_and_zoning():
     '''
-     ♘ ♞
-     ♘  
-      ♔ 
-    ♚♞  
+       ♞ 
+     ♘   
+     ♘   
+      ♔  
+    ♚♞   
     '''
     wk32 = King(3, 2, True)
     wn23 = Knight(2, 3, True)
     wn24 = Knight(2, 4, True)
     bk11 = King(1, 1, False)
     bn21 = Knight(2, 1, False)
-    bn44 = Knight(4, 4, False)
-    board = (4, [wk32, wn23, wn24, bk11, bn21, bn44])
+    bn35 = Knight(3, 5, False)
+    board = (4, [wk32, wn23, wn24, bk11, bn21, bn35])
 
     assert is_checkmate(False, board) is False
 
@@ -1009,8 +1010,8 @@ def test_is_checkmate_false_with_knight_that_can_be_eaten_and_zoning():
     bn24 = Knight(2, 4, False)
     wk11 = King(1, 1, True)
     wn21 = Knight(2, 1, True)
-    wn44 = Knight(4, 4, True)
-    board = (4, [bk32, bn23, bn24, wk11, wn21, wn44])
+    wn35 = Knight(3, 5, True)
+    board = (4, [bk32, bn23, bn24, wk11, wn21, wn35])
 
     assert is_checkmate(True, board) is True
 
