@@ -1000,7 +1000,7 @@ def test_is_checkmate_false_with_knight_that_can_be_eaten_and_zoning_and_blockin
     bk11 = King(1, 1, False)
     bn21 = Knight(2, 1, False)
     bn35 = Knight(3, 5, False)
-    board = (4, [wk32, wn23, wn24, bk11, bn21, bn35])
+    board = (5, [wk32, wn23, wn24, bk11, bn21, bn35])
 
     assert is_checkmate(False, board) is False
 
