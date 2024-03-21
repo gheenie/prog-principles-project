@@ -251,7 +251,7 @@ def is_check(side: bool, B: Board) -> bool:
     defending_king = get_king(side, B)
 
     for piece in B[1]:
-        if piece.side is not side and piece.can_reach(defending_king.pos_x, defending_king.pos_y, B) is True:
+        if piece.can_reach(defending_king.pos_x, defending_king.pos_y, B) is True:
             return True
         
     return False
