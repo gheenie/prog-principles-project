@@ -308,6 +308,18 @@ def is_stalemate(side: bool, B: Board) -> bool:
     for piece in B[1]:
         if piece.side is side and isinstance(piece, King) is False:
             return False
+
+    defending_king = get_king(side, B)
+
+    possible_moves = (
+        (column, row)
+        for column in range(defending_king.pos_x-1, defending_king.pos_x+2)
+        for row in range(defending_king.pos_y-1, defending_king.pos_y+2)
+    )
+
+    for possible_move in possible_moves:
+        if defending_king.can_move_to(possible_move[0], possible_move[1], B) is True:
+            return False
         
     return True
 
