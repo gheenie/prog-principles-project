@@ -243,13 +243,13 @@ def is_check(side: bool, B: Board) -> bool:
     Hint: use can_reach
     '''
     # Get the index of the king of the defending side.
-    defending_king_xy = None
+    defending_king = None
     for piece in B[1]:
         if isinstance(piece, King) and piece.side is side:
-            defending_king_xy = (piece.pos_x, piece.pos_y)
+            defending_king = piece
 
     for piece in B[1]:
-        if piece.side is not side and piece.can_reach(defending_king_xy[0], defending_king_xy[1], B):
+        if piece.side is not side and piece.can_reach(defending_king.pos_x, defending_king.pos_y, B) is True:
             return True
         
     return False
