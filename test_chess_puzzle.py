@@ -1103,15 +1103,13 @@ def test_is_stalemate_getting_checked():
 
 def test_is_stalemate_has_empty_escape_zones():
     '''
-      ♘ 
-        
-        
-    ♚ ♔ 
+       
+       
+    ♚ ♔
     '''
     wk31 = King(3, 1, True)
-    wn34 = Knight(3, 4, True)
     bk11 = King(1, 1, False)
-    board = (4, wk31, wn34, bk11)
+    board = (3, wk31, bk11)
 
     assert is_stalemate(False, board) is False
 
