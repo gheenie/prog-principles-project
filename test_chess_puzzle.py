@@ -891,6 +891,24 @@ def test_is_checkmate1():
 
 
 def test_is_checkmate_false_with_king_checking():
+    '''
+        
+        
+     ♔  
+    ♚   
+    '''
+    wk22 = King(2, 2, True)
+    bk11 = King(1, 1, False)
+    board = (4, [wk22, bk11])
+
+    assert is_checkmate(False, board) is False
+
+    # Swap the sides.
+    bk22 = King(2, 2, False)
+    wk11 = King(1, 1, True)
+    board = (4, [bk22, wk11])
+
+    assert is_checkmate(True, board) is False
 
 
 def test_is_checkmate_false_with_king_checking_and_zoning():
