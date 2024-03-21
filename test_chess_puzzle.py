@@ -1054,7 +1054,7 @@ def test_is_checkmate_false_with_blocker_that_can_be_eaten_and_zoning():
     assert is_checkmate(True, board) is False
 
 
-def test_is_stalemate_your_own_piece_remaining():
+def test_is_stalemate_another_same_side_piece_remaining():
     '''
      ♘ ♞
         
