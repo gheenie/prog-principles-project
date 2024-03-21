@@ -237,16 +237,18 @@ class King(Piece):
         return board_copy
 
 
+def get_king(side: bool, B: Board) -> King:
+    for piece in B[1]:
+        if isinstance(piece, King) is True and piece.side is side:
+            return piece
+
+
 def is_check(side: bool, B: Board) -> bool:
     '''
     checks if configuration of B is check for side
     Hint: use can_reach
     '''
-    # Get the index of the king of the defending side.
-    defending_king = None
-    for piece in B[1]:
-        if isinstance(piece, King) is True and piece.side is side:
-            defending_king = piece
+    defending_king = get_king(side, B)
 
     for piece in B[1]:
         if piece.side is not side and piece.can_reach(defending_king.pos_x, defending_king.pos_y, B) is True:
@@ -266,10 +268,7 @@ def is_checkmate(side: bool, B: Board) -> bool:
     if is_check(side, B) is False:
         return False
 
-    defending_king = None
-    for piece in B[1]:
-        if isinstance(piece, King) is True and piece.side is side:
-            defending_king = piece
+    defending_king = get_king(side, B)
 
     possible_moves = (
         (column, row)
