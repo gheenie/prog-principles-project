@@ -50,9 +50,6 @@ class Piece:
         self.pos_y = pos_Y
         self.side = side_
 
-    def __str__(self):
-        return f'{self.pos_x}, {self.pos_y}, {self.side}'
-
 
 Board = tuple[int, list[Piece]]
 
