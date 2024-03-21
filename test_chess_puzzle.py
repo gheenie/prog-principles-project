@@ -1086,6 +1086,21 @@ def test_is_stalemate_getting_checkmated():
     assert is_stalemate(False, board) is False
 
 
+def test_is_stalemate_getting_checked():
+    '''
+        
+     ♘  
+        
+    ♚ ♔ 
+    '''
+    wk31 = King(3, 1, True)
+    wn23 = Knight(2, 3, True)
+    bk11 = King(1, 1, False)
+    board = (4, wk31, wn23, bk11)
+
+    assert is_stalemate(False, board) is False
+
+
 @pytest.mark.skip
 def test_read_board1():
     B = read_board("board_examp.txt")
