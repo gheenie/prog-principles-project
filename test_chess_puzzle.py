@@ -1160,6 +1160,13 @@ def test_is_stalemate_can_escape_by_eating_blockers():
 
     assert is_stalemate(False, board) is False
 
+    bk31 = King(3, 1, False)
+    bn12 = Knight(1, 2, False)
+    wk11 = King(1, 1, True)
+    board = (4, bk31, bn12, wk11)
+
+    assert is_stalemate(True, board) is False
+
 
 def test_is_stalemate_true_with_zoning():
     '''
