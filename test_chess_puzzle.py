@@ -1054,6 +1054,22 @@ def test_is_checkmate_false_with_blocker_that_can_be_eaten_and_zoning():
     assert is_checkmate(True, board) is False
 
 
+def test_is_stalemate_your_own_piece_remaining():
+    '''
+     ♘ ♞
+        
+        
+    ♚ ♔ 
+    '''
+    wk31 = King(3, 1, True)
+    wn24 = Knight(2, 4, True)
+    bk11 = King(1, 1, False)
+    bn44 = Knight(4, 4, False)
+    board = (4, wk31, wn24, bk11, bn44)
+
+    assert is_stalemate(False, board) is False
+
+
 @pytest.mark.skip
 def test_read_board1():
     B = read_board("board_examp.txt")
