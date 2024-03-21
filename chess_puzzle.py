@@ -304,6 +304,10 @@ def is_stalemate(side: bool, B: Board) -> bool:
     '''
     if is_check(side, B) is True:
         return False
+    
+    for piece in B[1]:
+        if piece.side is side and isinstance(piece, King) is False:
+            return False
         
     return True
 
