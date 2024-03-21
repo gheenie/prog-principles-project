@@ -1,5 +1,6 @@
 from copy import deepcopy
 from copy import copy
+from typing import Optional
 
 
 def location2index(loc: str) -> tuple[int, int]:
@@ -77,8 +78,11 @@ def piece_at(pos_X : int, pos_Y : int, B: Board) -> Piece:
             return piece
 
 
-def get_piece_or_none(pos_X: int, pos_Y: int, B: Board) -> Piece:
-    '''Return exactly what the chess cell has.'''
+def get_piece_or_none(pos_X: int, pos_Y: int, B: Board) -> Optional[Piece]:
+    '''
+    Returns the piece at the specified coordinates if one is present,
+    otherwise return None.
+    '''
     piece = None
     if is_piece_at(pos_X, pos_Y, B):
         piece = piece_at(pos_X, pos_Y, B)
