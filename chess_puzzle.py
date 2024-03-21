@@ -270,14 +270,13 @@ def is_checkmate(side: bool, B: Board) -> bool:
 
     defending_king = get_king(side, B)
 
-    possible_moves = (
+    surrounding_squares = (
         (column, row)
         for column in range(defending_king.pos_x-1, defending_king.pos_x+2)
         for row in range(defending_king.pos_y-1, defending_king.pos_y+2)
     )
-
-    for possible_move in possible_moves:
-        if defending_king.can_move_to(possible_move[0], possible_move[1], B) is True:
+    for surrounding_square in surrounding_squares:
+        if defending_king.can_move_to(surrounding_square[0], surrounding_square[1], B) is True:
             return False
         
     # Cover the scenario where checking piece can be eaten.
@@ -311,14 +310,13 @@ def is_stalemate(side: bool, B: Board) -> bool:
 
     defending_king = get_king(side, B)
 
-    possible_moves = (
+    surrounding_squares = (
         (column, row)
         for column in range(defending_king.pos_x-1, defending_king.pos_x+2)
         for row in range(defending_king.pos_y-1, defending_king.pos_y+2)
     )
-
-    for possible_move in possible_moves:
-        if defending_king.can_move_to(possible_move[0], possible_move[1], B) is True:
+    for surrounding_square in surrounding_squares:
+        if defending_king.can_move_to(surrounding_square[0], surrounding_square[1], B) is True:
             return False
         
     return True
