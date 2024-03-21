@@ -989,6 +989,9 @@ def test_is_checkmate_true_with_knight_checking_and_zoning():
 def test_is_checkmate_false_with_knight_that_can_be_eaten_and_zoning():
 
 
+def test_is_checkmate_false_with_zone_that_can_be_eaten_and_zoning():
+
+
 @pytest.mark.skip
 def test_read_board1():
     B = read_board("board_examp.txt")
