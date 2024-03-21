@@ -1024,6 +1024,19 @@ def test_is_checkmate_false_with_blocker_that_can_be_eaten_and_zoning():
     ♞♚♘  
     ♞♞♞  
     '''
+    wk44 = King(4, 4, True)
+    wn32 = Knight(3, 2, True)
+    wn34 = Knight(3, 4, True)
+    wn25 = Knight(2, 5, True)
+    wn35 = Knight(3, 5, True)
+    bk22 = King(2, 2, False)
+    bn11 = Knight(1, 1, False)
+    bn21 = Knight(2, 1, False)
+    bn31 = Knight(3, 1, False)
+    bn12 = Knight(1, 2, False)
+    board = (5, [wk44, wn32, wn34, wn25, wn35, bk22, bn11, bn21, bn31, bn12])
+
+    assert is_checkmate(False, board) is False
 
 
 @pytest.mark.skip
