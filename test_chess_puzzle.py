@@ -1117,6 +1117,14 @@ def test_is_stalemate_getting_checked():
     board = (4, wk31, wn23, bk11)
 
     assert is_stalemate(False, board) is False
+    
+    # Swap the sides.
+    bk31 = King(3, 1, False)
+    bn23 = Knight(2, 3, False)
+    wk11 = King(1, 1, True)
+    board = (4, wk31, wn23, bk11)
+
+    assert is_stalemate(True, board) is False
 
 
 def test_is_stalemate_has_empty_escape_zones():
