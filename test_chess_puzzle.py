@@ -987,6 +987,7 @@ def test_is_checkmate_true_with_knight_checking_and_zoning_and_blocking():
 
 
 def test_is_checkmate_true_with_knight_checking_and_zoning_and_blocking_and_getting_checked():
+    '''Technically impossible scenario.'''
     '''
          
      ♘   
