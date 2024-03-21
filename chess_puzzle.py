@@ -302,6 +302,10 @@ def is_stalemate(side: bool, B: Board) -> bool:
     - use is_check
     - use can_move_to 
     '''
+    if is_check(side, B) is True:
+        return False
+        
+    return True
 
 
 def read_board(filename: str) -> Board:
