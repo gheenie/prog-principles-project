@@ -891,6 +891,19 @@ def test_is_checkmate1():
 
 
 def test_is_checkmate_false_with_king_checking():
+    '''
+     ♘  
+        
+     ♔  
+    ♚♞  
+    '''
+    wk22 = King(2, 2, True)
+    wn24 = Knight(2, 4, True)
+    bk11 = King(1, 1, False)
+    bn21 = Knight(2, 1, False)
+    board = (4, [wk22, wn24, bk11, bn21])
+
+    assert is_checkmate(False, board) is False
 
 
 def test_is_checkmate_false_with_king_checking_and_zoning():
