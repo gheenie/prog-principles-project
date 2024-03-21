@@ -986,6 +986,24 @@ def test_is_checkmate_true_with_knight_checking_and_zoning_and_blocking():
     assert is_checkmate(True, board) is True
 
 
+def test_is_checkmate_true_with_knight_checking_and_zoning_and_blocking_and_getting_checked():
+    '''
+     ♘ ♞
+     ♘  
+      ♔ 
+    ♚♞  
+    '''
+    wk32 = King(3, 2, True)
+    wn23 = Knight(2, 3, True)
+    wn24 = Knight(2, 4, True)
+    bk11 = King(1, 1, False)
+    bn21 = Knight(2, 1, False)
+    bn44 = Knight(4, 4, False)
+    board = (4, [wk32, wn23, wn24, bk11, bn21, bn44])
+
+    assert is_checkmate(False, board) is True
+
+
 def test_is_checkmate_false_with_no_check():
     '''
      ♘  
