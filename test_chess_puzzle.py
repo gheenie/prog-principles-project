@@ -891,6 +891,9 @@ def test_is_checkmate1():
 
 
 def test_is_checkmate_false_with_king_checking():
+
+
+def test_is_checkmate_false_with_king_checking_and_zoning():
     '''
      ♘  
         
@@ -913,9 +916,6 @@ def test_is_checkmate_false_with_king_checking():
     board = (4, [bk22, bn24, wk11, wn21])
 
     assert is_checkmate(True, board) is False
-
-
-def test_is_checkmate_false_with_king_checking_and_zoning():
 
 
 def test_is_checkmate_false_with_knight_checking():
