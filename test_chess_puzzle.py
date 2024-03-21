@@ -986,7 +986,7 @@ def test_is_checkmate_true_with_knight_checking_and_zoning_and_blocking():
     assert is_checkmate(True, board) is True
 
 
-def test_is_checkmate_false_with_same_side_knight_checking_and_zoning_and_blocking():
+def test_is_checkmate_false_with_no_check():
     '''
      ♘  
      ♞  
