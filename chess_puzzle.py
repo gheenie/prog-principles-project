@@ -1,5 +1,6 @@
 from copy import deepcopy
 from typing import Optional
+from typing import Iterable
 from collections import namedtuple
 
 
@@ -251,7 +252,7 @@ def is_check(side: bool, B: Board) -> bool:
     checks if configuration of B is check for side
     Hint: use can_reach
     '''
-    defending_king = get_king(side, B)
+    defending_king: King = get_king(side, B)
 
     for piece in B[1]:
         if piece.can_reach(defending_king.pos_x, defending_king.pos_y, B) is True:
@@ -271,9 +272,9 @@ def is_checkmate(side: bool, B: Board) -> bool:
     if is_check(side, B) is False:
         return False
 
-    defending_king = get_king(side, B)
+    defending_king: King = get_king(side, B)
 
-    surrounding_squares = (
+    surrounding_squares: Iterable[tuple[int, int]] = (
         (column, row)
         for column in range(defending_king.pos_x-1, defending_king.pos_x+2)
         for row in range(defending_king.pos_y-1, defending_king.pos_y+2)
@@ -283,7 +284,7 @@ def is_checkmate(side: bool, B: Board) -> bool:
             return False
         
     # Cover the scenario where checking piece can be eaten.
-    checking_piece = None
+    checking_piece: Optional[Piece] = None
     for piece in B[1]:
         if piece.can_reach(defending_king.pos_x, defending_king.pos_y, B) is True:
             checking_piece = piece
@@ -311,9 +312,9 @@ def is_stalemate(side: bool, B: Board) -> bool:
         if piece.side is side and isinstance(piece, King) is False:
             return False
 
-    defending_king = get_king(side, B)
+    defending_king: King = get_king(side, B)
 
-    surrounding_squares = (
+    surrounding_squares: Iterable[tuple[int, int]] = (
         (column, row)
         for column in range(defending_king.pos_x-1, defending_king.pos_x+2)
         for row in range(defending_king.pos_y-1, defending_king.pos_y+2)
