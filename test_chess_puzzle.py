@@ -1343,11 +1343,28 @@ def test_read_board_row_out_of_range():
 
 
 def test_read_board_location2index_returns_invalid():
-    # invalid chars
-    # wrong col, wrong row, row out of bounds
     with pytest.raises('IOError') as e:
         read_board('data/test_read_board_location2index_returns_empty_string.txt')
     assert str(e.value) == 'Location is empty.'
+    with pytest.raises('IOError') as e:
+        read_board('data/test_read_board_location2index_returns_invalid_column_integer.txt')
+    assert str(e.value) == 'Column is out of the range of characters a to z.'
+    with pytest.raises('IOError') as e:
+        read_board('data/test_read_board_location2index_returns_invalid_column_caps.txt')
+    assert str(e.value) == 'Column is out of the range of characters a to z.'
+    with pytest.raises('IOError') as e:
+        read_board('data/test_read_board_location2index_returns_invalid_column_non_letter.txt')
+    assert str(e.value) == 'Column is out of the range of characters a to z.'
+    with pytest.raises('IOError') as e:
+        read_board('data/test_read_board_location2index_returns_invalid_row_empty.txt')
+    assert str(e.value) == 'Row is incorrectly formatted.'
+    with pytest.raises('IOError') as e:
+        read_board('data/test_read_board_location2index_returns_invalid_row_non_integer_1.txt')
+    assert str(e.value) == 'Row is incorrectly formatted.'
+    with pytest.raises('IOError') as e:
+        read_board('data/test_read_board_location2index_returns_invalid_row_non_integer_2.txt')
+    assert str(e.value) == 'Row is incorrectly formatted.'
+
 
 def test_read_board_no_commas():
     with pytest.raises('IOError') as e:
