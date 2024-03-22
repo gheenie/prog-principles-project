@@ -1382,7 +1382,7 @@ def test_read_board_no_commas():
 
 
 def test_read_board_arbitrary_spaces(board1):
-    result_board = read_board('test_read_board_arbitrary_spaces.txt')
+    result_board = read_board('data/test_read_board_arbitrary_spaces.txt')
     
     assert result_board[0] == 5
     assert len(result_board[1]) == len(board1[1])
