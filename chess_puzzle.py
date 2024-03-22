@@ -456,8 +456,20 @@ def main() -> None:
     filename = input("File name for initial configuration: ")
     ...
     '''
-    board = read_board('board_examp.txt')
-    save_board('board_config.txt', board)
+    filename = input('File name for initial configuration: ')
+    board = None
+    is_file_valid = False
+    while is_file_valid is False:
+        if filename == 'QUIT':
+            return
+        try:
+            board = read_board(filename)
+            is_file_valid = True
+            print(conf2unicode(board))
+        except FileNotFoundError:
+            filename = input('This is not a valid file. File name for initial configuration: ')
+        except IOError:
+            filename = input('This is not a valid file. File name for initial configuration: ')
 
 
 if __name__ == '__main__': #keep this in
