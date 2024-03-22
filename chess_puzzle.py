@@ -472,6 +472,17 @@ def main() -> None:
         except IOError:
             filename = input('This is not a valid file. File name for initial configuration: ')
 
+    whose_turn = 'White'
+    is_quitting = False
+    while is_quitting is False:
+        move = input(f'Next move of {whose_turn}: ')
+        if move == 'QUIT':
+            filename = input('File name to store the configuration: ')
+            save_board(filename, board)
+            print('The game configuration saved.')
+            is_quitting = True
+            return
+
 
 if __name__ == '__main__': #keep this in
    main()
