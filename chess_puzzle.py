@@ -488,16 +488,16 @@ def main() -> None:
         except IOError:
             filename = input('This is not a valid file. File name for initial configuration: ')
 
-    whose_turn = 'White'
     is_quitting = False
-    is_valid_move = False
-    move = input(f'Next move of {whose_turn}: ')
     while is_quitting is False:
+        whose_turn = 'White'
+        is_move_valid = False
+        move = input(f'Next move of {whose_turn}: ')
+        while is_move_valid is False:
         if move == 'QUIT':
             filename = input('File name to store the configuration: ')
             save_board(filename, board)
             print('The game configuration saved.')
-            is_quitting = True
             return
         from_to = parse_input_move(move)
         piece = None
@@ -509,8 +509,10 @@ def main() -> None:
                 raise TypeError('No piece in the specified location.')
             if piece.can_move_to(destination_indices[0], destination_indices[1], board) is False:
                 raise ValueError('The destination is invalid.')
+            is_move_valid = True
         except Exception as e:
             move = input(f'This is not a valid move. Next move of {whose_turn}: ')
+
         piece.move_to(destination_indices[0], destination_indices[1], board)
         print(f"The configuration after {whose_turn}'s move is:")
         print(conf2unicode(board))
