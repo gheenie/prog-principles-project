@@ -1316,7 +1316,10 @@ def test_read_board_board_size_out_of_range():
 
 
 def test_read_board_letters_other_than_N_or_K():
-    pass
+    with pytest.raises('IOError') as e:
+        read_board('data/test_read_board_letters_other_than_N_or_K.txt')
+    assert str(e.value) == 'Piece type other than N or K was found.'
+
 
 def test_read_board_column_out_of_range():
     pass
