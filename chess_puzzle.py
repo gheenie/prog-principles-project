@@ -334,11 +334,15 @@ def read_board(filename: str) -> Board:
             lines = f.readlines()
     except FileNotFoundError:
         raise FileNotFoundError('File does not exist.')
-    
+
     if len(lines) < 3:
         raise IOError('There are less than 3 lines in the file.')
-    if lines[0].isnumeric() is False:
+    board_size = lines[0].strip()
+    if board_size.isnumeric() is False:
         raise IOError('Board size is not an integer.')
+    board_size = int(board_size)
+    if board_size<3 or board_size>26:
+        raise IOError('Board size is not within 3 to 26.')
     
     lines[2].split(',')
 
