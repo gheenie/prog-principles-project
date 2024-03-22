@@ -436,6 +436,7 @@ def conf2unicode(B: Board) -> str:
         grid[piece.pos_y-1][piece.pos_x-1] = get_unicode_character(piece)
 
     board_config = ''
+    # Since the rows are reversed, access them in reverse.
     for i in range(B[0]-1, -1, -1):
         board_config += ''.join(grid[i]) + '\n'
     
