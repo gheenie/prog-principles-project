@@ -523,9 +523,11 @@ def main() -> None:
                     # Catch stray exceptions from parse_input_move, but not best practice.
                     move = input(f'This is not a valid move. Next move of {whose_turn}: ')
         else:
-            move = find_black_move()
+            move = find_black_move(board)
+            piece = move[0]
+            destination_indices = (move[1], move[2])
             is_move_valid = True
-            print(f'Next move of Black is {move}. ', end='')
+            print(f'Next move of Black is {index2location(move[1], move[2])}. ', end='')
 
         # Resolve the rest of the turn once a move is valid.
         board = piece.move_to(destination_indices[0], destination_indices[1], board)
