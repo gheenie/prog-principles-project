@@ -331,7 +331,7 @@ def read_board(filename: str) -> Board:
     reads board configuration from file in current directory in plain format
     raises IOError exception if file is not valid (see section Plain board configurations)
     '''
-    lines = []
+    lines: list[str] = []
     try:
         with open(filename, 'r') as f:
             lines = f.readlines()
@@ -355,19 +355,19 @@ def read_board(filename: str) -> Board:
     
     # Start building the board with the validated board size
     # and append the pieces next.
-    board = (board_size, [])
+    board: tuple[int, list[Piece]] = (board_size, [])
 
-    unique_indices = set()
+    unique_indices: set[tuple[int, int]] = set()
     Side = namedtuple('Side', 'white black')
     side = Side(1, 2)
     for i in side:
-        king_exists = False
-        pieces = lines[i].split(',')
+        king_exists: bool = False
+        pieces: list[str] = lines[i].split(',')
         for piece in pieces:
             # Validate the piece type.
             if piece == '':
                 raise IOError('Piece type is empty.')
-            piece_type = piece[0]
+            piece_type: str = piece[0]
             if piece_type != 'N' and piece_type != 'K':
                 raise IOError('Piece type other than N or K was found.')
             elif piece_type == 'K':
@@ -376,7 +376,7 @@ def read_board(filename: str) -> Board:
                 else:
                     king_exists = True
             # Validate the piece's column and row.
-            indices = None
+            indices: tuple[int, int] = None
             try:
                 indices = location2index(piece[1:])
             except ValueError as e:
