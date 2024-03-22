@@ -1304,7 +1304,10 @@ def test_read_board_file_doesnt_exist():
 
 
 def test_read_board_first_line_not_an_int():
-    pass
+    with pytest.raises('IOError') as e:
+        read_board('data/test_read_board_first_line_not_an_int.txt')
+    assert str(e.value) == 'Board size is not an integer.'
+
 
 def test_read_board_board_size_out_of_range():
     pass
