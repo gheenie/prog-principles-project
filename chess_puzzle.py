@@ -158,7 +158,7 @@ class Knight(Piece):
         returns new board resulting from move of this knight to coordinates pos_X, pos_Y on board B 
         assumes this move is valid according to chess rules
         '''
-        board_copy = (B[0], copy(B[1]))
+        board_copy = deepcopy(B)
 
         # Remove any enemy pieces.
         stationary_piece = get_piece_or_none(pos_X, pos_Y, board_copy)
@@ -166,8 +166,9 @@ class Knight(Piece):
             board_copy[1].remove(stationary_piece)
 
         # Move the current piece.
-        self.pos_x = pos_X
-        self.pos_y = pos_Y
+        self_copy = piece_at(self.pos_x, self.pos_y, board_copy)
+        self_copy.pos_x = pos_X
+        self_copy.pos_y = pos_Y
 
         return board_copy
         
@@ -225,7 +226,7 @@ class King(Piece):
         returns new board resulting from move of this king to coordinates pos_X, pos_Y on board B 
         assumes this move is valid according to chess rules
         '''
-        board_copy = (B[0], copy(B[1]))
+        board_copy = deepcopy(B)
 
         # Remove any enemy pieces.
         stationary_piece = get_piece_or_none(pos_X, pos_Y, board_copy)
@@ -233,8 +234,9 @@ class King(Piece):
             board_copy[1].remove(stationary_piece)
 
         # Move the current piece.
-        self.pos_x = pos_X
-        self.pos_y = pos_Y
+        self_copy = piece_at(self.pos_x, self.pos_y, board_copy)
+        self_copy.pos_x = pos_X
+        self_copy.pos_y = pos_Y
 
         return board_copy
 
@@ -491,6 +493,7 @@ def main() -> None:
     whose_turn = 'White'
     is_quitting = False
     while is_quitting is False:
+        whose_turn = 'White'
         is_move_valid = False
         if whose_turn == 'White':
             move = input(f'Next move of {whose_turn}: ')
