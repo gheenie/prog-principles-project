@@ -418,7 +418,7 @@ def find_black_move(B: Board) -> tuple[Piece, int, int]:
     - use can_move_to
     '''
     # Use a sequential method for now, for both pieces and squares selection.
-    all_squares = (
+    all_squares: Iterable[tuple[int, int]] = (
         (column, row)
         for column in range(1, B[0]+1)
         for row in range(1, B[0]+1)
@@ -448,13 +448,13 @@ def get_unicode_character(piece: Piece) -> str:
 def conf2unicode(B: Board) -> str: 
     '''converts board cofiguration B to unicode format string (see section Unicode board configurations)'''
     # Initialise a grid of empty spaces with the rows reversed.
-    grid = [['\u2001']*B[0] for _ in range(B[0])]
+    grid: list[list[str]] = [['\u2001']*B[0] for _ in range(B[0])]
 
     # Fill occupied spaces with unicode chess pieces.
     for piece in B[1]:
         grid[piece.pos_y-1][piece.pos_x-1] = get_unicode_character(piece)
 
-    board_config = ''
+    board_config: str = ''
     # Since the rows are reversed, access them in reverse.
     for i in range(B[0]-1, -1, -1):
         board_config += ''.join(grid[i]) + '\n'
@@ -467,8 +467,8 @@ def parse_input_move(input_move: str) -> tuple[str, str]:
     if int(len(input_move)%2) == 0:
         return (input_move[:int(len(input_move)/2)], input_move[int(len(input_move)/2):])
     
-    from_move = input_move[0:2]
-    to_move = ''
+    from_move: str = input_move[0:2]
+    to_move: str = ''
     if input_move[2].isnumeric is True:
         from_move += input_move[2]
         to_move = input_move[3:]
