@@ -1298,7 +1298,10 @@ def test_read_board1():
 
 
 def test_read_board_file_doesnt_exist():
-    pass
+    with pytest.raises('FileNotFoundError') as e:
+        read_board('test_read_board_file_doesnt_exist.txt')
+    assert str(e.value) == 'File does not exist.'
+
 
 def test_read_board_first_line_not_an_int():
     pass
