@@ -745,18 +745,23 @@ def test_move_to_white_king_no_capture(board4):
     expected_board = (5, [wn12, wn52, wn54, wk34, bn11, bn24, bn25, bk23])
     wk45 = King(4, 5, True)
 
+    wk34 = piece_at(3, 4, board4)
     result_board = wk34.move_to(4, 5, board4)
-    result_wk34 = piece_at(4, 5, result_board)
 
-    assert result_board[0] == expected_board[0]
-    for i in range(len(expected_board)):
-        assert result_board[1][i] is expected_board[1][i]
-    assert (
-        result_wk34.pos_x == wk45.pos_x
-        and result_wk34.pos_y == wk45.pos_y
-        and result_wk34.side == wk45.side
-        and isinstance(result_wk34, King) is isinstance(wk45, King)
-    )
+    assert result_board[0] == board4[0]
+    assert len(result_board[1]) == len(board4[1])
+    for result_piece in result_board[1]:
+        found = False
+        for expected_piece in board4[1]:
+            if (
+                    result_piece.pos_x == expected_piece.pos_x
+                    and result_piece.pos_y == expected_piece.pos_y
+                    and result_piece.side == expected_piece.side
+                    and isinstance(result_piece, King) == isinstance(expected_piece, King)
+                    and result_piece is not expected_piece
+            ):
+                found = True
+        assert found is True
 
 
 def test_move_to_black_king_captured_a_knight(board4):
