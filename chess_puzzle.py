@@ -400,6 +400,10 @@ def read_board(filename: str) -> Board:
 
 def save_board(filename: str, B: Board) -> None:
     '''saves board configuration into file in current directory in plain format'''
+    board_config = conf2unicode(B)
+
+    with open(filename, 'w') as f:
+        f.writelines(board_config)
 
 
 def find_black_move(B: Board) -> tuple[Piece, int, int]:
@@ -451,7 +455,9 @@ def main() -> None:
     Hint: implementation of this could start as follows:
     filename = input("File name for initial configuration: ")
     ...
-    '''    
+    '''
+    board = read_board('board_examp.txt')
+    save_board('board_config.txt', board)
 
 
 if __name__ == '__main__': #keep this in
