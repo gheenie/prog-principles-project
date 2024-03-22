@@ -488,10 +488,10 @@ def main() -> None:
         except IOError:
             filename = input('This is not a valid file. File name for initial configuration: ')
 
+    move = input(f'Next move of {whose_turn}: ')
     whose_turn = 'White'
     is_quitting = False
     while is_quitting is False:
-        move = input(f'Next move of {whose_turn}: ')
         if move == 'QUIT':
             filename = input('File name to store the configuration: ')
             save_board(filename, board)
@@ -499,6 +499,25 @@ def main() -> None:
             is_quitting = True
             return
         from_to = parse_input_move(move)
+        piece = None
+        try:
+            piece_indices = location2index(from_to[0])
+            piece = get_piece_or_none(piece_indices[0], piece_indices[1], board)
+            if piece is None:
+                raise TypeError('No piece in the specified location.')
+            if piece.can_move_to(from_to[1]) is False:
+                raise ValueError('The destination is invalid.')
+        except Exception as e:
+            move = input(f'This is not a valid move. Next move of {whose_turn}: ')
+        piece.move_to(location2index(from_to[1]))
+        print(f"The configuration after {whose_turn}'s move is:")
+        print(conf2unicode(board))
+        if is_checkmate(whose_turn!='White', board) is True:
+            print(f'Game over. {whose_turn} wins.')
+            return
+        if is_stalemate(whose_turn!='White', board) is True:
+            print(f'Game over. Stalemate.')
+            return
 
 
 if __name__ == '__main__': #keep this in
