@@ -11,9 +11,9 @@ def location2index(loc: str) -> tuple[int, int]:
     if loc == '':
         raise ValueError('Location is empty.')
     
-    column = loc[0]
+    column: str = loc[0]
     row = loc[1:]
-    converted_column = ord(column) - 96
+    converted_column: int = ord(column) - 96
 
     # Check edge cases.
     if converted_column<1 or converted_column>26:
