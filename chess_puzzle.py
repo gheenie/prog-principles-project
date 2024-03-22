@@ -487,9 +487,9 @@ def main() -> None:
     ...
     '''
     # Load the file into a board. Repeat inputs until valid.
-    filename = input('File name for initial configuration: ')
-    board = None
-    is_file_valid = False
+    filename: str = input('File name for initial configuration: ')
+    board: Optional[tuple[int, list[Piece]]] = None
+    is_file_valid: bool = False
     while is_file_valid is False:
         if filename == 'QUIT':
             return
@@ -504,13 +504,13 @@ def main() -> None:
             filename = input('This is not a valid file. File name for initial configuration: ')
 
     # Start processing a turn. Repeat the turns until program terminates.
-    whose_turn = 'White'
-    is_quitting = False
+    whose_turn: str = 'White'
+    is_quitting: bool = False
     while is_quitting is False:
         # Choose a move. Repeat inputs until valid.
-        is_move_valid = False
+        is_move_valid: bool = False
         if whose_turn == 'White':
-            move = input(f'Next move of {whose_turn}: ')
+            move: str = input(f'Next move of {whose_turn}: ')
             while is_move_valid is False:
                 if move == 'QUIT':
                     filename = input('File name to store the configuration: ')
@@ -518,12 +518,12 @@ def main() -> None:
                     print('The game configuration saved.')
                     return
                 try:
-                    from_to = parse_input_move(move)
-                    piece_indices = location2index(from_to[0])
-                    piece = get_piece_or_none(piece_indices[0], piece_indices[1], board)
+                    from_to: tuple[str, str] = parse_input_move(move)
+                    piece_indices: tuple[int, int] = location2index(from_to[0])
+                    piece: Optional[Piece] = get_piece_or_none(piece_indices[0], piece_indices[1], board)
                     if piece is None:
                         raise TypeError('No piece in the specified location.')
-                    destination_indices = location2index(from_to[1])
+                    destination_indices: tuple[int, int] = location2index(from_to[1])
                     if piece.can_move_to(destination_indices[0], destination_indices[1], board) is False:
                         raise ValueError('The destination is invalid.')
                     is_move_valid = True
@@ -535,9 +535,9 @@ def main() -> None:
                     # Catch stray exceptions from parse_input_move, but not best practice.
                     move = input(f'This is not a valid move. Next move of {whose_turn}: ')
         else:
-            move = find_black_move(board)
+            move: tuple[Piece, int, int] = find_black_move(board)
             piece = move[0]
-            destination_indices = (move[1], move[2])
+            destination_indices: tuple[int, int] = (move[1], move[2])
             is_move_valid = True
             print(f'Next move of Black is {index2location(piece.pos_x, piece.pos_y)}{index2location(move[1], move[2])}. ', end='')
 
