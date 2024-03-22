@@ -1278,10 +1278,6 @@ def test_is_stalemate_true_with_zoning():
     assert is_stalemate(True, board) is True
 
 
-# def test_revert_the_change_to_global_B1_caused_by_test_move_to1():
-#     wn1.move_to(1, 2, B1)
-
-
 def test_read_board1():
     B = read_board("board_examp.txt")
     for piece in B[1]:
