@@ -133,11 +133,11 @@ def test_is_piece_at1():
     assert is_piece_at(2,2, B1) == False
 
 
-def test_is_piece_at_is_true_for_any_white_pieces():
-    assert is_piece_at(1, 2, B1) is True
-    assert is_piece_at(5, 2, B1) is True
-    assert is_piece_at(5, 4, B1) is True
-    assert is_piece_at(3, 5, B1) is True
+def test_is_piece_at_is_true_for_any_white_pieces(board1):
+    assert is_piece_at(1, 2, board1) is True
+    assert is_piece_at(5, 2, board1) is True
+    assert is_piece_at(5, 4, board1) is True
+    assert is_piece_at(3, 5, board1) is True
 
 
 def test_is_piece_at_is_true_for_any_black_pieces(board1):
@@ -146,21 +146,21 @@ def test_is_piece_at_is_true_for_any_black_pieces(board1):
     assert is_piece_at(2, 4, board1) is True
 
 
-def test_is_piece_at_column_out_of_bounds():
+def test_is_piece_at_column_out_of_bounds(board1):
     with pytest.raises(ValueError) as e:
-        is_piece_at(7, 1, B1)
+        is_piece_at(7, 1, board1)
     assert str(e.value) == 'One of the coordinate is out of bounds.'
     with pytest.raises(ValueError) as e:
-        is_piece_at(0, 5, B1)
+        is_piece_at(0, 5, board1)
     assert str(e.value) == 'One of the coordinate is out of bounds.'
 
 
-def test_is_piece_at_row_out_of_bounds():
+def test_is_piece_at_row_out_of_bounds(board1):
     with pytest.raises(ValueError) as e:
-        is_piece_at(1, 6, B1)
+        is_piece_at(1, 6, board1)
     assert str(e.value) == 'One of the coordinate is out of bounds.'
     with pytest.raises(ValueError) as e:
-        is_piece_at(5, -1, B1)
+        is_piece_at(5, -1, board1)
     assert str(e.value) == 'One of the coordinate is out of bounds.'
 
 
