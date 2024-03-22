@@ -1,0 +1,4 @@
+5
+Na2, Ne2, Ne4, Kc5
+Naa, Kb3, Nb4 
+
