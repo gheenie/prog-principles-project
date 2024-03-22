@@ -474,6 +474,7 @@ def main() -> None:
     filename = input("File name for initial configuration: ")
     ...
     '''
+    # Load the file into a board. Repeat inputs until valid.
     filename = input('File name for initial configuration: ')
     board = None
     is_file_valid = False
@@ -490,10 +491,11 @@ def main() -> None:
         except IOError:
             filename = input('This is not a valid file. File name for initial configuration: ')
 
+    # Start processing a turn. Repeat the turns until program terminates.
     whose_turn = 'White'
     is_quitting = False
     while is_quitting is False:
-        whose_turn = 'White'
+        # Choose a move. Repeat inputs until valid.
         is_move_valid = False
         if whose_turn == 'White':
             move = input(f'Next move of {whose_turn}: ')
@@ -503,23 +505,29 @@ def main() -> None:
                     save_board(filename, board)
                     print('The game configuration saved.')
                     return
-                from_to = parse_input_move(move)
-                piece = None
                 try:
+                    from_to = parse_input_move(move)
                     piece_indices = location2index(from_to[0])
-                    destination_indices = location2index(from_to[1])
                     piece = get_piece_or_none(piece_indices[0], piece_indices[1], board)
                     if piece is None:
                         raise TypeError('No piece in the specified location.')
+                    destination_indices = location2index(from_to[1])
                     if piece.can_move_to(destination_indices[0], destination_indices[1], board) is False:
                         raise ValueError('The destination is invalid.')
                     is_move_valid = True
-                except Exception as e:
+                except TypeError:
+                    move = input(f'This is not a valid move. Next move of {whose_turn}: ')
+                except ValueError:
+                    move = input(f'This is not a valid move. Next move of {whose_turn}: ')
+                except Exception:
+                    # Catch stray exceptions from parse_input_move, but not best practice.
                     move = input(f'This is not a valid move. Next move of {whose_turn}: ')
         else:
             move = find_black_move()
+            is_move_valid = True
             print(f'Next move of Black is {move}. ', end='')
 
+        # Resolve the rest of the turn once a move is valid.
         board = piece.move_to(destination_indices[0], destination_indices[1], board)
         print(f"The configuration after {whose_turn}'s move is:")
         print(conf2unicode(board))
