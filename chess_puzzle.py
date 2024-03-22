@@ -1,6 +1,7 @@
 from copy import deepcopy
 from copy import copy
 from typing import Optional
+from collections import namedtuple
 
 
 def location2index(loc: str) -> tuple[int, int]:
@@ -344,7 +345,13 @@ def read_board(filename: str) -> Board:
     if board_size<3 or board_size>26:
         raise IOError('Board size is not within 3 to 26.')
     
-    lines[2].split(',')
+    Side = namedtuple('Side', 'white black')
+    side = Side(1, 2)
+    for i in side:
+        pieces = lines[i].strip().split(',')
+        for piece in pieces:
+            if piece[0] != 'N' or piece[0] != 'K':
+                raise IOError('Piece type other than N or K was found.')
 
 
 def save_board(filename: str, B: Board) -> None:
