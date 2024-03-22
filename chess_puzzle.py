@@ -518,6 +518,15 @@ def main() -> None:
         if is_stalemate(whose_turn!='White', board) is True:
             print(f'Game over. Stalemate.')
             return
+        if whose_turn == 'White':
+            whose_turn == 'Black'
+        else:
+            whose_turn == 'White'
+        if whose_turn == 'Black':
+            move = find_black_move()
+            print('Next move of Black is b4c2. ', end='')
+        else:
+            move = input(f'Next move of {whose_turn}: ')
 
 
 if __name__ == '__main__': #keep this in
