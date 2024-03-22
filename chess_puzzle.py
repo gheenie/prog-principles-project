@@ -417,6 +417,18 @@ def find_black_move(B: Board) -> tuple[Piece, int, int]:
     - use methods of random library
     - use can_move_to
     '''
+    # Use a sequential method for now.
+    all_squares = (
+        (column, row)
+        for column in range(1, B[0]+1)
+        for row in range(1, B[0]+1)
+    )
+
+    for piece in B[1]:
+        if piece.side is False:
+            for square in all_squares:
+                if piece.can_move_to(square[0], square[1], B) is True:
+                    return (piece, square[0], square[1])
 
 
 def get_unicode_character(piece: Piece) -> str:
