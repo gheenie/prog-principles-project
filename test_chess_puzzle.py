@@ -188,6 +188,18 @@ def test_piece_at1():
     assert piece_at(1,1, B1) == bn1
 
 
+def test_piece_at_white_knight(board1):
+
+
+def test_piece_at_white_king(board1):
+
+
+def test_piece_at_black_knight(board1):
+
+
+def test_piece_at_black_king(board1):
+
+
 def test_can_reach1():
     assert bn1.can_reach(2,2, B1) == False
 
