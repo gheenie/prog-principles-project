@@ -618,17 +618,22 @@ def test_move_to_black_knight_captured_a_knight(board2):
     bn44 = Knight(4, 4, False)
     board2[1].remove(bn32)
     board2[1].remove(wn44)
-    board2[1].
+    board2[1].append(bn44)
 
-    assert result_board[0] == expected_board[0]
-    for i in range(len(expected_board)):
-        assert result_board[1][i] is expected_board[1][i]
-    assert (
-        result_bn32.pos_x == bn44.pos_x
-        and result_bn32.pos_y == bn44.pos_y
-        and result_bn32.side == bn44.side
-        and isinstance(result_bn32, Knight) is isinstance(bn44, Knight)
-    )
+    assert result_board[0] == board2[0]
+    assert len(result_board[1]) == len(board2[1])
+    for result_piece in result_board[1]:
+        found = False
+        for expected_piece in board2[1]:
+            if (
+                    result_piece.pos_x == expected_piece.pos_x
+                    and result_piece.pos_y == expected_piece.pos_y
+                    and result_piece.side == expected_piece.side
+                    and isinstance(result_piece, Knight) == isinstance(expected_piece, Knight)
+                    and result_piece is not expected_piece
+            ):
+                found = True
+        assert found is True
 
 
 def test_move_to_black_knight_no_capture(board2):
