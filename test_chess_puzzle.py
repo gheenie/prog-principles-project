@@ -574,9 +574,13 @@ def test_move_to_white_knight_captured_a_king(board2):
 
     result_board = wn44.move_to(2, 3, board2)
     
+    bk23 = piece_at(2, 3, board2)
     wn23 = Knight(2, 3, True)
+    board2[1].remove(wn44)
+    board2[1].remove(bk23)
+    board2[1].append(wn23)
 
-    assert result_board[0] == expected_board[0]
+    assert result_board[0] == board2[0]
     assert len(result_board[1]) == len(board2[1])
     for result_piece in result_board[1]:
         found = False
