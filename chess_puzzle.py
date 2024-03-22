@@ -465,6 +465,7 @@ def main() -> None:
         try:
             board = read_board(filename)
             is_file_valid = True
+            print('The initial configuration is:')
             print(conf2unicode(board))
         except FileNotFoundError:
             filename = input('This is not a valid file. File name for initial configuration: ')
