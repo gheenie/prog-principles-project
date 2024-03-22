@@ -1491,26 +1491,20 @@ def test_conf2unicode_largest_board():
                   ♘           
                   ♘           
                   ♘           
-                  ♘           
-                  ♘           
-                  ♘           
-                  ♘           
-                  ♘           
-                  ♘           
-                  ♘           
-                  ♘           
-                  ♘           
-                  ♘           
-                  ♘           
-                  ♘          
     ♚                         
     '''
-    expected = '\u2001\u2001\u2001\u2001\u2654'
+    wk2626 = King(26, 26, True)
+    bk11 = King(1, 1, False)
+    board = (26, [wk2626, bk11])
+    for i in range(2, 26):
+        board[1].append(Knight(15, i, True))
+
+    expected = '\u2001\u2001\u2001\u2001\u2001'
     expected += '\u2001\u2001\u2001\u2001\u2001'
     expected += '\u2001\u2001\u2001\u2001\u2001'
     expected += '\u2001\u2001\u2001\u2001\u2001'
     expected += '\u2001\u2001\u2001\u2001\u2001'
-    expected += '\u2001' + '\n'
+    expected += '\u2654' + '\n'
     for _ in range(24):
         expected += '\u2001\u2001\u2001\u2001\u2001'
         expected += '\u2001\u2001\u2001\u2001\u2001'
