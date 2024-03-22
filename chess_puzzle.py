@@ -448,6 +448,22 @@ def conf2unicode(B: Board) -> str:
     return board_config
 
 
+def parse_input_move(input_move: str) -> tuple[str, str]:
+    if len(input_move)%2 == 0:
+        return (input_move[:len(input_move)/2], input_move[len(input_move)/2:])
+    
+    from_move = input_move[0:2]
+    to_move = ''
+    if input_move[2].isnumeric is True:
+        from_move += input_move[2]
+        to_move = input_move[3:]
+    else:
+        to_move = input_move[2:]
+
+    return (from_move, to_move)
+
+
+
 def main() -> None:
     '''
     runs the play
@@ -482,6 +498,7 @@ def main() -> None:
             print('The game configuration saved.')
             is_quitting = True
             return
+        from_to = parse_input_move(move)
 
 
 if __name__ == '__main__': #keep this in
