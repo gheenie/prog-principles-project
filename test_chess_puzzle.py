@@ -424,6 +424,24 @@ def test_can_move_to_knight_can_move_by_removing_check(board2):
     assert bn32.can_move_to(4, 4, board2) is True
 
 
+def test_can_move_to_knight_board_not_mutated(board2):
+    wn51 = Knight(5, 1, True)
+    board2[1].append(wn51)
+    '''
+     ♘♔  
+     ♞ ♘♘
+     ♚ ♞ 
+    ♘ ♞ ♘
+    ♞   ♘
+    '''
+    bn32 = piece_at(3, 2, board2)
+
+    wn51.can_move_to(4, 3, board2)
+    bn32.can_move_to(4, 4, board2)
+
+    assert len(board2[1]) == 12
+
+
 def test_can_move_to1():
     assert wk1.can_move_to(4,5, B1) == False
 
