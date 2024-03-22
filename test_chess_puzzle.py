@@ -28,13 +28,22 @@ def test_location2index_input_is_empty_string():
     assert str(e.value) == 'Location is empty.'
 
 
-def test_location2index_column_is_invalid():
+def test_location2index_column_is_out_of_bounds():
+    # Integer.
     with pytest.raises(ValueError) as e:
         location2index('55')
-    assert str(e.value) == 'Column is incorrectly formatted.'
+    assert str(e.value) == 'Column is out of the range of characters a to z.'
     with pytest.raises(ValueError) as e:
         location2index('526')
-    assert str(e.value) == 'Column is incorrectly formatted.'
+    assert str(e.value) == 'Column is out of the range of characters a to z.'
+    # Capital letter.
+    with pytest.raises(ValueError) as e:
+        location2index('A5')
+    assert str(e.value) == 'Column is out of the range of characters a to z.'
+    # Character that isn't a letter.
+    with pytest.raises(ValueError) as e:
+        location2index('#26')
+    assert str(e.value) == 'Column is out of the range of characters a to z.'
 
 
 def test_location2index_row_is_invalid():
