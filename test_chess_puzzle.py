@@ -1297,10 +1297,22 @@ def test_read_board1():
         assert found
 
 
+def test_read_board_file_doesnt_exist():
+    pass
+
 def test_read_board_first_line_not_an_int():
     pass
 
+def test_read_board_board_size_out_of_range():
+    pass
+
 def test_read_board_letters_other_than_N_or_K():
+    pass
+
+def test_read_board_column_out_of_range():
+    pass
+
+def test_read_board_row_out_of_range():
     pass
 
 def test_read_board_location2index_returns_invalid():
