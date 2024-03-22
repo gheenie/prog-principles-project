@@ -1435,3 +1435,23 @@ def test_conf2unicode_1(board1):
     expected += '\u265E\u2001\u2001\u2001\u2001' + '\n'
 
     assert conf2unicode(board1) == expected
+
+
+def test_conf2unicode_2(board2):
+    expected = '\u2001\u2658\u2654\u2001\u2001' + '\n'
+    expected += '\u2001\u265E\u2001\u2658\u2658' + '\n'
+    expected += '\u2001\u265A\u2001\u265E\u2001' + '\n'
+    expected += '\u2658\u2001\u265E\u2001\u2658' + '\n'
+    expected += '\u265E\u2001\u2001\u2001\u2001' + '\n'
+
+    assert conf2unicode(board2) == expected
+
+
+def test_conf2unicode_3(boardeeee):
+    expected = '\u2001\u2001\u2001\u2001\u2001' + '\n'
+    expected += '\u2001\u2001\u2001\u2001\u2001' + '\n'
+    expected += '\u2001\u2001\u2001\u2001\u2001' + '\n'
+    expected += '\u2001\u2001\u2001\u2001\u2001' + '\n'
+    expected += '\u2001\u2001\u2001\u2001\u2001' + '\n'
+
+    assert conf2unicode(board) == expected
