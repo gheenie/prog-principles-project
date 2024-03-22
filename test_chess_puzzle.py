@@ -1326,7 +1326,10 @@ def test_read_board_first_line_not_an_int():
 
 def test_read_board_board_size_out_of_range():
     with pytest.raises(IOError) as e:
-        read_board('data/test_read_board_board_size_out_of_range.txt')
+        read_board('data/test_read_board_board_size_out_of_range_1.txt')
+    assert str(e.value) == 'Board size is not within 3 to 26.'
+    with pytest.raises(IOError) as e:
+        read_board('data/test_read_board_board_size_out_of_range_2.txt')
     assert str(e.value) == 'Board size is not within 3 to 26.'
 
 
