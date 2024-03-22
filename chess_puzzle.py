@@ -352,8 +352,9 @@ def read_board(filename: str) -> Board:
     for i in side:
         pieces = lines[i].split(',')
         for piece in pieces:
-            print(piece[0])
-            if piece[0] != 'N' or piece[0] != 'K':
+            if piece == '':
+                raise IOError('Piece type is empty.')
+            if piece[0] != 'N' and piece[0] != 'K':
                 raise IOError('Piece type other than N or K was found.')
             index = location2index(piece[1:])
 
