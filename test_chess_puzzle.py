@@ -1278,7 +1278,6 @@ def test_is_stalemate_true_with_zoning():
     assert is_stalemate(True, board) is True
 
 
-@pytest.mark.skip
 def test_read_board1():
     B = read_board("board_examp.txt")
     assert B[0] == 5
@@ -1296,3 +1295,15 @@ def test_read_board1():
             if piece.pos_x == piece1.pos_x and piece.pos_y == piece1.pos_y and piece.side == piece1.side and type(piece) == type(piece1):
                 found = True
         assert found
+
+
+def test_read_board_first_line_not_an_int():
+    pass
+
+def test_read_board_letters_other_than_N_or_K():
+    pass
+
+def test_read_board_location2index_returns_invalid():
+    # invalid chars
+    # empty str, wrong col, wrong row, row out of bounds
+    pass
