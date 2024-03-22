@@ -328,6 +328,11 @@ def read_board(filename: str) -> Board:
     reads board configuration from file in current directory in plain format
     raises IOError exception if file is not valid (see section Plain board configurations)
     '''
+    try:
+        with open(filename, 'r') as f:
+            f.readlines()
+    except FileNotFoundError:
+        raise FileNotFoundError('File does not exist.')
 
 
 def save_board(filename: str, B: Board) -> None:
