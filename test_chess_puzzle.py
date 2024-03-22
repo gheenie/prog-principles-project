@@ -1286,7 +1286,7 @@ def test_is_stalemate_true_with_zoning():
 
     assert is_stalemate(True, board) is True
 
-@pytest.mark.skip
+
 def test_read_board1():
     B = read_board("board_examp.txt")
     assert B[0] == 5
@@ -1393,7 +1393,6 @@ def test_read_board_row_out_of_range():
     assert str(e.value) == 'Row is not within 1 to max board size.'
 
 
-@pytest.mark.skip
 def test_read_board_arbitrary_spaces(board1):
     result_board = read_board('data/test_read_board_arbitrary_spaces.txt')
     
@@ -1413,7 +1412,6 @@ def test_read_board_arbitrary_spaces(board1):
         assert found is True
 
 
-@pytest.mark.skip
 def test_read_board_pieces_in_same_location():
     with pytest.raises(IOError) as e:
         read_board('data/test_read_board_pieces_in_same_location.txt')
