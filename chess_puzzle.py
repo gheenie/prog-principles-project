@@ -328,11 +328,17 @@ def read_board(filename: str) -> Board:
     reads board configuration from file in current directory in plain format
     raises IOError exception if file is not valid (see section Plain board configurations)
     '''
+    lines = []
     try:
         with open(filename, 'r') as f:
-            f.readlines()
+            lines = f.readlines()
     except FileNotFoundError:
         raise FileNotFoundError('File does not exist.')
+    
+    if len(lines) < 3:
+        raise IOError('There are less than 3 lines in the file.')
+    
+    lines[2].split(',')
 
 
 def save_board(filename: str, B: Board) -> None:

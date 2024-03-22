@@ -1312,6 +1312,12 @@ def test_read_board_file_doesnt_exist():
     assert str(e.value) == 'File does not exist.'
 
 
+def test_read_board_less_than_3_lines():
+    with pytest.raises(IOError) as e:
+        read_board('data/test_read_board_less_than_3_lines.txt')
+    assert str(e.value) == 'There are less than 3 lines in the file.'
+
+
 def test_read_board_first_line_not_an_int():
     with pytest.raises(IOError) as e:
         read_board('data/test_read_board_first_line_not_an_int.txt')
