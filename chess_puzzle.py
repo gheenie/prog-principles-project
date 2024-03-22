@@ -350,12 +350,19 @@ def read_board(filename: str) -> Board:
     Side = namedtuple('Side', 'white black')
     side = Side(1, 2)
     for i in side:
+        king_exists = False
         pieces = lines[i].split(',')
         for piece in pieces:
             if piece == '':
                 raise IOError('Piece type is empty.')
-            if piece[0] != 'N' and piece[0] != 'K':
+            piece_type = piece[0]
+            if piece_type != 'N' and piece_type != 'K':
                 raise IOError('Piece type other than N or K was found.')
+            elif piece_type == 'K':
+                if king_exists is False:
+                    king_exists = True
+                else:
+                    raise IOError('At least one side contains more than 1 king.')
             indices = None
             try:
                 indices = location2index(piece[1:])
