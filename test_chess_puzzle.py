@@ -133,14 +133,17 @@ def test_is_piece_at1():
     assert is_piece_at(2,2, B1) == False
 
 
-def test_is_piece_at_is_true_for_any_colour_pieces():
+def test_is_piece_at_is_true_for_any_white_pieces():
     assert is_piece_at(1, 2, B1) is True
     assert is_piece_at(5, 2, B1) is True
     assert is_piece_at(5, 4, B1) is True
     assert is_piece_at(3, 5, B1) is True
-    assert is_piece_at(1, 1, B1) is True
-    assert is_piece_at(2, 3, B1) is True
-    assert is_piece_at(2, 4, B1) is True
+
+
+def test_is_piece_at_is_true_for_any_black_pieces(board1):
+    assert is_piece_at(1, 1, board1) is True
+    assert is_piece_at(2, 3, board1) is True
+    assert is_piece_at(2, 4, board1) is True
 
 
 def test_is_piece_at_column_out_of_bounds():
