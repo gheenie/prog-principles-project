@@ -1351,6 +1351,12 @@ def test_read_board_no_commas():
     assert str(e.value) == 'Piece type is empty.'
 
 
+def test_read_board_more_than_1_king():
+    with pytest.raises(IOError) as e:
+        read_board('data/test_read_board_more_than_1_king.txt')
+    assert str(e.value) == 'At least one side contains more than 1 king.'
+
+
 def test_read_board_location2index_returns_invalid():
     with pytest.raises(IOError) as e:
         read_board('data/test_read_board_location2index_returns_empty_string.txt')
@@ -1406,11 +1412,6 @@ def test_read_board_arbitrary_spaces(board1):
                 found = True
         assert found is True
 
-@pytest.mark.skip
-def test_read_board_more_than_1_king():
-    with pytest.raises(IOError) as e:
-        read_board('data/test_read_board_more_than_1_king.txt')
-    assert str(e.value) == 'At least one side contains more than 1 king.'
 
 @pytest.mark.skip
 def test_read_board_pieces_in_same_location():
