@@ -545,35 +545,24 @@ def test_move_to1():
 
 
 def test_move_to_white_knight_no_capture(board2):
-    wn12 = piece_at(1, 2, board2)
-    wn52 = piece_at(5, 2, board2)
-    wn54 = piece_at(5, 4, board2)
-    wn44 = piece_at(4, 4, board2)
-    wk35 = piece_at(3, 5, board2)
-    bn11 = piece_at(1, 1, board2)
-    bn24 = piece_at(2, 4, board2)
-    bn32 = piece_at(3, 2, board2)
-    bn43 = piece_at(4, 3, board2)
-    bk23 = piece_at(2, 3, board2)
-    expected_board = (5, [wn12, wn52, wn54, wn44, wn13, wk35, bn11, bn24, bn32, bn43, bk23])
     wn25 = piece_at(2, 5, board2)
+    result_board = wn25.move_to(1, 3, board2)
+
     wn13 = Knight(1, 3, True)
     board2[1].remove(wn25)
     board2[1].append(wn13)
 
-    result_board = wn25.move_to(1, 3, board2)
-    result_wn25 = piece_at(1, 3, result_board)
-
-    assert result_board[0] == expected_board[0]
-    assert len(result_board[1]) == len(expected_board[1])
+    assert result_board[0] == board2[0]
+    assert len(result_board[1]) == len(board2[1])
     for result_piece in result_board[1]:
         found = False
-        for expected_piece in expected_board[1]:
+        for expected_piece in board2[1]:
             if (
                     result_piece.pos_x == expected_piece.pos_x
                     and result_piece.pos_y == expected_piece.pos_y
                     and result_piece.side == expected_piece.side
                     and isinstance(result_piece, Knight) == isinstance(expected_piece, Knight)
+                    and result_piece is not expected_piece
             ):
                 found = True
         assert found is True
