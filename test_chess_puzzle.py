@@ -133,6 +133,26 @@ def test_is_piece_at1():
     assert is_piece_at(2,2, B1) == False
 
 
+@pytest.fixture(scope="function")
+def board1():
+    '''
+      ♔  
+     ♞  ♘
+     ♚   
+    ♘   ♘
+    ♞    
+    '''
+    wn12 = Knight(1, 2, True)
+    wn52 = Knight(5, 2, True)
+    wn54 = Knight(5, 4, True)
+    wk35 = King(3, 5, True)
+    bn11 = Knight(1, 1, False)
+    bn24 = Knight(2, 4, False)
+    bk23 = King(2, 3, False)
+
+    return (5, [wn12, wn52, wn54, wk35, bn11, bn24, bk23])
+
+
 def test_is_piece_at_is_true_for_any_white_pieces(board1):
     assert is_piece_at(1, 2, board1) is True
     assert is_piece_at(5, 2, board1) is True
@@ -170,26 +190,6 @@ def test_piece_at1():
 
 def test_can_reach1():
     assert bn1.can_reach(2,2, B1) == False
-
-
-@pytest.fixture(scope="function")
-def board1():
-    '''
-      ♔  
-     ♞  ♘
-     ♚   
-    ♘   ♘
-    ♞    
-    '''
-    wn12 = Knight(1, 2, True)
-    wn52 = Knight(5, 2, True)
-    wn54 = Knight(5, 4, True)
-    wk35 = King(3, 5, True)
-    bn11 = Knight(1, 1, False)
-    bn24 = Knight(2, 4, False)
-    bk23 = King(2, 3, False)
-
-    return (5, [wn12, wn52, wn54, wk35, bn11, bn24, bk23])
 
 
 @pytest.fixture(scope="function")
