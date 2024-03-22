@@ -1480,17 +1480,7 @@ def test_conf2unicode_largest_board():
     '''
                              ♔
                   ♘           
-                  ♘           
-                  ♘            
-                  ♘           
-                  ♘           
-                  ♘           
-                  ♘           
-                  ♘           
-                  ♘           
-                  ♘           
-                  ♘           
-                  ♘           
+    ^ repeated 23 more times ^
     ♚                         
     '''
     wk2626 = King(26, 26, True)
