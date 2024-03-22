@@ -1375,7 +1375,10 @@ def test_read_board_arbitrary_spaces(board1):
 
 
 def test_read_board_more_than_1_king():
-    pass
+    with pytest.raises('IOError') as e:
+        read_board('data/test_read_board_more_than_1_king.txt')
+    assert str(e.value) == 'At least one side contains more than 1 king.'
+
 
 def test_read_board_pieces_in_same_location():
     pass
