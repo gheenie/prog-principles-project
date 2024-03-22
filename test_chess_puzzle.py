@@ -1307,67 +1307,67 @@ def test_read_board1():
 
 
 def test_read_board_file_doesnt_exist():
-    with pytest.raises('FileNotFoundError') as e:
+    with pytest.raises(FileNotFoundError) as e:
         read_board('data/test_read_board_file_doesnt_exist.txt')
     assert str(e.value) == 'File does not exist.'
 
 
 def test_read_board_first_line_not_an_int():
-    with pytest.raises('IOError') as e:
+    with pytest.raises(IOError) as e:
         read_board('data/test_read_board_first_line_not_an_int.txt')
     assert str(e.value) == 'Board size is not an integer.'
 
 
 def test_read_board_board_size_out_of_range():
-    with pytest.raises('IOError') as e:
+    with pytest.raises(IOError) as e:
         read_board('data/test_read_board_board_size_out_of_range.txt')
     assert str(e.value) == 'Board size is not within 3 to 26.'
 
 
 def test_read_board_letters_other_than_N_or_K():
-    with pytest.raises('IOError') as e:
+    with pytest.raises(IOError) as e:
         read_board('data/test_read_board_letters_other_than_N_or_K.txt')
     assert str(e.value) == 'Piece type other than N or K was found.'
 
 
 def test_read_board_column_out_of_range():
-    with pytest.raises('IOError') as e:
+    with pytest.raises(IOError) as e:
         read_board('data/test_read_board_column_out_of_range.txt')
     assert str(e.value) == 'Column is not within 1 to max board size.'
 
 
 def test_read_board_row_out_of_range():
-    with pytest.raises('IOError') as e:
+    with pytest.raises(IOError) as e:
         read_board('data/test_read_board_row_out_of_range.txt')
     assert str(e.value) == 'Row is not within 1 to max board size.'
 
 
 def test_read_board_location2index_returns_invalid():
-    with pytest.raises('IOError') as e:
+    with pytest.raises(IOError) as e:
         read_board('data/test_read_board_location2index_returns_empty_string.txt')
     assert str(e.value) == 'Location is empty.'
-    with pytest.raises('IOError') as e:
+    with pytest.raises(IOError) as e:
         read_board('data/test_read_board_location2index_returns_invalid_column_integer.txt')
     assert str(e.value) == 'Column is out of the range of characters a to z.'
-    with pytest.raises('IOError') as e:
+    with pytest.raises(IOError) as e:
         read_board('data/test_read_board_location2index_returns_invalid_column_caps.txt')
     assert str(e.value) == 'Column is out of the range of characters a to z.'
-    with pytest.raises('IOError') as e:
+    with pytest.raises(IOError) as e:
         read_board('data/test_read_board_location2index_returns_invalid_column_non_letter.txt')
     assert str(e.value) == 'Column is out of the range of characters a to z.'
-    with pytest.raises('IOError') as e:
+    with pytest.raises(IOError) as e:
         read_board('data/test_read_board_location2index_returns_invalid_row_empty.txt')
     assert str(e.value) == 'Row is incorrectly formatted.'
-    with pytest.raises('IOError') as e:
+    with pytest.raises(IOError) as e:
         read_board('data/test_read_board_location2index_returns_invalid_row_non_integer_1.txt')
     assert str(e.value) == 'Row is incorrectly formatted.'
-    with pytest.raises('IOError') as e:
+    with pytest.raises(IOError) as e:
         read_board('data/test_read_board_location2index_returns_invalid_row_non_integer_2.txt')
     assert str(e.value) == 'Row is incorrectly formatted.'
 
 
 def test_read_board_no_commas():
-    with pytest.raises('IOError') as e:
+    with pytest.raises(IOError) as e:
         read_board('data/test_read_board_no_commas.txt')
     assert str(e.value) == 'Location is empty.'
 
@@ -1392,12 +1392,12 @@ def test_read_board_arbitrary_spaces(board1):
 
 
 def test_read_board_more_than_1_king():
-    with pytest.raises('IOError') as e:
+    with pytest.raises(IOError) as e:
         read_board('data/test_read_board_more_than_1_king.txt')
     assert str(e.value) == 'At least one side contains more than 1 king.'
 
 
 def test_read_board_pieces_in_same_location():
-    with pytest.raises('IOError') as e:
+    with pytest.raises(IOError) as e:
         read_board('data/test_read_board_pieces_in_same_location.txt')
     assert str(e.value) == 'There are pieces in the same location.'
