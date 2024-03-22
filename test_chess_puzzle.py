@@ -1448,13 +1448,6 @@ def test_conf2unicode_2(board2):
 
 
 def test_conf2unicode_3(board3):
-    '''
-     ♘   
-     ♞♔ ♘
-     ♚ ♞ 
-    ♘ ♞ ♘
-    ♞    
-    '''
     expected = '\u2001\u2658\u2001\u2001\u2001' + '\n'
     expected += '\u2001\u265E\u2654\u2001\u2658' + '\n'
     expected += '\u2001\u265A\u2001\u265E\u2001' + '\n'
@@ -1462,6 +1455,25 @@ def test_conf2unicode_3(board3):
     expected += '\u265E\u2001\u2001\u2001\u2001' + '\n'
 
     assert conf2unicode(board3) == expected
+
+
+def test_conf2unicode_smallest_board():
+    '''
+    ♘ ♔
+       
+    ♚ ♞
+    '''
+    wn13 = Knight(1, 3, True)
+    wk33 = King(3, 3, True)
+    bn31 = Knight(3, 1, False)
+    bk11 = King(1, 1, False)
+    board = (3, [wn13, wk33, bn31, bk11])
+    
+    expected = '\u2658\u2001\u2654' + '\n'
+    expected += '\u2001\u2001\u2001' + '\n'
+    expected += '\u265A\u2001\u265E' + '\n'
+
+    assert conf2unicode(board) == expected
 
 
 def test_conf2unicode_4(boardeeee):
