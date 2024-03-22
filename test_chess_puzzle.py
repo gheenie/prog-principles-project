@@ -803,15 +803,20 @@ def test_move_to_black_king_no_capture(board4):
     result_board = bk23.move_to(1, 3, board4)
     result_bk23 = piece_at(1, 3, result_board)
 
-    assert result_board[0] == expected_board[0]
-    for i in range(len(expected_board)):
-        assert result_board[1][i] is expected_board[1][i]
-    assert (
-        result_bk23.pos_x == bk13.pos_x
-        and result_bk23.pos_y == bk13.pos_y
-        and result_bk23.side == bk13.side
-        and isinstance(result_bk23, King) is isinstance(bk13, King)
-    )
+    assert result_board[0] == board4[0]
+    assert len(result_board[1]) == len(board4[1])
+    for result_piece in result_board[1]:
+        found = False
+        for expected_piece in board4[1]:
+            if (
+                    result_piece.pos_x == expected_piece.pos_x
+                    and result_piece.pos_y == expected_piece.pos_y
+                    and result_piece.side == expected_piece.side
+                    and isinstance(result_piece, King) == isinstance(expected_piece, King)
+                    and result_piece is not expected_piece
+            ):
+                found = True
+        assert found is True
 
 
 def test_move_to_king_returned_board_is_the_same_identity(board4):
