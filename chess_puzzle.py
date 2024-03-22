@@ -417,7 +417,7 @@ def find_black_move(B: Board) -> tuple[Piece, int, int]:
     - use methods of random library
     - use can_move_to
     '''
-    # Use a sequential method for now.
+    # Use a sequential method for now, for both pieces and squares selection.
     all_squares = (
         (column, row)
         for column in range(1, B[0]+1)
