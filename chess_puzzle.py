@@ -111,7 +111,7 @@ class Knight(Piece):
         
         # Check rule 3.
         try:
-            stationary_piece = get_piece_or_none(pos_X, pos_Y, B)
+            stationary_piece: Optional[Piece] = get_piece_or_none(pos_X, pos_Y, B)
             if stationary_piece is None:
                 return True
             return stationary_piece.side is not self.side
@@ -132,13 +132,13 @@ class Knight(Piece):
         - thirdly, construct new board resulting from move
         - finally, to check [Rule4], use is_check on new board
         '''
-        board_copy = deepcopy(B)
+        board_copy: tuple[int, list[Piece]] = deepcopy(B)
 
         if self.can_reach(pos_X, pos_Y, board_copy) is False:
             return False
         
         # Remove any enemy pieces.
-        stationary_piece = get_piece_or_none(pos_X, pos_Y, board_copy)
+        stationary_piece: Optional[Piece] = get_piece_or_none(pos_X, pos_Y, board_copy)
         if stationary_piece is not None:
             # Move is immediately valid if king is eaten.
             if isinstance(stationary_piece, King) is True:
@@ -146,7 +146,7 @@ class Knight(Piece):
             board_copy[1].remove(stationary_piece)
         
         # Move the current piece.
-        self_copy = piece_at(self.pos_x, self.pos_y, board_copy)
+        self_copy: Piece = piece_at(self.pos_x, self.pos_y, board_copy)
         self_copy.pos_x = pos_X
         self_copy.pos_y = pos_Y
         
@@ -157,15 +157,15 @@ class Knight(Piece):
         returns new board resulting from move of this knight to coordinates pos_X, pos_Y on board B 
         assumes this move is valid according to chess rules
         '''
-        board_copy = deepcopy(B)
+        board_copy: tuple[int, list[Piece]] = deepcopy(B)
 
         # Remove any enemy pieces.
-        stationary_piece = get_piece_or_none(pos_X, pos_Y, board_copy)
+        stationary_piece: Optional[Piece] = get_piece_or_none(pos_X, pos_Y, board_copy)
         if stationary_piece is not None:
             board_copy[1].remove(stationary_piece)
 
         # Move the current piece.
-        self_copy = piece_at(self.pos_x, self.pos_y, board_copy)
+        self_copy: Piece = piece_at(self.pos_x, self.pos_y, board_copy)
         self_copy.pos_x = pos_X
         self_copy.pos_y = pos_Y
 
