@@ -488,17 +488,18 @@ def main() -> None:
         except IOError:
             filename = input('This is not a valid file. File name for initial configuration: ')
 
+    whose_turn = 'White'
     is_quitting = False
     while is_quitting is False:
-        whose_turn = 'White'
         is_move_valid = False
-        move = input(f'Next move of {whose_turn}: ')
-        while is_move_valid is False:
-            if move == 'QUIT':
-                filename = input('File name to store the configuration: ')
-                save_board(filename, board)
-                print('The game configuration saved.')
-                return
+        if whose_turn == 'White':
+            move = input(f'Next move of {whose_turn}: ')
+            while is_move_valid is False:
+                if move == 'QUIT':
+                    filename = input('File name to store the configuration: ')
+                    save_board(filename, board)
+                    print('The game configuration saved.')
+                    return
             from_to = parse_input_move(move)
             piece = None
             try:
@@ -512,6 +513,9 @@ def main() -> None:
                 is_move_valid = True
             except Exception as e:
                 move = input(f'This is not a valid move. Next move of {whose_turn}: ')
+        else:
+            move = find_black_move()
+            print(f'Next move of Black is {move}. ', end='')
 
         piece.move_to(destination_indices[0], destination_indices[1], board)
         print(f"The configuration after {whose_turn}'s move is:")
@@ -526,11 +530,6 @@ def main() -> None:
             whose_turn == 'Black'
         else:
             whose_turn == 'White'
-        if whose_turn == 'Black':
-            move = find_black_move()
-            print('Next move of Black is b4c2. ', end='')
-        else:
-            move = input(f'Next move of {whose_turn}: ')
 
 
 if __name__ == '__main__': #keep this in
