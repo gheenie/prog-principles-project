@@ -734,16 +734,6 @@ def test_move_to_white_king_captured_a_knight(board4):
     
 
 def test_move_to_white_king_no_capture(board4):
-    wn12 = piece_at(1, 2, board4)
-    wn52 = piece_at(5, 2, board4)
-    wn54 = piece_at(5, 4, board4)
-    wk34 = piece_at(3, 4, board4)
-    bn11 = piece_at(1, 1, board4)
-    bn24 = piece_at(2, 4, board4)
-    bn25 = piece_at(2, 5, board4)
-    bk23 = piece_at(2, 3, board4)
-    expected_board = (5, [wn12, wn52, wn54, wk34, bn11, bn24, bn25, bk23])
-    wk45 = King(4, 5, True)
 
     wk34 = piece_at(3, 4, board4)
     result_board = wk34.move_to(4, 5, board4)
