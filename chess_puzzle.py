@@ -347,6 +347,7 @@ def read_board(filename: str) -> Board:
     if board_size<3 or board_size>26:
         raise IOError('Board size is not within 3 to 26.')
     
+    board = (board_size, [])
     unique_indices = set()
     Side = namedtuple('Side', 'white black')
     side = Side(1, 2)
@@ -378,6 +379,13 @@ def read_board(filename: str) -> Board:
                 unique_indices.add(indices)
             else:
                 raise IOError('There are pieces in the same location.')
+            
+            if piece_type == 'N':
+                board[1].append(Knight(column, row, i==side.white))
+            elif piece_type == 'K':
+                board[1].append(King(column, row, i==side.white))
+            
+    return board
 
 
 def save_board(filename: str, B: Board) -> None:
