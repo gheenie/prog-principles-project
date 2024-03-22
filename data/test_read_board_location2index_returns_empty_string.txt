@@ -1,4 +1,4 @@
 5
-Na2, Ne2, Ne4, , Kc5
+Na2, Ne2, Ne4, N, Kc5
 Na1, Kb3, Nb4 
 
