@@ -610,8 +610,12 @@ def test_move_to_black_knight_captured_a_knight(board2):
     expected_board = (5, [wn12, wn52, wn54, wn25, wk35, bn11, bn24, bn32, bn43, bk23])
     bn44 = Knight(4, 4, False)
 
+    bn32 = piece_at(3, 2, board2)
+    
     result_board = bn32.move_to(4, 4, board2)
-    result_bn32 = piece_at(4, 4, result_board)
+    wn44 = piece_at(4, 4, board2)
+    board2[1].remove(bn32)
+    board2[1].remove(wn44)
 
     assert result_board[0] == expected_board[0]
     for i in range(len(expected_board)):
