@@ -439,7 +439,7 @@ def conf2unicode(B: Board) -> str:
     for i in range(B[0]-1, -1, -1):
         board_config += ''.join(grid[i]) + '\n'
     
-    return board_config[:-1]
+    return board_config
 
 
 def main() -> None:
