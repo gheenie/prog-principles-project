@@ -1,6 +1,7 @@
 from copy import deepcopy
 from typing import Optional
 from typing import Iterable
+from random import shuffle
 from collections import namedtuple
 
 
@@ -433,18 +434,23 @@ def find_black_move(B: Board) -> tuple[Piece, int, int]:
     - use methods of random library
     - use can_move_to
     '''
-    # Use a sequential method for now, for both pieces and squares selection.
     all_squares: Iterable[tuple[int, int]] = (
         (column, row)
         for column in range(1, B[0]+1)
         for row in range(1, B[0]+1)
     )
-
+    black_pieces: list[Piece] = []
     for piece in B[1]:
         if piece.side is False:
-            for square in all_squares:
-                if piece.can_move_to(square[0], square[1], B) is True:
-                    return (piece, square[0], square[1])
+            black_pieces.append(piece)
+
+    # Randomise the order that the black pieces are accessed.
+    shuffle(black_pieces)
+    for black_piece in black_pieces:
+        # Use a sequential method for now for squares selection.
+        for square in all_squares:
+            if black_piece.can_move_to(square[0], square[1], B) is True:
+                return (black_piece, square[0], square[1])
 
 
 def get_unicode_character(piece: Piece) -> str:
