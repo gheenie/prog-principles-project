@@ -449,6 +449,7 @@ def conf2unicode(B: Board) -> str:
 
 
 def parse_input_move(input_move: str) -> tuple[str, str]:
+    '''Split the move input into the current location and destination.'''
     if len(input_move)%2 == 0:
         return (input_move[:len(input_move)/2], input_move[len(input_move)/2:])
     
@@ -461,7 +462,6 @@ def parse_input_move(input_move: str) -> tuple[str, str]:
         to_move = input_move[2:]
 
     return (from_move, to_move)
-
 
 
 def main() -> None:
