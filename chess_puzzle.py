@@ -356,10 +356,16 @@ def read_board(filename: str) -> Board:
                 raise IOError('Piece type is empty.')
             if piece[0] != 'N' and piece[0] != 'K':
                 raise IOError('Piece type other than N or K was found.')
+            indices = None
             try:
                 indices = location2index(piece[1:])
             except ValueError as e:
                 raise IOError(e.args[0])
+            column, row = indices[0], indices[1]
+            if column<1 or column>board_size:
+                raise IOError('Column is not within 1 to max board size.')
+            if row<1 or row>board_size:
+                raise IOError('Row is not within 1 to max board size.')
 
 
 def save_board(filename: str, B: Board) -> None:
