@@ -494,24 +494,24 @@ def main() -> None:
         is_move_valid = False
         move = input(f'Next move of {whose_turn}: ')
         while is_move_valid is False:
-        if move == 'QUIT':
-            filename = input('File name to store the configuration: ')
-            save_board(filename, board)
-            print('The game configuration saved.')
-            return
-        from_to = parse_input_move(move)
-        piece = None
-        try:
-            piece_indices = location2index(from_to[0])
-            destination_indices = location2index(from_to[1])
-            piece = get_piece_or_none(piece_indices[0], piece_indices[1], board)
-            if piece is None:
-                raise TypeError('No piece in the specified location.')
-            if piece.can_move_to(destination_indices[0], destination_indices[1], board) is False:
-                raise ValueError('The destination is invalid.')
-            is_move_valid = True
-        except Exception as e:
-            move = input(f'This is not a valid move. Next move of {whose_turn}: ')
+            if move == 'QUIT':
+                filename = input('File name to store the configuration: ')
+                save_board(filename, board)
+                print('The game configuration saved.')
+                return
+            from_to = parse_input_move(move)
+            piece = None
+            try:
+                piece_indices = location2index(from_to[0])
+                destination_indices = location2index(from_to[1])
+                piece = get_piece_or_none(piece_indices[0], piece_indices[1], board)
+                if piece is None:
+                    raise TypeError('No piece in the specified location.')
+                if piece.can_move_to(destination_indices[0], destination_indices[1], board) is False:
+                    raise ValueError('The destination is invalid.')
+                is_move_valid = True
+            except Exception as e:
+                move = input(f'This is not a valid move. Next move of {whose_turn}: ')
 
         piece.move_to(destination_indices[0], destination_indices[1], board)
         print(f"The configuration after {whose_turn}'s move is:")
