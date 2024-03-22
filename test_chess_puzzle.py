@@ -1333,13 +1333,17 @@ def test_read_board_board_size_out_of_range():
     assert str(e.value) == 'Board size is not within 3 to 26.'
 
 
+def test_read_board_empty_letter_for_piece_type():
+    with pytest.raises(IOError) as e:
+        read_board('data/test_read_board_empty_letter_for_piece_type.txt')
+    assert str(e.value) == 'Piece type is empty.'
+
+
 def test_read_board_letters_other_than_N_or_K():
     with pytest.raises(IOError) as e:
         read_board('data/test_read_board_letters_other_than_N_or_K.txt')
     assert str(e.value) == 'Piece type other than N or K was found.'
-    with pytest.raises(IOError) as e:
-        read_board('data/test_read_board_letters_other_than_N_or_K_empty.txt')
-    assert str(e.value) == 'Piece type other than N or K was found.'
+
 
 @pytest.mark.skip
 def test_read_board_column_out_of_range():
