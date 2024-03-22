@@ -335,11 +335,13 @@ def read_board(filename: str) -> Board:
             lines = f.readlines()
     except FileNotFoundError:
         raise FileNotFoundError('File does not exist.')
+    if len(lines) < 3:
+        raise IOError('There are less than 3 lines in the file.')
+    # Any spaces are not required for constructing the board.
     for i in range(len(lines)):
         lines[i] = lines[i].strip().replace(' ', '')
 
-    if len(lines) < 3:
-        raise IOError('There are less than 3 lines in the file.')
+    # Validate the board size.
     board_size = lines[0]
     if board_size.isnumeric() is False:
         raise IOError('Board size is not an integer.')
@@ -361,10 +363,10 @@ def read_board(filename: str) -> Board:
             if piece_type != 'N' and piece_type != 'K':
                 raise IOError('Piece type other than N or K was found.')
             elif piece_type == 'K':
-                if king_exists is False:
-                    king_exists = True
-                else:
+                if king_exists is True:
                     raise IOError('At least one side contains more than 1 king.')
+                else:
+                    king_exists = True
             indices = None
             try:
                 indices = location2index(piece[1:])
@@ -375,10 +377,10 @@ def read_board(filename: str) -> Board:
                 raise IOError('Column is not within 1 to max board size.')
             if row<1 or row>board_size:
                 raise IOError('Row is not within 1 to max board size.')
-            if indices not in unique_indices:
-                unique_indices.add(indices)
-            else:
+            if indices in unique_indices:
                 raise IOError('There are pieces in the same location.')
+            else:
+                unique_indices.add(indices)
             
             if piece_type == 'N':
                 board[1].append(Knight(column, row, i==side.white))
