@@ -335,9 +335,11 @@ def read_board(filename: str) -> Board:
             lines = f.readlines()
     except FileNotFoundError:
         raise FileNotFoundError('File does not exist.')
+    
+    # Validate the lines.
     if len(lines) < 3:
         raise IOError('There are less than 3 lines in the file.')
-    # Any spaces are not required for constructing the board.
+    # Process each line - any spaces are not required for constructing the board.
     for i in range(len(lines)):
         lines[i] = lines[i].strip().replace(' ', '')
 
@@ -349,7 +351,10 @@ def read_board(filename: str) -> Board:
     if board_size<3 or board_size>26:
         raise IOError('Board size is not within 3 to 26.')
     
+    # Start building the board with the validated board size
+    # and append the pieces next.
     board = (board_size, [])
+
     unique_indices = set()
     Side = namedtuple('Side', 'white black')
     side = Side(1, 2)
@@ -357,6 +362,7 @@ def read_board(filename: str) -> Board:
         king_exists = False
         pieces = lines[i].split(',')
         for piece in pieces:
+            # Validate the piece type.
             if piece == '':
                 raise IOError('Piece type is empty.')
             piece_type = piece[0]
@@ -367,6 +373,7 @@ def read_board(filename: str) -> Board:
                     raise IOError('At least one side contains more than 1 king.')
                 else:
                     king_exists = True
+            # Validate the piece's column and row.
             indices = None
             try:
                 indices = location2index(piece[1:])
@@ -382,6 +389,7 @@ def read_board(filename: str) -> Board:
             else:
                 unique_indices.add(indices)
             
+            # Build the list of pieces in the board.
             if piece_type == 'N':
                 board[1].append(Knight(column, row, i==side.white))
             elif piece_type == 'K':
