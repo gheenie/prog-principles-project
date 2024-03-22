@@ -1337,7 +1337,10 @@ def test_read_board_column_out_of_range():
 
 
 def test_read_board_row_out_of_range():
-    pass
+    with pytest.raises('IOError') as e:
+        read_board('data/test_read_board_row_out_of_range.txt')
+    assert str(e.value) == 'Row is not within 1 to max board size.'
+
 
 def test_read_board_location2index_returns_invalid():
     # invalid chars
