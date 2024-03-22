@@ -638,8 +638,11 @@ def test_move_to_black_knight_no_capture(board2):
     expected_board = (5, [wn12, wn52, wn54, wn44, wn25, wk35, bn11, bn24, bn32, bn43, bk23])
     bn51 = Knight(5, 1, False)
 
+    bn32 = piece_at(3, 2, board2)
     result_board = bn32.move_to(5, 1, board2)
-    result_bn32 = piece_at(5, 1, result_board)
+    bn51 = Knight(5, 1, False)
+    board2[1].remove(bn32)
+    board2[1].append(bn51)
 
     assert result_board[0] == board2[0]
     assert len(result_board[1]) == len(board2[1])
