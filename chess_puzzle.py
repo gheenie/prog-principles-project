@@ -520,7 +520,7 @@ def main() -> None:
             move = find_black_move()
             print(f'Next move of Black is {move}. ', end='')
 
-        piece.move_to(destination_indices[0], destination_indices[1], board)
+        board = piece.move_to(destination_indices[0], destination_indices[1], board)
         print(f"The configuration after {whose_turn}'s move is:")
         print(conf2unicode(board))
         if is_checkmate(whose_turn!='White', board) is True:
