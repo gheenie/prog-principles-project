@@ -1425,3 +1425,13 @@ def test_read_board_pieces_in_same_location():
     with pytest.raises(IOError) as e:
         read_board('data/test_read_board_pieces_in_same_location.txt')
     assert str(e.value) == 'There are pieces in the same location.'
+
+
+def test_conf2unicode_1(board1):
+    expected = '\u2001\u2001\u2654\u2001\u2001' + '\n'
+    expected += '\u2001\u265E\u2001\u2001\u2658' + '\n'
+    expected += '\u2001\u265A\u2001\u2001\u2001' + '\n'
+    expected += '\u2658\u2001\u2001\u2001\u2658' + '\n'
+    expected += '\u265E\u2001\u2001\u2001\u2001'
+
+    assert conf2unicode(board1) == expected
