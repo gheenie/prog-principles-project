@@ -13,10 +13,11 @@ def location2index(loc: str) -> tuple[int, int]:
     
     column = loc[0]
     row = loc[1:]
+    converted_column = ord(column) - 96
 
     # Check edge cases.
-    if column.isnumeric() is True:
-        raise ValueError('Column is incorrectly formatted.')
+    if converted_column<1 or converted_column>26:
+        raise ValueError('Column is out of the range of characters a to z.')
     try:
         row = int(row)
     except ValueError:
@@ -24,7 +25,7 @@ def location2index(loc: str) -> tuple[int, int]:
     if row<1 or row>26:
         raise ValueError('The row is out of bounds.')
     
-    return (ord(column)-96, row)
+    return (converted_column, row)
 
 
 def index2location(x: int, y: int) -> str:
