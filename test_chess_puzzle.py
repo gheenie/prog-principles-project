@@ -1345,6 +1345,12 @@ def test_read_board_letters_other_than_N_or_K():
     assert str(e.value) == 'Piece type other than N or K was found.'
 
 
+def test_read_board_no_commas():
+    with pytest.raises(IOError) as e:
+        read_board('data/test_read_board_no_commas.txt')
+    assert str(e.value) == 'Piece type is empty.'
+
+
 @pytest.mark.skip
 def test_read_board_column_out_of_range():
     with pytest.raises(IOError) as e:
@@ -1381,11 +1387,6 @@ def test_read_board_location2index_returns_invalid():
         read_board('data/test_read_board_location2index_returns_invalid_row_non_integer_2.txt')
     assert str(e.value) == 'Row is incorrectly formatted.'
 
-@pytest.mark.skip
-def test_read_board_no_commas():
-    with pytest.raises(IOError) as e:
-        read_board('data/test_read_board_no_commas.txt')
-    assert str(e.value) == 'Location is empty.'
 
 @pytest.mark.skip
 def test_read_board_arbitrary_spaces(board1):
