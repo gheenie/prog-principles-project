@@ -1468,7 +1468,7 @@ def test_conf2unicode_smallest_board():
     bn31 = Knight(3, 1, False)
     bk11 = King(1, 1, False)
     board = (3, [wn13, wk33, bn31, bk11])
-    
+
     expected = '\u2658\u2001\u2654' + '\n'
     expected += '\u2001\u2001\u2001' + '\n'
     expected += '\u265A\u2001\u265E' + '\n'
@@ -1476,11 +1476,24 @@ def test_conf2unicode_smallest_board():
     assert conf2unicode(board) == expected
 
 
-def test_conf2unicode_4(boardeeee):
-    expected = '\u2001\u2001\u2001\u2001\u2001' + '\n'
-    expected += '\u2001\u2001\u2001\u2001\u2001' + '\n'
-    expected += '\u2001\u2001\u2001\u2001\u2001' + '\n'
-    expected += '\u2001\u2001\u2001\u2001\u2001' + '\n'
-    expected += '\u2001\u2001\u2001\u2001\u2001' + '\n'
+def test_conf2unicode_largest_board():
+    expected = '\u2001\u2001\u2001\u2001\u2001'
+    expected += '\u2001\u2001\u2001\u2001\u2001'
+    expected += '\u2001\u2001\u2001\u2001\u2001'
+    expected += '\u2001\u2001\u2001\u2001\u2001'
+    expected += '\u2001\u2001\u2001\u2001\u2001'
+    expected += '\u2001' + '\n'
+    expected += '\u2001\u2001\u2001\u2001\u2001'
+    expected += '\u2001\u2001\u2001\u2001\u2001'
+    expected += '\u2001\u2001\u2001\u2001\u2001'
+    expected += '\u2001\u2001\u2001\u2001\u2001'
+    expected += '\u2001\u2001\u2001\u2001\u2001'
+    expected += '\u2001' + '\n'
+    expected += '\u2001\u2001\u2001\u2001\u2001'
+    expected += '\u2001\u2001\u2001\u2001\u2001'
+    expected += '\u2001\u2001\u2001\u2001\u2001'
+    expected += '\u2001\u2001\u2001\u2001\u2001'
+    expected += '\u2001\u2001\u2001\u2001\u2001'
+    expected += '\u2001' + '\n'
 
     assert conf2unicode(board) == expected
