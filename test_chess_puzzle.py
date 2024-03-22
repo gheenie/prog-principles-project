@@ -1,7 +1,8 @@
 from copy import deepcopy
 
-import pytest
 from chess_puzzle import *
+
+import pytest
 
 
 def test_locatio2index1():
