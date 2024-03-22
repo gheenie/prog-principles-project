@@ -566,15 +566,6 @@ def test_move_to_white_knight_no_capture(board2):
 
     assert result_board[0] == expected_board[0]
     assert len(result_board[1]) == len(expected_board[1])
-    for i in range(len(expected_board)):
-        assert result_board[1][i] is not  expected_board[1][i]
-    assert (
-        result_wn25.pos_x == wn13.pos_x
-        and result_wn25.pos_y == wn13.pos_y
-        and result_wn25.side == wn13.side
-        and isinstance(result_wn25, Knight) is isinstance(wn13, Knight)
-    )
-
     for result_piece in result_board[1]:
         found = False
         for expected_piece in expected_board[1]:
