@@ -539,7 +539,7 @@ def main() -> None:
             piece = move[0]
             destination_indices = (move[1], move[2])
             is_move_valid = True
-            print(f'Next move of Black is {index2location(move[1], move[2])}. ', end='')
+            print(f'Next move of Black is {index2location(piece.pos_x, piece.pos_y)}{index2location(move[1], move[2])}. ', end='')
 
         # Resolve the rest of the turn once a move is valid.
         board = piece.move_to(destination_indices[0], destination_indices[1], board)
@@ -552,9 +552,9 @@ def main() -> None:
             print(f'Game over. Stalemate.')
             return
         if whose_turn == 'White':
-            whose_turn == 'Black'
+            whose_turn = 'Black'
         else:
-            whose_turn == 'White'
+            whose_turn = 'White'
 
 
 if __name__ == '__main__': #keep this in
