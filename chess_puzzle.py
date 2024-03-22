@@ -450,8 +450,8 @@ def conf2unicode(B: Board) -> str:
 
 def parse_input_move(input_move: str) -> tuple[str, str]:
     '''Split the move input into the current location and destination.'''
-    if len(input_move)%2 == 0:
-        return (input_move[:len(input_move)/2], input_move[len(input_move)/2:])
+    if int(len(input_move)%2) == 0:
+        return (input_move[:int(len(input_move)/2)], input_move[int(len(input_move)/2):])
     
     from_move = input_move[0:2]
     to_move = ''
@@ -488,9 +488,10 @@ def main() -> None:
         except IOError:
             filename = input('This is not a valid file. File name for initial configuration: ')
 
-    move = input(f'Next move of {whose_turn}: ')
     whose_turn = 'White'
     is_quitting = False
+    is_valid_move = False
+    move = input(f'Next move of {whose_turn}: ')
     while is_quitting is False:
         if move == 'QUIT':
             filename = input('File name to store the configuration: ')
@@ -502,14 +503,15 @@ def main() -> None:
         piece = None
         try:
             piece_indices = location2index(from_to[0])
+            destination_indices = location2index(from_to[1])
             piece = get_piece_or_none(piece_indices[0], piece_indices[1], board)
             if piece is None:
                 raise TypeError('No piece in the specified location.')
-            if piece.can_move_to(from_to[1]) is False:
+            if piece.can_move_to(destination_indices[0], destination_indices[1], board) is False:
                 raise ValueError('The destination is invalid.')
         except Exception as e:
             move = input(f'This is not a valid move. Next move of {whose_turn}: ')
-        piece.move_to(location2index(from_to[1]))
+        piece.move_to(destination_indices[0], destination_indices[1], board)
         print(f"The configuration after {whose_turn}'s move is:")
         print(conf2unicode(board))
         if is_checkmate(whose_turn!='White', board) is True:
