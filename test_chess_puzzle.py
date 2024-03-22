@@ -1355,8 +1355,24 @@ def test_read_board_no_commas():
     assert str(e.value) == 'Location is empty.'
 
 
-def test_read_board_arbitrary_spaces():
-    pass
+def test_read_board_arbitrary_spaces(board1):
+    result_board = read_board('test_read_board_arbitrary_spaces.txt')
+    
+    assert result_board[0] == 5
+    assert len(result_board[1]) == len(board1[1])
+
+    for result_piece in result_board[1]:
+        found = False
+        for expected_piece in board1[1]:
+            if (
+                    result_piece.pos_x == expected_piece.pos_x
+                    and result_piece.pos_y == expected_piece.pos_y
+                    and result_piece.side == expected_piece.side
+                    and type(result_piece) == type(expected_piece)
+            ):
+                found = True
+        assert found is True
+
 
 def test_read_board_more_than_1_king():
     pass
