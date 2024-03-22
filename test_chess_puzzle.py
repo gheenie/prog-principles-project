@@ -195,21 +195,21 @@ def test_piece_at_white_knight(board1):
 
 
 def test_piece_at_white_king(board1):
-    result_piece = piece_at(1, 2, board1)
+    result_piece = piece_at(3, 5, board1)
 
-    assert result_piece is board1[1][0]
+    assert result_piece is board1[1][3]
 
 
 def test_piece_at_black_knight(board1):
-    result_piece = piece_at(1, 2, board1)
+    result_piece = piece_at(2, 4, board1)
 
-    assert result_piece is board1[1][0]
+    assert result_piece is board1[1][5]
 
 
 def test_piece_at_black_king(board1):
-    result_piece = piece_at(1, 2, board1)
+    result_piece = piece_at(2, 3, board1)
 
-    assert result_piece is board1[1][0]
+    assert result_piece is board1[1][6]
 
 
 def test_can_reach1():
