@@ -665,15 +665,20 @@ def test_move_to_black_knight_captured_a_king(board2):
     result_board = bn43.move_to(3, 5, board2)
     result_bn43 = piece_at(3, 5, result_board)
 
-    assert result_board[0] == expected_board[0]
-    for i in range(len(expected_board)):
-        assert result_board[1][i] is expected_board[1][i]
-    assert (
-        result_bn43.pos_x == bn35.pos_x
-        and result_bn43.pos_y == bn35.pos_y
-        and result_bn43.side == bn35.side
-        and isinstance(result_bn43, Knight) is isinstance(bn35, Knight)
-    )
+    assert result_board[0] == board2[0]
+    assert len(result_board[1]) == len(board2[1])
+    for result_piece in result_board[1]:
+        found = False
+        for expected_piece in board2[1]:
+            if (
+                    result_piece.pos_x == expected_piece.pos_x
+                    and result_piece.pos_y == expected_piece.pos_y
+                    and result_piece.side == expected_piece.side
+                    and isinstance(result_piece, Knight) == isinstance(expected_piece, Knight)
+                    and result_piece is not expected_piece
+            ):
+                found = True
+        assert found is True
 
 
 def test_move_to_knight_returned_board_is_the_same_identity(board2):
