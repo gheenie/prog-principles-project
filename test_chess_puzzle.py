@@ -734,9 +734,13 @@ def test_move_to_white_king_captured_a_knight(board4):
     
 
 def test_move_to_white_king_no_capture(board4):
-
     wk34 = piece_at(3, 4, board4)
+
     result_board = wk34.move_to(4, 5, board4)
+
+    wk45 = King(4, 5, True)
+    board4[1].remove(wk34)
+    board4[1].append(wk45)
 
     assert result_board[0] == board4[0]
     assert len(result_board[1]) == len(board4[1])
