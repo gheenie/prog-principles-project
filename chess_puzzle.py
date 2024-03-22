@@ -337,6 +337,8 @@ def read_board(filename: str) -> Board:
     
     if len(lines) < 3:
         raise IOError('There are less than 3 lines in the file.')
+    if lines[0].isnumeric() is False:
+        raise IOError('Board size is not an integer.')
     
     lines[2].split(',')
 
