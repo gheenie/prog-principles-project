@@ -1307,3 +1307,15 @@ def test_read_board_location2index_returns_invalid():
     # invalid chars
     # empty str, wrong col, wrong row, row out of bounds
     pass
+
+def test_read_board_no_commas():
+    pass
+
+def test_read_board_arbitrary_spaces():
+    pass
+
+def test_read_board_more_than_1_king():
+    pass
+
+def test_read_board_pieces_in_same_location():
+    pass
