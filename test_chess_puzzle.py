@@ -1287,8 +1287,17 @@ def test_is_stalemate_true_with_zoning():
     assert is_stalemate(True, board) is True
 
 
+def test_revert_the_change_to_global_B1_caused_by_test_move_to1():
+    wn1.move_to(1, 2, B1)
+
+
 def test_read_board1():
     B = read_board("board_examp.txt")
+    for piece in B[1]:
+        print(f'{piece.pos_x}, {piece.pos_y}, {piece.side}, {type(piece)}')
+    print()
+    for piece in B1[1]:
+        print(f'{piece.pos_x}, {piece.pos_y}, {piece.side}, {type(piece)}')
     assert B[0] == 5
 
     for piece in B[1]:  #we check if every piece in B is also present in B1; if not, the test will fail
