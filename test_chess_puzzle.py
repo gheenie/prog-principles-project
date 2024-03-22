@@ -531,6 +531,25 @@ def test_can_move_to_king_can_move_out_of_check(board2):
     assert bk23.can_move_to(1, 2, board2) is True
 
 
+def test_can_move_to_king_board_not_mutated(board1):
+    bn25 = Knight(2, 5, False)
+    board1[1].append(bn25)
+    '''
+     ♞♔  
+     ♞  ♘
+     ♚   
+    ♘   ♘
+    ♞    
+    '''
+    wk35 = piece_at(3, 5, board1)
+    bk23 = piece_at(2, 3, board1)
+
+    wk35.can_move_to(2, 5, board1)
+    bk23.can_move_to(1, 2, board1)
+
+    assert len(board1[1]) == 8
+
+
 def test_move_to1():
     Actual_B = wn1.move_to(2,4, B1)
     wn1a = Knight(2,4,True)
