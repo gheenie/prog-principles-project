@@ -413,23 +413,24 @@ def find_black_move(B: Board) -> tuple[Piece, int, int]:
     '''
 
 
+def get_unicode_character(piece: Piece) -> str:
+    '''Return the chess piece's unicode after reading the type and side.'''
+    if isinstance(piece, Knight) is True:
+        if piece.side is True:
+            return '\u2658'
+        else:
+            return '\u265E'
+    elif isinstance(piece, King) is True:
+        if piece.side is True:
+            return '\u2654'
+        else:
+            return '\u265A'
+
+
 def conf2unicode(B: Board) -> str: 
     '''converts board cofiguration B to unicode format string (see section Unicode board configurations)'''
     # Initialise a grid of empty spaces with the rows reversed.
     grid = [['\u2001']*B[0] for _ in range(B[0])]
-
-    def get_unicode_character(piece: Piece) -> str:
-        '''Return the chess piece's unicode after reading the type and side.'''
-        if isinstance(piece, Knight) is True:
-            if piece.side is True:
-                return '\u2658'
-            else:
-                return '\u265E'
-        elif isinstance(piece, King) is True:
-            if piece.side is True:
-                return '\u2654'
-            else:
-                return '\u265A'
 
     # Fill occupied spaces with unicode chess pieces.
     for piece in B[1]:
