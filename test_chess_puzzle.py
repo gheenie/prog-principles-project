@@ -1348,7 +1348,10 @@ def test_read_board_location2index_returns_invalid():
     pass
 
 def test_read_board_no_commas():
-    pass
+    with pytest.raises('IOError') as e:
+        read_board('data/test_read_board_no_commas.txt')
+    assert str(e.value) == 'Location is empty.'
+
 
 def test_read_board_arbitrary_spaces():
     pass
