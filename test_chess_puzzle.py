@@ -1344,8 +1344,10 @@ def test_read_board_row_out_of_range():
 
 def test_read_board_location2index_returns_invalid():
     # invalid chars
-    # empty str, wrong col, wrong row, row out of bounds
-    pass
+    # wrong col, wrong row, row out of bounds
+    with pytest.raises('IOError') as e:
+        read_board('data/test_read_board_location2index_returns_empty_string.txt')
+    assert str(e.value) == 'Location is empty.'
 
 def test_read_board_no_commas():
     with pytest.raises('IOError') as e:
