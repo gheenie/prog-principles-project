@@ -402,7 +402,23 @@ def read_board(filename: str) -> Board:
 
 def save_board(filename: str, B: Board) -> None:
     '''saves board configuration into file in current directory in plain format'''
-    board_config = conf2unicode(B)
+    white_pieces: list[str] = []
+    black_pieces: list[str] = []
+    for piece in B[1]:
+        piece_string: str = ''
+        if isinstance(piece, Knight) is True:
+            piece_string += 'N'
+        elif isinstance(piece, King) is True:
+            piece_string += 'K'
+        piece_string += index2location(piece.pos_x, piece.pos_y)
+        if piece.side is True:
+            white_pieces.append(piece_string)
+        else:
+            black_pieces.append(piece_string)
+
+    board_config: str = str(B[0]) + '\n'
+    board_config += ','.join(white_pieces) + '\n'
+    board_config += ','.join(black_pieces) + '\n'
 
     with open(filename, 'w') as f:
         f.writelines(board_config)
