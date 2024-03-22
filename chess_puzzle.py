@@ -335,10 +335,12 @@ def read_board(filename: str) -> Board:
             lines = f.readlines()
     except FileNotFoundError:
         raise FileNotFoundError('File does not exist.')
+    for i in range(len(lines)):
+        lines[i] = lines[i].strip().replace(' ', '')
 
     if len(lines) < 3:
         raise IOError('There are less than 3 lines in the file.')
-    board_size = lines[0].strip()
+    board_size = lines[0]
     if board_size.isnumeric() is False:
         raise IOError('Board size is not an integer.')
     board_size = int(board_size)
@@ -348,10 +350,12 @@ def read_board(filename: str) -> Board:
     Side = namedtuple('Side', 'white black')
     side = Side(1, 2)
     for i in side:
-        pieces = lines[i].strip().split(',')
+        pieces = lines[i].split(',')
         for piece in pieces:
+            print(piece[0])
             if piece[0] != 'N' or piece[0] != 'K':
                 raise IOError('Piece type other than N or K was found.')
+            index = location2index(piece[1:])
 
 
 def save_board(filename: str, B: Board) -> None:
