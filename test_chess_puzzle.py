@@ -1381,4 +1381,6 @@ def test_read_board_more_than_1_king():
 
 
 def test_read_board_pieces_in_same_location():
-    pass
+    with pytest.raises('IOError') as e:
+        read_board('data/test_read_board_pieces_in_same_location.txt')
+    assert str(e.value) == 'There are pieces in the same location.'
