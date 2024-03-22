@@ -1477,19 +1477,28 @@ def test_conf2unicode_smallest_board():
 
 
 def test_conf2unicode_largest_board():
-    expected = '\u2001\u2001\u2001\u2001\u2001'
+    '''
+                             ♔
+                  ♘           
+                  ♘           
+                  ♘           
+                  ♘          
+    ♚                         
+    '''
+    expected = '\u2001\u2001\u2001\u2001\u2654'
     expected += '\u2001\u2001\u2001\u2001\u2001'
     expected += '\u2001\u2001\u2001\u2001\u2001'
     expected += '\u2001\u2001\u2001\u2001\u2001'
     expected += '\u2001\u2001\u2001\u2001\u2001'
     expected += '\u2001' + '\n'
-    expected += '\u2001\u2001\u2001\u2001\u2001'
-    expected += '\u2001\u2001\u2001\u2001\u2001'
-    expected += '\u2001\u2001\u2001\u2001\u2001'
-    expected += '\u2001\u2001\u2001\u2001\u2001'
-    expected += '\u2001\u2001\u2001\u2001\u2001'
-    expected += '\u2001' + '\n'
-    expected += '\u2001\u2001\u2001\u2001\u2001'
+    for _ in range(24):
+        expected += '\u2001\u2001\u2001\u2001\u2001'
+        expected += '\u2001\u2001\u2001\u2001\u2001'
+        expected += '\u2001\u2001\u2001\u2001\u2658'
+        expected += '\u2001\u2001\u2001\u2001\u2001'
+        expected += '\u2001\u2001\u2001\u2001\u2001'
+        expected += '\u2001' + '\n'
+    expected += '\u265A\u2001\u2001\u2001\u2001'
     expected += '\u2001\u2001\u2001\u2001\u2001'
     expected += '\u2001\u2001\u2001\u2001\u2001'
     expected += '\u2001\u2001\u2001\u2001\u2001'
